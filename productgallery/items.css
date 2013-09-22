@@ -1,0 +1,52 @@
+#content > p {
+	margin: 0px 80px;
+}
+
+.productdiv {
+	margin: 2px auto;
+	line-height: 20px;
+}
+
+h3 {
+    margin-top: 0px;
+}
+
+.productdiv div {
+	float: left;
+}
+
+.imagediv {
+	width: 200px;
+	text-align: center;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.descriptiondiv {
+	width: 530px;
+	padding: 10px;
+	margin: 0px auto;
+}
+
+.descriptiondiv h2 {
+	margin-top: 0px;
+}
+
+.nokit {
+	padding-top: 30px;
+}
+
+div.descriptiondiv > ul {
+	width: 47%;
+	float: left;
+}
+
+ul {
+	/*\*/* margin-left: 0px; /**/
+	_float: left;
+	_padding-right: 30px;
+}
+
+li {
+	clear: left;
+}

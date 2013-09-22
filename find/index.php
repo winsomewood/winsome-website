@@ -1,0 +1,59 @@
+<?php
+$title = "Winsomewood - Find us";
+$includes = array('<link rel="stylesheet" type="text/css" href="find.css" />');
+include($_SERVER['DOCUMENT_ROOT'] . "/helperfiles/header.php");
+?>
+	<h2 id="title">Find Us</h2>
+	
+	<div id="content">
+		<div class="roundedcornerwrapper">
+			<div class="top"></div>
+			<div class="roundedcornerinner">
+				<p>
+					Winsome is a wholesaler and does not sell directly to the public.
+					Our products are available from our retail partners, please contact the retailers directly.
+				</p>
+				<div id="links">
+<?php
+$directory = opendir('../images/companylogos');
+while ($company = readdir($directory)) {
+	if ($company != "." && $company != "..") {
+		$companies[] = $company;
+	}
+}
+closedir($directory);
+sort($companies);
+
+$nameToUrl = array("comforthouse" => "http://www.comforthouse.com/winsome.html",
+				   "simplyhousewares" => "http://www.simplyhousewares.com/index.php/brands/winsome-wood.html?utm_source=winsome-wood",
+				   "ivgstores" => "http://www.tables21.com/",
+				   "dynamichomedecor" => "http://www.dynamichomedecor.com/Winsome-Wood.html",
+				   "visiondecor" => "http://search.visiondecor.com/search.php?keywords=winsome&x=0&y=0",
+				   "wayfair" => "http://www.wayfair.com/Winsome-C115456.html",
+                   "spacesavers" => "http://www.spacesavers.com/Storage/Winsome-Wood",
+                                   "shopfreely" => "http://www.shopfreely.com/Winsome-s/1342.htm",
+				"123greetings" => "http://store.123greetings.com/furniture.html?brand=959");
+
+
+foreach ($companies as $companysrc) {
+	$companyname = $name = substr($companysrc, 0, strrpos($companysrc, '.'));
+	if ($nameToUrl[$companyname]) {
+		$url = $nameToUrl[$companyname];
+	}
+	else {
+		$url = "http://www.${companyname}.com/";
+	}
+?>
+				<a href="<?= $url ?>" target="_blank" ><img src="/images/companylogos/<?= $companysrc ?>" alt="<?= $companyname ?>" /></a>
+<?php
+}
+?>
+				</div>
+			</div>
+			<div class="spacer"></div>
+			<div class="bottom"></div>
+		</div>
+	</div>
+<?php
+include($_SERVER['DOCUMENT_ROOT'] . "/helperfiles/footer.php");
+?>

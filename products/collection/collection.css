@@ -1,0 +1,63 @@
+#content {
+	padding-left: 0px;
+}
+
+#content p {
+	text-align: center;
+	margin: 0px 0px 8px 0px;
+}
+
+#collectionlinks {
+	float: left;
+	padding: 20px 40px 20px 20px;
+	background-color: rgb(108, 96, 158);
+	height: 468px;
+    overflow: auto;
+}
+
+#collectionlinks a {
+	color: white;
+	text-decoration: none;
+}
+
+#collectionlinks * {
+	display: block;
+	height: 18px;
+	width: 55px;
+	padding-left: 30px;
+	padding-right: 20px;
+}
+
+#collectionlinks a:hover {
+	color: black;
+	font-weight: bold;
+	background-color: white;
+}
+
+#collectionlinks span {
+	font-weight: bold;
+}
+
+#collectionimagediv {
+	float: left;
+	background-color: white;
+	width: 600px;
+	height: 498px;
+	padding-top: 10px;
+}
+
+#collectionimagediv a {
+    text-decoration: none;
+}
+
+#collectiontitle {
+    text-align: center;
+    color: black;
+	padding-bottom: 20px;
+    font-size: 36px;
+    margin: 0px;
+}
+
+#loading {
+	text-align: center;
+}
