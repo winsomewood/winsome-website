@@ -4,7 +4,7 @@ $includes = array('<link rel="stylesheet" type="text/css" href="find.css" />');
 include($_SERVER['DOCUMENT_ROOT'] . "/helperfiles/header.php");
 ?>
 	<h2 id="title">Find Us</h2>
-	
+
 	<div id="content">
 		<div class="roundedcornerwrapper">
 			<div class="top"></div>
@@ -33,6 +33,7 @@ $nameToUrl = array("comforthouse" => "http://www.comforthouse.com/winsome.html",
 				   "wayfair" => "http://www.wayfair.com/Winsome-C115456.html",
                    "spacesavers" => "http://www.spacesavers.com/Storage/Winsome-Wood",
                                    "shopfreely" => "http://www.shopfreely.com/Winsome-s/1342.htm",
+                                   "lowes-logo" => "http://www.lowes.ca/winsome-wood_m2278.html",
 				"123greetings" => "http://store.123greetings.com/furniture.html?brand=959");
 
 
