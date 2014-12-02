@@ -26,14 +26,18 @@ sort($companies);
 
 $nameToUrl = array("comforthouse" => "http://www.comforthouse.com/winsome.html",
 				   "simplyhousewares" => "http://www.simplyhousewares.com/index.php/brands/winsome-wood.html?utm_source=winsome-wood",
-				   "ivgstores" => "http://www.tables21.com/",
+				   "shopladder" => "http://www.shopladder.com/Winsome Wood-BR334.htm",
 				   "dynamichomedecor" => "http://www.dynamichomedecor.com/Winsome-Wood.html",
 				   "visiondecor" => "http://search.visiondecor.com/search.php?keywords=winsome&x=0&y=0",
 				   "walmart_CA" => "http://www.walmart.ca/en/furniture/winsome/N-119+1000376",
 				   "wayfair" => "http://www.wayfair.com/Winsome-C115456.html",
+"hayneedle" => "http://search.hayneedle.com/search/index.cfm?Ntt=winsome",
+"allmodern" => "http://www.allmodern.com/Dining-Furniture-C1782585.html",
+"wayfairsupply" => "http://www.allmodern.com/Dining-Furniture-C1782585.html",
                    "spacesavers" => "http://www.spacesavers.com/Storage/Winsome-Wood",
                                    "shopfreely" => "http://www.shopfreely.com/Winsome-s/1342.htm",
                                    "lowes-logo" => "http://www.lowes.ca/winsome-wood_m2278.html",
+"quill" => "http://www.quill.com/office-furniture-chairs-filing-cabinets/cbu/1.html",
 				"123greetings" => "http://store.123greetings.com/furniture.html?brand=959");
 
 
