@@ -1,0 +1,25 @@
+%p
+  = page_entries_info @items
+= paginate @items
+
+- if @items.empty?
+  %p
+    No items found lol
+
+%ul.item-list
+  - @items.each do |item|
+    %li
+      = link_to(image_tag("completeitemimages(200px)/#{item.images_200_px.first}"), item_path(item.itemno))
+      %h3
+        = link_to(item.description, item_path(item.itemno))
+      %dl.meta
+        %dt Item #
+        %dd= item.itemno
+        %dt UPC
+        %dd= item.upc
+        %dt Assembly Required
+        %dd= item.assembly? ? "Yes" : "No"
+        %dt Finish
+        %dd= item.finish
+
+= paginate @items

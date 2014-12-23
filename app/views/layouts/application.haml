@@ -1,0 +1,46 @@
+!!!
+%html
+  %head
+    %title
+      = "#{@page_title ? @page_title + " - " : ""}Winsome Wood"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato'
+
+  %body
+    %div#nav
+      %h1#logo
+        %a{:href => root_path}
+          = image_tag("logo.gif", :alt => "Winsome")
+      %ul.top_nav
+        %li{:style => "float: right"}
+          = link_to("Contact Us", contact_path)
+        %li{:style => "float: right"}
+          = link_to("Find Us", find_path)
+
+    %ul.product_nav
+      %li
+        %a{:href => category_items_path}
+          %div View Products
+          .large
+            By Category
+      %li
+        %a{:href => collection_items_path}
+          %div View Products
+          .large
+            By Collection
+    #content
+      - if @page_title
+        .title
+          %h2= @page_title
+          %span.item_number_link
+            = link_to("View All Products by Item #", items_path)
+      = yield
+    #footer
+      Copyright &copy;
+      = Time.now.year
+      Winsome Trading, Inc.
+  - if Rails.env == "production"
+    = render :partial => "shared/ga"

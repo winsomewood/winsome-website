@@ -1,0 +1,45 @@
+.show
+  .images
+    .help
+      Click image for a closer look
+    .large
+      = link_to(image_tag("completeitemimages(584px)/#{@item.images_584_px.first}"), image_path("completeitemimages(584px)/#{@item.images_584_px.first}"))
+    .small
+      - if @item.images_200_px.size > 1
+        - @item.images_200_px.each do |image|
+          = link_to(image_tag("completeitemimages(200px)/#{image}"), image_path("completeitemimages(584px)/#{image}"), rel: "fancybox-thumb", :class => 'fancybox-thumb', :title => @item.description)
+
+  .item
+    %h2
+      = @item.description
+    %dl.meta
+      %dt Item #
+      %dd= @item.itemno
+      %dt UPC
+      %dd= @item.upc
+      %dt Dimensions (W x D x H)
+      %dd
+        = display_dimensions_english(@item)
+        %br
+        = display_dimensions_metric(@item)
+        %br
+          Product dimensions are approximate
+      %dt Collection
+      %dd= @item.collection.present? ? @item.collection : "N/A"
+      %dt Category
+      %dd= @item.category
+      %dt Assembly Required
+      %dd= @item.assembly? ? "Yes" : "No"
+      %dt Finish
+      %dd= @item.finish
+      %dt Material
+      %dd= @item.material
+
+    %hr
+
+    %p
+      We do not sell our products directly to the public.
+      %a= link_to("Where to buy this product?", find_path)
+    .related_links
+      = link_to "View all #{@item.collection} products", items_path(:collection => @item.collection) if @item.collection.present?
+      = link_to "View all #{@item.category} products", items_path(:category => @item.category) if @item.category.present?

@@ -1,0 +1,14 @@
+= page_entries_info @collection_images
+= paginate @collection_images
+
+%ul.select_collection
+  - @collection_images.each do |image|
+    - collection_name = image[0, image.index('.')]
+    - collection_href = items_path(:collection => collection_name.downcase)
+    %li.with_caption
+      .medium= collection_name
+      %a{:href => collection_href}
+        = image_tag("collectionimages/#{image}", :alt => collection_name)
+
+.spacer
+= paginate @collection_images

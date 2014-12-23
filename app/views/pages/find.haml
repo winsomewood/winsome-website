@@ -1,0 +1,8 @@
+%p
+  Winsome is a furniture wholesaler, and we do not sell our products directly to the public. Our products are available from our many retail partners. If you wish to make a purchase, please contact the retailers directly.
+
+%ul#find
+  - Retailer.order(:name).each do |retailer|
+    %li
+      %a{:href => retailer.url, :target => "_blank"}
+        = image_tag("companylogos/#{retailer.src}", :alt => retailer.name)
