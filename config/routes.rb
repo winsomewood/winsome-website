@@ -58,12 +58,13 @@ Rails.application.routes.draw do
     root action: 'front_page'
     get 'find'
     get 'contact'
+    post 'submit_inquiry'
   end
 
   resources :items, :only => [:index, :show], param: 'itemno', path: 'products' do
     collection do
-      get 'category', :action => :select_category
-      get 'collection', :action => :select_collection
+      get 'select_category'
+      get 'select_collection'
     end
   end
 end

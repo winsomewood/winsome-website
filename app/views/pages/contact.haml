@@ -1,4 +1,10 @@
-%p For any inquiries, please email us at info@winsomewood.com
+%p For any inquiries, please fill out the form below. We would love to answer your questions!
+
+= form_for(:inquiry, :url => submit_inquiry_path) do |f|
+  = f.text_field :email, :placeholder => "Email"
+  = f.text_field :name, :placeholder => "Name"
+  = f.text_area :comments, :placeholder => "Enter your comments here"
+  = f.submit
 
 #addressdiv
   %address

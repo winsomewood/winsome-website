@@ -8,8 +8,4 @@ class PagesController < ApplicationController
     @page_title = "Find Us"
   end
 
-  def contact
-    @page_title = "Contact Us"
-  end
-
 end
