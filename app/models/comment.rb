@@ -1,4 +1,4 @@
-class Contact < ActiveType::Object
+class Comment < ActiveType::Object
 
   attribute :name, :string
   attribute :email, :string
@@ -8,8 +8,6 @@ class Contact < ActiveType::Object
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :comments, :presence => true
 
-  after_save :deliver
+  after_save lambda { InfoMailer.comments_email(self).deliver_now }
 
-  def deliver
-
-  end
+end

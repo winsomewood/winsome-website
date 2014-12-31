@@ -1,0 +1,40 @@
+@import "variables"
+
+form
+  background-color: $green
+  margin: 40px 80px
+  padding: 20px
+
+  .section
+    margin-bottom: 20px
+
+  label
+    display: block
+    color: #555555
+
+  .errors
+    color: $red
+
+  input, textarea
+    font-size: 1.2em
+    padding: 5px
+    margin-top: 4px
+    margin-bottom: 4px
+
+  input[type=submit]
+    background-color: $blue
+    color: white
+    border: none
+    padding: 10px 20px
+    cursor: pointer
+
+  .field_with_errors
+    input, textarea
+      border: 2px solid $red
+
+.addresses
+  text-align: center
+
+address
+  display: inline-block
+  text-align: left

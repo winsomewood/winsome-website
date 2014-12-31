@@ -57,8 +57,16 @@ Rails.application.routes.draw do
   scope controller: :pages do
     root action: 'front_page'
     get 'find'
+  end
+
+  scope controller: :contact do
     get 'contact'
-    post 'submit_inquiry'
+    post 'contact', :action => 'submit_comment'
+    get 'catalog'
+    post 'catalog', :action => 'submit_catalog'
+    get 'replacement'
+    post 'replacement', :action => 'submit_replacement'
+    get 'success'
   end
 
   resources :items, :only => [:index, :show], param: 'itemno', path: 'products' do

@@ -1,4 +1,4 @@
-class Contact < ActiveType::Object
+class Catalog < ActiveType::Object
 
   attribute :company, :string
   attribute :address1, :string
@@ -18,6 +18,7 @@ class Contact < ActiveType::Object
   attribute :comments, :string
 
   validates_presence_of :company, :address1, :city, :state, :zip, :country, :phone, :resale
+  validates :zip, format: { with: /^\d{5}-?(\d{4})?$/ }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   after_save :deliver
@@ -25,3 +26,5 @@ class Contact < ActiveType::Object
   def deliver
 
   end
+
+end
