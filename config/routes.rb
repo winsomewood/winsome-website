@@ -57,18 +57,18 @@ Rails.application.routes.draw do
   scope controller: :pages do
     root action: 'front_page'
     get 'find'
-  end
-
-  scope controller: :contact do
-    get 'contact'
-    post 'contact', :action => 'submit_comment'
-    get 'catalog'
-    post 'catalog', :action => 'submit_catalog'
-    get 'replacement'
-    post 'replacement', :action => 'submit_replacement'
     get 'success'
   end
 
+  resource :contact, :only => :create do
+    resource :catalog, :only => :create do
+      get action: 'new'
+    end
+    resource :replacement, :only => :create do
+      get action: 'new'
+    end
+    get action: 'new'
+  end
   resources :items, :only => [:index, :show], param: 'itemno', path: 'products' do
     collection do
       get 'select_category'

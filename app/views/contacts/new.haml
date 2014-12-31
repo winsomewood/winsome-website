@@ -1,8 +1,8 @@
 %p
   If you are a retailer, you may
-  = link_to("Request a Catalog.", catalog_path)
+  = link_to("Request a Catalog.", contact_catalog_path)
   If you have made a purchase and need replacement parts for that purchase,
-  = link_to("Replacement Request.", replacement_path)
+  = link_to("Replacement Request.", contact_replacement_path)
   For any other inquiries, please fill out the form below. We would love to answer your questions!
 
 = form_for(:comment, :url => contact_path) do |f|

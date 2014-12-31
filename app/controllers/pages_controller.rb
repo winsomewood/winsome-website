@@ -8,4 +8,7 @@ class PagesController < ApplicationController
     @page_title = "Find Us"
   end
 
+  def success
+    @page_title = "Thank you!"
+  end
 end

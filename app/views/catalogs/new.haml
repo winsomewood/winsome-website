@@ -1,0 +1,28 @@
+%p Product catalogs are awesome because of something. To request a catalog, please provide the following information:
+
+= form_for(:catalog, :url => contact_catalog_path) do |f|
+  = field_set_tag 'Required' do
+    = f.label :resale, :value => "Resale Number"
+    = f.text_field :resale
+    = f.label :company
+    = f.text_field :company
+    = f.label :email
+    = f.text_field :email
+    = f.text_field :email, :label => true
+    = f.label :address_1
+    = f.text_field :address_1
+    = f.label :address_2
+    = f.text_field :address_2
+    = f.label :city
+    = f.text_field :city
+    = f.label :zip
+    = f.text_field :zip
+
+  = field_set_tag 'Optional' do
+    = f.label :name
+    = f.text_field :name
+
+  .section
+    = f.text_area :comments, :rows => 10, :cols => 70, :placeholder => "Enter your comments here"
+
+  = f.submit :value => "Submit"

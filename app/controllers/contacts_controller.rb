@@ -1,24 +1,21 @@
-class ContactController < ApplicationController
+class ContactsController < ApplicationController
 
-  before_filter :set_comment, :only => [:contact, :submit_comment]
+  before_filter :set_comment
 
   def set_comment
     @comment = Comment.new(comment_params)
   end
 
-  def contact
+  def new
     @page_title = "Contact Us"
   end
 
-  def submit_comment
+  def create
     if @comment.save
       redirect_to success_path
     else
-      render 'contact'
+      render 'new'
     end
-  end
-
-  def success
   end
 
   protected
