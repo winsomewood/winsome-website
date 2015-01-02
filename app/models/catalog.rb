@@ -17,7 +17,7 @@ class Catalog < ActiveType::Object
 
   attribute :comments, :string
 
-  validates_presence_of :company, :address1, :city, :state, :zip, :country, :phone, :resale
+  validates_presence_of :company, :address_1, :city, :state, :zip, :country, :phone, :resale
   validates :zip, format: { with: /\A\d{5}-?(\d{4})?\z/ }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 

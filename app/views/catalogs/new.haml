@@ -8,21 +8,26 @@
     = f.text_field :company
     = f.label :email
     = f.text_field :email
-    = f.text_field :email, :label => true
     = f.label :address_1
     = f.text_field :address_1
     = f.label :address_2
     = f.text_field :address_2
     = f.label :city
     = f.text_field :city
-    = f.label :zip
+    = f.label :state, :value => "State / Province"
+    = f.select :state, grouped_options_for_select(grouped_states)
+    = f.label :zip, :value => "Zip / Postal Code"
     = f.text_field :zip
+    = f.label :phone, :value => "Phone Number"
+    = f.text_field :phone
 
   = field_set_tag 'Optional' do
-    = f.label :name
+    = f.label :name, :value => "Contact Name"
     = f.text_field :name
+    = f.label :email, :value => "Contact Email"
+    = f.text_field :email
 
-  .section
-    = f.text_area :comments, :rows => 10, :cols => 70, :placeholder => "Enter your comments here"
+    .section
+      = f.text_area :comments, :rows => 10, :cols => 70, :placeholder => "Enter your comments here"
 
-  = f.submit :value => "Submit"
+  = f.submit :value => "Request a catalog"

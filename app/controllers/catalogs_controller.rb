@@ -24,8 +24,8 @@ class CatalogsController < ApplicationController
     catalog_params = params[:catalog]
     catalog_params.permit(
       :company,
-      :address1,
-      :address2,
+      :address_1,
+      :address_2,
       :city,
       :state,
       :zip,
