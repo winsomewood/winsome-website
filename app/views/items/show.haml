@@ -8,6 +8,8 @@
       - if @item.images_200_px.size > 1
         - @item.images_200_px.each do |image|
           = link_to(image_tag("completeitemimages(200px)/#{image}"), image_path("completeitemimages(584px)/#{image}"), rel: "fancybox-thumb", :class => 'fancybox-thumb', :title => @item.description)
+    .color_disclaimer
+      The color you see may not exactly match the product color, and may depend, in part, upon the monitor you are using.
 
   .item
     %h2
@@ -23,7 +25,7 @@
         %br
         = display_dimensions_metric(@item)
         %br
-          Product dimensions are approximate
+        Product dimensions are approximate
       %dt Collection
       %dd= @item.collection.present? ? @item.collection : "N/A"
       %dt Category
@@ -37,9 +39,6 @@
 
     %hr
 
-    %p
-      We do not sell our products directly to the public.
-      %a= link_to("Where to buy this product?", find_path)
     .related_links
       = link_to "View all #{@item.collection} products", items_path(:collection => @item.collection) if @item.collection.present?
       = link_to "View all #{@item.category} products", items_path(:category => @item.category) if @item.category.present?

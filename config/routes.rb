@@ -61,12 +61,6 @@ Rails.application.routes.draw do
   end
 
   resource :contact, :only => :create do
-    resource :catalog, :only => :create do
-      get action: 'new'
-    end
-    resource :replacement, :only => :create do
-      get action: 'new'
-    end
     get action: 'new'
   end
   resources :items, :only => [:index, :show], param: 'itemno', path: 'products' do

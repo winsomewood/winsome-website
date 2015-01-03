@@ -17,9 +17,10 @@
         %dd= item.itemno
         %dt UPC
         %dd= item.upc
-        %dt Assembly Required
-        %dd= item.assembly? ? "Yes" : "No"
-        %dt Finish
-        %dd= item.finish
+        %dt Dimensions (W x D x H)
+        %dd
+          = display_dimensions_english(item)
+          %br
+          = display_dimensions_metric(item)
 
 = paginate @items

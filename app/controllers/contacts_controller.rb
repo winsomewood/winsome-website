@@ -22,6 +22,6 @@ class ContactsController < ApplicationController
 
   def comment_params
     comment_params = params[:comment]
-    comment_params.permit(:name, :email, :comments) if comment_params
+    comment_params.permit(:subject, :name, :company, :email, :comments) if comment_params
   end
 end
