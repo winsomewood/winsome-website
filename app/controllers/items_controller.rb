@@ -17,6 +17,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by_itemno(params[:itemno])
+    @page_title = @item.description
+    @hide_page_title = true
   end
 
   def select_category

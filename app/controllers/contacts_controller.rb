@@ -1,13 +1,17 @@
 class ContactsController < ApplicationController
 
+  before_filter :set_page_title
   before_filter :set_comment
+
+  def set_page_title
+    @page_title = "Contact Us"
+  end
 
   def set_comment
     @comment = Comment.new(comment_params)
   end
 
   def new
-    @page_title = "Contact Us"
   end
 
   def create
