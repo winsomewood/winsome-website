@@ -15,9 +15,12 @@
         %a{:href => root_path}
           = image_tag("logo.gif", :alt => "Winsome")
       %ul.top_nav
-        %li{:style => "float: right"}
+        %li
+          = form_tag(items_path, :method => :get, :id => "search") do
+            = text_field_tag :query, nil, :placeholder => "Search"
+        %li
           = link_to("Contact Us", contact_path)
-        %li{:style => "float: right"}
+        %li
           = link_to("Find Us", find_path)
 
     %ul.product_nav

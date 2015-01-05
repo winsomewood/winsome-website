@@ -8,6 +8,15 @@ class ItemsController < ApplicationController
     elsif params[:collection]
       @items = Item.where('lower(collection) = ?', params[:collection].downcase).order("description")
       @page_title = params[:collection].capitalize
+    elsif params[:query]
+      query = params[:query].strip.downcase
+      @items = Item.where(
+        'itemno = :q_int OR lower(category) = :q_str OR lower(collection) = :q_str OR description like :q_like',
+        q_str: query,
+        q_int: query =~ /\A\d+\z/ ? query.to_i : nil,
+        q_like: "%#{query}%"
+      )
+      @page_title = "Products matching '#{params[:query]}'"
     else
       @items = Item.order("itemno")
       @page_title = "Products by Item Number"
@@ -27,7 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def select_collection
-    @collection_images = Kaminari.paginate_array(ItemImages.collections).page(params[:page] || 1)
+    @collection_images = ItemImages.collections
     @page_title = "Select a Collection"
   end
 
