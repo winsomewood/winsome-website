@@ -54,6 +54,14 @@
 
       %hr
 
+    - if @item.parent_kits.present?
+      %h3 Parent Sets
+      %ul.parent_sets
+        - @item.parent_kits.each do |parent|
+          = render :partial => "item", :locals => {:item => parent}
+
+      %hr
+
     .related_links
       = link_to "View all #{@item.collection} products", items_path(:collection => @item.collection) if @item.collection.present?
       = link_to "View all #{@item.category} products", items_path(:category => @item.category) if @item.category.present?

@@ -28,6 +28,10 @@ class Item < ActiveRecord::Base
     Item.joins("join kits on kits.itemno = items.itemno").where("kits.kitno = ?", itemno)
   end
 
+  def parent_kits
+    Item.joins("join kits on kits.kitno = items.itemno").where("kits.itemno = ?", itemno)
+  end
+
   def images_200_px
     children_itemnos = set_components.pluck(:itemno)
 
