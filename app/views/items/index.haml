@@ -4,28 +4,6 @@
 
 %ul.index
   - @items.each do |item|
-    %li.item
-      = link_to(image_tag("completeitemimages(200px)/#{item.images_200_px.first}"), item_path(item.itemno))
-      %h3
-        = link_to(item.description, item_path(item.itemno))
-      %ul.meta
-        - if item.kit?
-          %li
-            = "#{item.set_components.size}-piece set"
-        %li
-          %strong Item #:
-          = item.itemno
-        %li
-          %strong Dimensions (W x D x H):
-          %ul.dimensions
-            %li= display_dimensions_english(item)
-            %li= display_dimensions_metric(item)
-      %ul.meta
-        %li
-          %strong Category:
-          = item.category
-        %li
-          %strong Collection:
-          = item.collection
+    = render :partial => "item", :locals => {:item => item}
 
 = paginate @items

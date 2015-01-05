@@ -3,7 +3,7 @@
     .help
       Click image for a closer look
     %div
-      = link_to(image_tag("completeitemimages(584px)/#{@item.images_584_px.first}", :class => "large"), image_path("completeitemimages(584px)/#{@item.images_584_px.first}"))
+      = link_to(image_tag("completeitemimages(584px)/#{@item.images_584_px.first}", :class => "large"), image_path("completeitemimages(584px)/#{@item.images_584_px.first}"), :class => "large_link")
     .thumbnails
       - if @item.images_200_px.size > 1
         - @item.images_200_px.each do |image|
@@ -15,16 +15,17 @@
     %h2
       = @item.description
 
-    %ul.meta
+    %ul.main-meta
       %li
         %strong Item #:
         = @item.itemno
-      %li.dimensions
-        %strong Dimensions (W x D x H):
-        %ul.dimensions
-          %li= display_dimensions_english(@item)
-          %li= display_dimensions_metric(@item)
-          %li Product dimensions are approximate
+      - if !@item.kit?
+        %li.dimensions
+          %strong Dimensions (W x D x H):
+          %ul.dimensions
+            %li= display_dimensions_english(@item)
+            %li= display_dimensions_metric(@item)
+            %li Product dimensions are approximate
       %li
         %strong Assembly Required:
         = @item.assembly? ? "Yes" : "No"
@@ -35,13 +36,13 @@
         %strong Material:
         = @item.material
 
-    %ul.meta
+    %ul.main-meta
       %li
         %strong Category:
         = @item.category
       %li
         %strong Collection:
-        = @item.collection
+        = display_collection(@item)
 
     %hr.spacer
 
@@ -49,9 +50,7 @@
       %h3 Set components
       %ul.components
         - @item.set_components.each do |child|
-          %li.spacer
-            = link_to(image_tag("completeitemimages(200px)/#{child.images_200_px.first}", :class => 'small'), item_path(child.itemno))
-            = link_to("#{child.description} | #{child.itemno}", item_path(child.itemno))
+          = render :partial => "item", :locals => {:item => child}
 
       %hr
 

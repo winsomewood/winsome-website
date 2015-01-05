@@ -21,7 +21,7 @@ $(function () {
       }
     }
   });
-  $(".large a").on("click", function (e) {
+  $(".large_link").on("click", function (e) {
     e.preventDefault();
     $(".fancybox-thumb").eq(0).trigger("click");
   });
