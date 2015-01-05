@@ -21,16 +21,21 @@
 
 class Item < ActiveRecord::Base
 
-  has_many :kits, :foreign_key => "itemno"
+  has_many :kits, :foreign_key => "kitno"
 
-  def self.entry_name
-    'item'
+  def item_children
+    Item.joins("join kits on kits.itemno = items.itemno").where("kits.kitno = ?", itemno)
   end
+
   def images_200_px
-    ::ItemImages.size_200[itemno] || []
+    children_itemnos = item_children.pluck(:itemno)
+
+    (::ItemImages.size_200[self.itemno] || []) +
+    ::ItemImages.size_200.select { |k| children_itemnos.include?(k) }.values.flatten
   end
 
   def images_584_px
-    ::ItemImages.size_584[itemno] || []
+    ::ItemImages.size_584[self.itemno] || []
   end
+
 end

@@ -2,25 +2,31 @@
   = page_entries_info @items
 = paginate @items
 
-%ul.item-list
+%ul.index
   - @items.each do |item|
     %li
       = link_to(image_tag("completeitemimages(200px)/#{item.images_200_px.first}"), item_path(item.itemno))
       %h3
         = link_to(item.description, item_path(item.itemno))
-      %dl.meta
-        %dt Item #
-        %dd= item.itemno
-        %dt UPC
-        %dd= item.upc
-        %dt Category
-        %dd= item.category
-        %dt Collection
-        %dd= item.collection
-        %dt Dimensions (W x D x H)
-        %dd
+      %ul.meta
+        - if item.kit?
+          %li
+            = "#{item.item_children.size}-piece set"
+        %li
+          %strong Item #:
+          = item.itemno
+        %li
+          %strong Dimensions (W x D x H):
+          %br
           = display_dimensions_english(item)
           %br
           = display_dimensions_metric(item)
+      %ul.meta
+        %li
+          %strong Category:
+          = item.category
+        %li
+          %strong Collection:
+          = item.collection
 
 = paginate @items
