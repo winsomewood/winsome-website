@@ -2,40 +2,56 @@
   .images
     .help
       Click image for a closer look
-    .large
-      = link_to(image_tag("completeitemimages(584px)/#{@item.images_584_px.first}"), image_path("completeitemimages(584px)/#{@item.images_584_px.first}"))
-    .small
+    %div
+      = link_to(image_tag("completeitemimages(584px)/#{@item.images_584_px.first}", :class => "large"), image_path("completeitemimages(584px)/#{@item.images_584_px.first}"))
+    .thumbnails
       - if @item.images_200_px.size > 1
         - @item.images_200_px.each do |image|
-          = link_to(image_tag("completeitemimages(200px)/#{image}"), image_path("completeitemimages(584px)/#{image}"), rel: "fancybox-thumb", :class => 'fancybox-thumb', :title => @item.description)
+          = link_to(image_tag("completeitemimages(200px)/#{image}", :class => "small"), image_path("completeitemimages(584px)/#{image}"), rel: "fancybox-thumb", :class => 'fancybox-thumb', :title => @item.description)
     .color_disclaimer
       The color you see may not exactly match the product color, and may depend, in part, upon the monitor you are using.
 
   .item
     %h2
       = @item.description
-    %dl.meta
-      %dt Item #
-      %dd= @item.itemno
-      %dt UPC
-      %dd= @item.upc
-      %dt Dimensions (W x D x H)
-      %dd
+
+    %ul.meta
+      %li
+        %strong Item #:
+        = @item.itemno
+      %li
+        %strong Dimensions (W x D x H):
+        %br
         = display_dimensions_english(@item)
         %br
         = display_dimensions_metric(@item)
         %br
         Product dimensions are approximate
-      %dt Collection
-      %dd= @item.collection.present? ? @item.collection : "N/A"
-      %dt Category
-      %dd= @item.category
-      %dt Assembly Required
-      %dd= @item.assembly? ? "Yes" : "No"
-      %dt Finish
-      %dd= @item.finish
-      %dt Material
-      %dd= @item.material
+      %li
+        %strong Category:
+        = @item.category
+      %li
+        %strong Collection:
+        = @item.collection
+      %li
+        %strong Assembly Required:
+        = @item.assembly? ? "Yes" : "No"
+      %li
+        %strong Finish:
+        = @item.finish
+      %li
+        %strong Material:
+        = @item.material
+
+    %hr
+
+    - if @item.kit?
+      %h3 Set components
+      %ul.components
+        - @item.set_components.each do |child|
+          %li.spacer
+            = link_to(image_tag("completeitemimages(200px)/#{child.images_200_px.first}", :class => 'small'), item_path(child.itemno))
+            = link_to("#{child.description} | #{child.itemno}", item_path(child.itemno))
 
     %hr
 

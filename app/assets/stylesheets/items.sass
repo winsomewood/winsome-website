@@ -40,7 +40,6 @@
   li
     margin: 3px
     padding: 3px
-    text-align: center
 
   .collection
     cursor: pointer
@@ -70,39 +69,42 @@
 
   .images
     margin-right: 40px
-    text-align: center
-
-    .large
-      width: 350px
-      height: 350px
-
-    .small
-      width: 350px
-      a
-        float: left
-        height: 50px
-        width: 50px
-        display: inline-block
-        margin: 10px 1px
-        padding: 1px
-
-        img
-          border: 1px solid #777777
 
     .color_disclaimer
-      width: 350px
       clear: left
-
-    img
-      width: 100%
-      height: 100%
+      text-align: center
 
     .help
+      text-align: center
       margin-bottom: 10px
+
+
+  .images > div
+    width: 350px
+
+  .thumbnails
+    a img
+      margin: 8px 1px
+      border: 1px solid #777777
+
+  img.large
+    width: 350px
+    height: 350px
+
+  img.small
+    width: 50px
+    height: 50px
 
   .item
     width: 530px
 
     h2
       font-size: 2em
+
+  .components li > *
+    vertical-align: middle
+
+hr
+  margin: 30px 0px
+  border: 1px solid #555555
 

@@ -23,12 +23,12 @@ class Item < ActiveRecord::Base
 
   has_many :kits, :foreign_key => "kitno"
 
-  def item_children
+  def set_components
     Item.joins("join kits on kits.itemno = items.itemno").where("kits.kitno = ?", itemno)
   end
 
   def images_200_px
-    children_itemnos = item_children.pluck(:itemno)
+    children_itemnos = set_components.pluck(:itemno)
 
     (::ItemImages.size_200[self.itemno] || []) +
     ::ItemImages.size_200.select { |k| children_itemnos.include?(k) }.values.flatten
