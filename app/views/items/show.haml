@@ -53,7 +53,7 @@
             = link_to(image_tag("completeitemimages(200px)/#{child.images_200_px.first}", :class => 'small'), item_path(child.itemno))
             = link_to("#{child.description} | #{child.itemno}", item_path(child.itemno))
 
-    %hr
+      %hr
 
     .related_links
       = link_to "View all #{@item.collection} products", items_path(:collection => @item.collection) if @item.collection.present?
