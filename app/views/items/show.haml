@@ -19,20 +19,12 @@
       %li
         %strong Item #:
         = @item.itemno
-      %li
+      %li.dimensions
         %strong Dimensions (W x D x H):
-        %br
-        = display_dimensions_english(@item)
-        %br
-        = display_dimensions_metric(@item)
-        %br
-        Product dimensions are approximate
-      %li
-        %strong Category:
-        = @item.category
-      %li
-        %strong Collection:
-        = @item.collection
+        %ul.dimensions
+          %li= display_dimensions_english(@item)
+          %li= display_dimensions_metric(@item)
+          %li Product dimensions are approximate
       %li
         %strong Assembly Required:
         = @item.assembly? ? "Yes" : "No"
@@ -43,7 +35,15 @@
         %strong Material:
         = @item.material
 
-    %hr
+    %ul.meta
+      %li
+        %strong Category:
+        = @item.category
+      %li
+        %strong Collection:
+        = @item.collection
+
+    %hr.spacer
 
     - if @item.kit?
       %h3 Set components
