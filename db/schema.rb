@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223102611) do
+ActiveRecord::Schema.define(version: 20150105102608) do
 
   create_table "itemlist", primary_key: "itemno", force: :cascade do |t|
     t.integer "kit",         limit: 1,   null: false
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 20141223102611) do
     t.integer  "kitno"
     t.integer  "itemno"
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
