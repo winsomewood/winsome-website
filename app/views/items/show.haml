@@ -11,38 +11,39 @@
     .color_disclaimer
       The color you see may not exactly match the product color, and may depend, in part, upon the monitor you are using.
 
-  .item
-    %h2
-      = @item.description
+  %div
+    .item
+      %h2
+        = @item.description
 
-    %ul.main-meta
-      %li
-        %strong Item #:
-        = @item.itemno
-      - if !@item.kit?
-        %li.dimensions
-          %strong Dimensions (W x D x H):
-          %ul.dimensions
-            %li= display_dimensions_english(@item)
-            %li= display_dimensions_metric(@item)
-            %li Product dimensions are approximate
-      %li
-        %strong Assembly Required:
-        = @item.assembly? ? "Yes" : "No"
-      %li
-        %strong Finish:
-        = @item.finish
-      %li
-        %strong Material:
-        = @item.material
+      %ul.main-meta
+        %li
+          %strong Item #:
+          = @item.itemno
+        - if !@item.kit?
+          %li.dimensions
+            %strong Dimensions (W x D x H):
+            %ul.dimensions
+              %li= display_dimensions_english(@item)
+              %li= display_dimensions_metric(@item)
+              %li Product dimensions are approximate
+        %li
+          %strong Assembly Required:
+          = @item.assembly? ? "Yes" : "No"
+        %li
+          %strong Finish:
+          = @item.finish
+        %li
+          %strong Material:
+          = @item.material
 
-    %ul.main-meta
-      %li
-        %strong Category:
-        = @item.category
-      %li
-        %strong Collection:
-        = display_collection(@item)
+      %ul.main-meta
+        %li
+          %strong Category:
+          = @item.category
+        %li
+          %strong Collection:
+          = display_collection(@item)
 
     %hr.spacer
 
@@ -62,6 +63,8 @@
 
       %hr
 
-    .related_links
-      = link_to "View all #{@item.collection} products", items_path(:collection => @item.collection) if @item.collection.present?
-      = link_to "View all #{@item.category} products", items_path(:category => @item.category) if @item.category.present?
+    %ul.related_links
+      %li
+        = link_to "View all #{@item.collection} products", items_path(:collection => @item.collection) if @item.collection.present?
+      %li
+        = link_to "View all #{@item.category} products", items_path(:category => @item.category) if @item.category.present?
