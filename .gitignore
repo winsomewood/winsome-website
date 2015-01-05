@@ -17,7 +17,6 @@
 /tmp
 
 HiResImages
-app/assets/images/completeitemimages(200px)
-app/assets/images/completeitemimages(584px)
+public/images
 
 config/secrets.yml
