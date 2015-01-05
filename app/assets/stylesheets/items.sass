@@ -35,18 +35,43 @@
   width: 120px
   margin: 5px
 
+.select_collection, .collection_image_div
+  margin-top: 40px
+
 .select_collection
   width: 200px
   float: left
-  background-color: $green
-  height: 450px
+  height: 468px
+  padding: 10px 0px
   overflow-y: scroll
+  background-color: $blue
+  color: white
 
   li
     margin: 3px
+    padding: 3px
+    text-align: center
 
   .collection
     cursor: pointer
+
+    &:hover
+      color: $blue
+      background-color: #FFFFFF
+      font-weight: bold
+
+.collection_image_div
+  text-align: center
+  float: left
+  background-color: white
+  width: 600px
+
+  a
+    text-decoration: none
+
+    h3
+      height: 20px
+
 
 .show
 
@@ -67,15 +92,13 @@
         height: 50px
         width: 50px
         display: inline-block
+        margin: 10px 1px
         padding: 1px
-        margin: 1px
-        margin-top: 3px
 
         img
           border: 1px solid #777777
 
     .color_disclaimer
-      margin-top: 10px
       width: 350px
       clear: left
 

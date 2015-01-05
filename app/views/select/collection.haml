@@ -1,0 +1,11 @@
+.collections
+  %ul.select_collection
+    - @collection_images.each do |image|
+      - collection_name = image[0, image.index('.')]
+      - collection_href = items_path(:collection => collection_name.downcase)
+      %li.collection{:"data-image-src" => image_path("collectionimages/#{image}"), :"data-a-href" => collection_href}= collection_name
+
+  .collection_image_div
+    %a.collection_link
+      %h3.collection_caption
+      %img.collection_image

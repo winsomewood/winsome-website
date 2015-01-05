@@ -30,14 +30,4 @@ class ItemsController < ApplicationController
     @hide_page_title = true
   end
 
-  def select_category
-    @category_images = ItemImages.categories
-    @page_title = "Select a Category"
-  end
-
-  def select_collection
-    @collection_images = ItemImages.collections
-    @page_title = "Select a Collection"
-  end
-
 end

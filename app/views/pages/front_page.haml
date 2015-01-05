@@ -3,11 +3,11 @@
 
 %p
   We are Winsome Wood. Manufacturer and Distributor of Quality Lifestyle Furniture for the home.
-  = link_to("View our products", select_category_items_path)
+  = link_to("View our products", select_category_path)
 
 .carousel
   - @carousel_images.each do |image|
-    = link_to(image_tag("collectionimages/#{image}"), select_category_items_path)
+    = link_to(image_tag("collectionimages/#{image}"), select_category_path)
 
 %h2 Our Company
 
