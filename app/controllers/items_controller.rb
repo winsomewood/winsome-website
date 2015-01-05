@@ -11,11 +11,11 @@ class ItemsController < ApplicationController
     elsif params[:query]
       query = params[:query].strip.downcase
       @items = Item.where(
-        'itemno = :q_int OR lower(category) = :q_str OR lower(collection) = :q_str OR description like :q_like',
+        'itemno = :q_int OR lower(description) like :q_like OR lower(category) = :q_str OR lower(collection) = :q_str',
         q_str: query,
         q_int: query =~ /\A\d+\z/ ? query.to_i : nil,
         q_like: "%#{query}%"
-      )
+      ).order("description")
       @page_title = "Products matching '#{params[:query]}'"
     else
       @items = Item.order("itemno")

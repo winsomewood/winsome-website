@@ -2,10 +2,6 @@
   = page_entries_info @items
 = paginate @items
 
-- if @items.empty?
-  %p
-    No items found lol
-
 %ul.item-list
   - @items.each do |item|
     %li

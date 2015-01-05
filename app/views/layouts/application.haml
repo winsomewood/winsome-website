@@ -17,7 +17,7 @@
       %ul.top_nav
         %li
           = form_tag(items_path, :method => :get, :id => "search") do
-            = text_field_tag :query, nil, :placeholder => "Search"
+            = text_field_tag :query, params[:query], :placeholder => "Search"
         %li
           = link_to("Contact Us", contact_path)
         %li
