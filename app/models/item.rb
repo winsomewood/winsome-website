@@ -22,6 +22,7 @@
 class Item < ActiveRecord::Base
 
   has_many :kits, :foreign_key => "kitno"
+  validates_presence_of :itemno, :upc, :description, :category, :length, :width, :height
 
   def set_components
     Item.joins("join kits on kits.itemno = items.itemno").where("kits.kitno = ?", itemno)
