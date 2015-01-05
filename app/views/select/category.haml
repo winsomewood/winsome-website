@@ -4,5 +4,5 @@
     - category_href = items_path(:category => category_name.downcase)
     %li.with_caption
       %a{:href => category_href}
-        = image_tag("categoryimages/#{image}", :alt => category_name)
+        = image_tag("/images/categories/#{image}", :alt => category_name)
         = category_name

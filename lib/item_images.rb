@@ -1,15 +1,15 @@
 module ItemImages
   def self.collections
-    self.get_file_names_from_directory("#{Rails.root}/app/assets/images/collectionimages", "collections")
+    self.get_file_names_from_directory("#{Rails.root}/public/images/collections", "collections")
   end
 
   def self.categories
-    self.get_file_names_from_directory("#{Rails.root}/app/assets/images/categoryimages", "categories")
+    self.get_file_names_from_directory("#{Rails.root}/public/images/categories", "categories")
   end
 
   def self.size_200
     image_names = self.get_file_names_from_directory(
-      "#{Rails.root}/app/assets/images/completeitemimages(200px)",
+      "#{Rails.root}/public/images/200",
       "size_200"
     )
     self.key_by_item_number(image_names)
@@ -17,7 +17,7 @@ module ItemImages
 
   def self.size_584
     image_names = self.get_file_names_from_directory(
-      "#{Rails.root}/app/assets/images/completeitemimages(584px)",
+      "#{Rails.root}/public/images/584",
       "size_584"
     )
     self.key_by_item_number(image_names)
