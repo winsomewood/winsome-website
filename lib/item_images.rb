@@ -30,7 +30,7 @@ module ItemImages
       base_pathname = Pathname.new(directory)
       Dir["#{directory}/*"].map do |file|
         Pathname.new(file).relative_path_from(base_pathname).to_s
-      end
+      end.sort
     end
   end
 
