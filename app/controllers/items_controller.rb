@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     elsif params[:query]
       query = params[:query].strip.downcase
       @items = Item.where(
-        'itemno like :q_like OR lower(description) like :q_like OR lower(category) = :q_str OR lower(collection) = :q_str',
+        'cast(itemno as text) like :q_like OR lower(description) like :q_like OR lower(category) = :q_str OR lower(collection) = :q_str',
         q_str: query,
         q_int: query =~ /\A\d+\z/ ? query.to_i : nil,
         q_like: "%#{query}%"
