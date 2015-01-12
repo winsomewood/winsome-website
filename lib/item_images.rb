@@ -1,12 +1,4 @@
 module ItemImages
-  def self.collections
-    self.get_file_names_from_directory("#{Rails.root}/public/images/collections", "collections")
-  end
-
-  def self.categories
-    self.get_file_names_from_directory("#{Rails.root}/public/images/categories", "categories")
-  end
-
   def self.size_200
     image_names = self.get_file_names_from_directory(
       "#{Rails.root}/public/images/200",

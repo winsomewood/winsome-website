@@ -1,8 +1,7 @@
 %ul.select_category
-  - @category_images.each do |image|
-    - category_name = image[0, image.index('.')]
-    - category_href = items_path(:category => category_name.downcase)
+  - @category_names.each do |name|
+    - image = "#{name.downcase}.jpg"
     %li.with_caption
-      %a{:href => category_href}
-        = image_tag("/images/categories/#{image}", :alt => category_name)
-        = category_name
+      %a{:href => items_path(:category => name.downcase)}
+        = image_tag("/images/categories/#{image}", :alt => name)
+        = name

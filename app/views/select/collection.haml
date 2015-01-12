@@ -1,9 +1,9 @@
 .collections
   %ul.select_collection
-    - @collection_images.each do |image|
-      - collection_name = image[0, image.index('.')]
-      - collection_href = items_path(:collection => collection_name.downcase)
-      %li.collection{:"data-image-src" => image_path("/images/collections/#{image}"), :"data-a-href" => collection_href}= collection_name
+    - @collection_names.each do |name|
+      - image = "#{name.downcase}.jpg"
+      - collection_href = items_path(:collection => name.downcase)
+      %li.collection{:"data-image-src" => image_path("/images/collections/#{image}"), :"data-a-href" => collection_href}= name
 
   .collection_image_div
     %a.collection_link
