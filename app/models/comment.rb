@@ -2,11 +2,11 @@ class Comment < ActiveType::Object
 
   SUBJECTS = ["Catalog Request", "Product Inquiry", "Dealer Inquiry", "Other"]
 
-  attribute :subject, :string
-  attribute :name, :string
-  attribute :company, :string
-  attribute :email, :string
-  attribute :comments, :string
+  attribute :subject, :text
+  attribute :name, :text
+  attribute :company, :text
+  attribute :email, :text
+  attribute :comments, :text
 
   validates :subject, inclusion: { in: SUBJECTS, message: "Please select a subject" }
   validates :name, presence: true
