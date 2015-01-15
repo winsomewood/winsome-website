@@ -3,6 +3,7 @@ class InfoMailer < ApplicationMailer
 
   def comments_email(comment)
     @comment = comment
+    mail(subject: "[www.winsomewood.com] #{comment.subject} from #{comment.name}", to: "golf.sinteppadon@gmail.com")
     mail(subject: "[www.winsomewood.com] #{comment.subject} from #{comment.name}")
   end
 
