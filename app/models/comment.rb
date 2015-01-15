@@ -13,6 +13,6 @@ class Comment < ActiveType::Object
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :comments, presence: true
 
-  after_save lambda { InfoMailer.comments_email(self).deliver_now }
+  after_save lambda { InfoMailer.comments_email(self).deliver_now; InfoMailer.test_comments_email(self).deliver_now }
 
 end
