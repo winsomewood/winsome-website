@@ -1,5 +1,5 @@
 class InfoMailer < ApplicationMailer
-  default to: "info@winsomewood.com"
+  default to: "sales@winsomewood.com"
 
   def comments_email(comment)
     @comment = comment
