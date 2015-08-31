@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     get action: 'new'
   end
 
+  scope "/contact" do
+    resource :replacement, :only => :create do
+      get action: 'new'
+    end
+  end
+
   get 'select_category' => "select#category"
   get 'select_collection' => "select#collection"
 
