@@ -81,7 +81,7 @@
   %fieldset
     %legend Part Info (Required)
     .section
-      = f.label :partno1, value: "Part #"
+      = f.label :partno1, value: "Part Letter"
       = f.text_field :partno1
       .errors
         = @replacement.errors[:partno1].to_sentence
@@ -103,7 +103,7 @@
   %fieldset
     %legend Additional Parts (Optional)
     .section
-      = f.label :partno2, value: "Part # (2nd item)"
+      = f.label :partno2, value: "Part Letter (2nd item)"
       = f.text_field :partno2
       .errors
         = @replacement.errors[:partno2].to_sentence
@@ -123,7 +123,7 @@
       .errors
         = @replacement.errors[:reason2].to_sentence
     .section
-      = f.label :partno3, value: "Part # (3rd item)"
+      = f.label :partno3, value: "Part Letter (3rd item)"
       = f.text_field :partno3
       .errors
         = @replacement.errors[:partno3].to_sentence
