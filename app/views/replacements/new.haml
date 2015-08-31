@@ -1,6 +1,16 @@
 = form_for(:replacement, :url => replacement_path, :html => {:class => "replacements"}) do |f|
   %p Please enter info about the item you would like a replacement for.
 
+  %p Disclaimer:
+  %ul
+    %li
+      We can ship replacement parts only to the 50 US States
+    %li
+      Replacement parts must be ordered within 60 days of the purchased date
+    %li
+      This form is for individual parts only, not the entire unit. Contact your retailer for refunds or entire unit replacement
+
+
   %fieldset
     %legend Basic Info (Required)
     .section
