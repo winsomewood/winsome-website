@@ -13,6 +13,7 @@ class Replacement < ActiveType::Object
   attribute :retailer, :text
   attribute :controlno, :text
   attribute :itemno, :text
+  attribute :r, :text
   attribute :description, :text
 
   attribute :partno1, :text

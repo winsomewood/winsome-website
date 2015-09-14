@@ -4,11 +4,15 @@
   %p Disclaimer:
   %ul
     %li
-      We can ship replacement parts only to the 50 US States
+      Complete ALL required information accurately.
     %li
-      Replacement parts must be ordered within 60 days of the purchased date
+      This form is for Individual parts only, NOT for the entire unit. Contact your retailer for refunds or exchange of entire unit.
     %li
-      This form is for individual parts only, not the entire unit. Contact your retailer for refunds or entire unit replacement
+      Replacement parts will only be shipped within the 50 U.S. States.
+    %li
+      Replacement parts must be requested within 60 days from date of purchase.
+    %li
+      Please allow 7-14 days for delivery.
 
   .column
     %fieldset
@@ -60,6 +64,11 @@
         = f.text_field :itemno
         .errors
           = @replacement.errors[:itemno].to_sentence
+      .section
+        = f.label :r, value: "R (optional if available)"
+        = f.text_field :r
+        .errors
+          = @replacement.errors[:r].to_sentence
       .section
         = f.label :description
         = f.text_field :description

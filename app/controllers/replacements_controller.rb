@@ -38,6 +38,7 @@ class ReplacementsController < ApplicationController
       :retailer,
       :controlno,
       :itemno,
+      :r,
       :description,
       :partno1,
       :quantity1,
