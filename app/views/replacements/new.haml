@@ -15,148 +15,106 @@
     %li
       *coming soon - ability to upload Proof of Purchase
 
-  .column
-    %fieldset
-      %legend Basic Info (Required)
+  %fieldset
+    %legend General Information (Required)
+    %div{:style => "width: 60%; float:left;"}
       .section
         = f.label :name
-        = f.text_field :name
+        = f.text_field :name, :size => "40"
         .errors
           = @replacement.errors[:name].to_sentence
       .section
         = f.label :address1, value: "Address"
-        = f.text_field :address1
+        = f.text_field :address1, :size => "40"
         .errors
           = @replacement.errors[:address1].to_sentence
       .section
         = f.label :address2, value: "Address 2"
-        = f.text_field :address2
+        = f.text_field :address2, :size => "40"
         .errors
           = @replacement.errors[:address2].to_sentence
       .section
         = f.label :city
-        = f.text_field :city
+        = f.text_field :city, :size => "10"
         .errors
           = @replacement.errors[:city].to_sentence
       .section
         = f.label :state
-        = f.text_field :state
+        = f.text_field :state, :size => "2"
         .errors
           = @replacement.errors[:state].to_sentence
       .section
         = f.label :zip
-        = f.text_field :zip
+        = f.text_field :zip, :size => "6"
         .errors
           = @replacement.errors[:zip].to_sentence
+    %div{:style => "width: 35%; float:left;"}
       .section
         = f.label :phone
-        = f.text_field :phone
+        = f.text_field :phone, :size => "10"
         .errors
           = @replacement.errors[:phone].to_sentence
       .section
         = f.label :email
-        = f.text_field :email
+        = f.text_field :email, :size => "10"
         .errors
           = @replacement.errors[:email].to_sentence
-    %fieldset
-      %legend Item Info (Required)
-      .section
-        = f.label :itemno, value: "Item #"
-        = f.text_field :itemno
-        .errors
-          = @replacement.errors[:itemno].to_sentence
-      .section
-        = f.label :r, value: "R (optional if available)"
-        = f.text_field :r
-        .errors
-          = @replacement.errors[:r].to_sentence
-      .section
-        = f.label :description
-        = f.text_field :description
-        .errors
-          = @replacement.errors[:description].to_sentence
-      .section
-        = f.label :controlno, value: "Control #"
-        = f.text_field :controlno
-        .errors
-          = @replacement.errors[:controlno].to_sentence
-      .section
-        = f.label :purchased_at, value: "Purchased Date"
-        = f.text_field :purchased_at
-        .errors
-          = @replacement.errors[:purchased_at].to_sentence
-      .section
-        = f.label :retailer, value: "Retailer Name"
-        = f.text_field :retailer
-        .errors
-          = @replacement.errors[:retailer].to_sentence
-  .column
-    %fieldset
-      %legend Part Info (Required)
-      .section
-        = f.label :partno1, value: "Part Letter"
-        = f.text_field :partno1
-        .errors
-          = @replacement.errors[:partno1].to_sentence
-      .section
-        = f.label :partname1, value: "Part Name"
-        = f.text_field :partname1
-        .errors
-          = @replacement.errors[:partname1].to_sentence
-      .section
-        = f.label :quantity1, value: "Quantity"
-        = f.text_field :quantity1
-        .errors
-          = @replacement.errors[:quantity1].to_sentence
-      .section
-        = f.label :reason1, value: "Reason"
-        = f.text_field :reason1
-        .errors
-          = @replacement.errors[:reason1].to_sentence
-    %fieldset
-      %legend Additional Parts (Optional)
-      .section
-        = f.label :partno2, value: "Part Letter (2nd item)"
-        = f.text_field :partno2
-        .errors
-          = @replacement.errors[:partno2].to_sentence
-      .section
-        = f.label :partname2, value: "Part Name (2nd item)"
-        = f.text_field :partname2
-        .errors
-          = @replacement.errors[:partname2].to_sentence
-      .section
-        = f.label :quantity2, value: "Quantity (2nd item)"
-        = f.text_field :quantity2
-        .errors
-          = @replacement.errors[:quantity2].to_sentence
-      .section
-        = f.label :reason2, value: "Reason (2nd item)"
-        = f.text_field :reason2
-        .errors
-          = @replacement.errors[:reason2].to_sentence
-      %hr
-      .section
-        = f.label :partno3, value: "Part Letter (3rd item)"
-        = f.text_field :partno3
-        .errors
-          = @replacement.errors[:partno3].to_sentence
-      .section
-        = f.label :partname3, value: "Part Name (3rd item)"
-        = f.text_field :partname3
-        .errors
-          = @replacement.errors[:partname3].to_sentence
-      .section
-        = f.label :quantity3, value: "Quantity (3rd item)"
-        = f.text_field :quantity3
-        .errors
-          = @replacement.errors[:quantity3].to_sentence
-      .section
-        = f.label :reason3, value: "Reason (3rd item)"
-        = f.text_field :reason3
-        .errors
-          = @replacement.errors[:reason3].to_sentence
-
-  .column{:style => "clear: left"}
+  %fieldset
+    %legend Purchase Information (Required)
     .section
-      = f.submit :value => "Submit"
+      = f.label :retailer, value: "Auth Retailer"
+      = f.text_field :retailer, :size => "15"
+      .errors
+        = @replacement.errors[:retailer].to_sentence
+    .section
+      = f.label :itemno, value: "Item #"
+      = f.text_field :itemno, :size => "5"
+      .errors
+        = @replacement.errors[:itemno].to_sentence
+    .section
+      = f.label :controlno, value: "Control #"
+      = f.text_field :controlno, :size => "15"
+      .errors
+        = @replacement.errors[:controlno].to_sentence
+    .section
+      = f.label :purchase_date, value: "Purchase Date"
+      = f.text_field :purchase_date, :size => "10"
+      .errors
+        = @replacement.errors[:purchase_date].to_sentence
+    .section
+      = f.label :description
+      = f.text_field :description, :size => "40"
+      .errors
+        = @replacement.errors[:description].to_sentence
+
+  %fieldset
+    %legend Part/Hardware Information (Required)
+
+    .section
+      = f.label :send_full_hardware_set, value: "Full Hardware Set"
+      = f.check_box :send_full_hardware_set
+
+    %table.js-part-table
+      %tr
+        %th Part Letter
+        %th Part Name
+        %th Qty
+        %th Reason
+      - 5.times do |n|
+        %tr
+          %td
+            %input{name: "parts[letter][#{n}]", :size => "4"}
+          %td
+            %input{name: "parts[name][#{n}]", :size => "25"}
+          %td
+            %input{name: "parts[quantity][#{n}]", :size => "2"}
+          %td
+            %input{name: "parts[reason][#{n}]", :size => "36"}
+
+    /%button.js-add-rows + Rows
+
+  %fieldset
+    %legend Comments (optional)
+    = f.text_area :comments, :rows => 3, :cols => 50
+
+  = f.submit :value => "Submit"

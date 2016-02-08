@@ -1,0 +1,67 @@
+%div
+  %h1 General Information
+  %span
+    Name:
+    = @replacement.name
+  %span
+    Address:
+    = @replacement.address1
+  %span
+    Address 2:
+    = @replacement.address2
+  %span
+    City:
+    = @replacement.city
+  %span
+    State:
+    = @replacement.state
+  %span
+    Zip:
+    = @replacement.zip
+  %span
+    Phone:
+    = @replacement.phone
+  %span
+    Email:
+    = @replacement.email
+
+%div
+  %h1 Purchase Information
+  %span
+    Auth Retailer:
+    = @replacement.retailer
+  %span
+    Item #:
+    = @replacement.itemno
+  %span
+    Control #:
+    = @replacement.controlno
+  %span
+    Purchase Date:
+    = @replacement.purchase_date
+  %span
+    Description:
+    = @replacement.description
+
+%div
+  %h1 Parts
+  %span
+    Send full hardware set?
+    = @replacement.send_full_hardware_set ? "Yes" : "No"
+  %table
+    %tr
+      %th Letter
+      %th Name
+      %th Quantity
+      %th Reason
+    - parts = JSON.parse(@replacement.parts)
+    - parts["letter"].each do |k, v|
+      %tr
+        %td= parts["letter"]["" + k]
+        %td= parts["name"]["" + k]
+        %td= parts["quantity"]["" + k]
+        %td= parts["reason"]["" + k]
+
+%div
+  %h1 Comments
+  %span= @replacement.comments

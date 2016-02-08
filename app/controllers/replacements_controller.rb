@@ -22,6 +22,13 @@ class ReplacementsController < ApplicationController
     end
   end
 
+  def render_email
+    # test url:
+    # http://localhost:3000/contact/replacement/render_email?replacement[name]=123&replacement[address1]=hi&replacement[comments]=this%20is%20great&replacement[send_full_hardware_set]=1&parts[letter][0]=12&parts[letter][1]=31&parts[name][0]=12&parts[name][1]=31&parts[quantity][0]=12&parts[quantity][1]=31&parts[reason][0]=12&parts[reason][1]=31
+    @replacement = Replacement.new(replacement_params)
+    render :file => 'info_mailer/replacement_email.html.haml', :layout => 'mailer'
+  end
+
   protected
 
   def replacement_params
@@ -34,24 +41,20 @@ class ReplacementsController < ApplicationController
       :zip,
       :phone,
       :email,
-      :purchased_at,
+      :purchase_date,
       :retailer,
       :controlno,
       :itemno,
       :r,
       :description,
-      :partno1,
-      :quantity1,
-      :partname1,
-      :reason1,
-      :partno2,
-      :quantity2,
-      :partname2,
-      :reason2,
-      :partno3,
-      :quantity3,
-      :partname3,
-      :reason3
-    ) if replacement_params
+      :comments,
+      :send_full_hardware_set
+    ).merge(parts: assemble_parts(params[:parts])) if replacement_params
   end
+
+  # Grab all the `parts` params and join them all into a string
+  def assemble_parts(parts)
+    return parts.to_json
+  end
+
 end

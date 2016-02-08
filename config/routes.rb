@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   scope "/contact" do
     resource :replacement, :only => :create do
       get action: 'new'
+      get :render_email
     end
   end
 
