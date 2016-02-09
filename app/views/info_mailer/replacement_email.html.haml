@@ -1,47 +1,54 @@
 %div
   %h1 General Information
-  %span
-    Name:
-    = @replacement.name
-  %span
-    Address:
-    = @replacement.address1
-  %span
-    Address 2:
-    = @replacement.address2
-  %span
-    City:
-    = @replacement.city
-  %span
-    State:
-    = @replacement.state
-  %span
-    Zip:
-    = @replacement.zip
-  %span
-    Phone:
-    = @replacement.phone
-  %span
-    Email:
-    = @replacement.email
+  %dl
+    %dt
+      Name:
+    %dd
+      = @replacement.name
+    %dt
+      Address:
+    %dd
+      = @replacement.address1
+    %dt
+      Address 2:
+    %dd
+      = @replacement.address2
+    %dt
+      City:
+    %dd
+      = @replacement.city
+    %dt
+      State:
+    %dd
+      = @replacement.state
+    %dt
+      Zip:
+    %dd
+      = @replacement.zip
+    %dt
+      Phone:
+    %dd
+      = @replacement.phone
+    %dt
+      Email:
+    %dd
+      = @replacement.email
 
 %div
   %h1 Purchase Information
-  %span
-    Auth Retailer:
-    = @replacement.retailer
-  %span
-    Item #:
-    = @replacement.itemno
-  %span
-    Control #:
-    = @replacement.controlno
-  %span
-    Purchase Date:
-    = @replacement.purchase_date
-  %span
-    Description:
-    = @replacement.description
+  %dl
+    %dt
+      Auth Retailer:
+    %dd
+      = @replacement.retailer
+    %dt
+      Purchase Date:
+    %dd
+      = @replacement.purchase_date
+    %dt
+      Description:
+    %dd
+      = @replacement.description
 
 %div
   %h1 Parts
@@ -61,6 +68,18 @@
         %td= parts["name"]["" + k]
         %td= parts["quantity"]["" + k]
         %td= parts["reason"]["" + k]
+
+%div
+  %h1 Item Information
+  %dl
+    %dt
+      Item #:
+    %dd
+      = @replacement.itemno
+    %dt
+      Control #:
+    %dd
+      = @replacement.controlno
 
 %div
   %h1 Comments
