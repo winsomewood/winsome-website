@@ -47,6 +47,7 @@ class ReplacementsController < ApplicationController
       :itemno,
       :r,
       :description,
+      :proof_of_purchase,
       :comments,
       :send_full_hardware_set
     ).merge(parts: assemble_parts(params[:parts])) if replacement_params

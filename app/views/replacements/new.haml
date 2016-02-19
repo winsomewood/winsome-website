@@ -114,6 +114,10 @@
     %button.js-add-rows + Rows
 
   %fieldset
+    %legend Proof of Purchase (optional)
+    = f.file_field :proof_of_purchase
+
+  %fieldset
     %legend Comments (optional)
     = f.text_area :comments, :rows => 3, :cols => 50
 

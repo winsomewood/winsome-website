@@ -19,6 +19,7 @@ class Replacement < ActiveType::Object
   attribute :send_full_hardware_set, :boolean
   attribute :parts, :text
 
+  attribute :proof_of_purchase
   attribute :comments, :text
 
   validates :name, presence: true
