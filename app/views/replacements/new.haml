@@ -94,7 +94,7 @@
       = f.label :send_full_hardware_set, value: "Full Hardware Set"
       = f.check_box :send_full_hardware_set
 
-    %table.js-part-table
+    %table.js-part-table{"data-parts": @replacement.parts.to_json}
       %tr
         %th Part Letter
         %th Part Name
@@ -111,7 +111,7 @@
           %td
             %input{name: "parts[reason][#{n}]", :size => "36"}
 
-    /%button.js-add-rows + Rows
+    %button.js-add-rows + Rows
 
   %fieldset
     %legend Comments (optional)
