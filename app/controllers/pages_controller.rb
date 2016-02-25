@@ -2,6 +2,9 @@ class PagesController < ApplicationController
 
   before_filter :render_template
 
+  def handle_404
+  end
+
   def front_page
   end
 
