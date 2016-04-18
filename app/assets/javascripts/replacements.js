@@ -5,16 +5,16 @@ $(function () {
       var n = $('.js-part-table tr').length - 1;
       var newRow = $('<tr>' +
         '<td>' +
-        '  <input name="parts[letter][' + n + ']" size="4">' +
+        '  <input type="text" name="parts[letter][' + n + ']" size="4">' +
         '</td>' +
         '<td>' +
-        '  <input name="parts[name][' + n + ']" size="25">' +
+        '  <input type="text" name="parts[name][' + n + ']" size="25">' +
         '</td>' +
         '<td>' +
-        '  <input name="parts[quantity][' + n + ']" size="2">' +
+        '  <input type="text" name="parts[quantity][' + n + ']" size="2">' +
         '</td>' +
         '<td>' +
-        '  <input name="parts[reason][' + n + ']" size="36">' +
+        '  <input type="text" name="parts[reason][' + n + ']" size="36">' +
         '</td>' +
       '</tr>')
       $('.js-part-table').append(newRow);
@@ -38,8 +38,29 @@ $(function () {
         })
       }
     }
-    $('.js-add-rows').on('click', function (e) { e.preventDefault(); addRow(); });
 
+    function sendFullHardwareSetHandlers() {
+      $('#replacement_send_full_hardware_set_1').on('change', function(e) {
+        $('.js-parts').find('input, button').prop('disabled', true);
+        $('.js-part-information').text('Part Information')
+        $('.js-proof-of-purchase').text('Proof of Purchase')
+      });
+      $('#replacement_send_full_hardware_set_0').on('change', function(e) {
+        $('.js-parts').find('input, button').prop('disabled', false);
+        $('.js-part-information').text('Part Information (Required)')
+        $('.js-proof-of-purchase').text('Proof of Purchase (Required)')
+      });
+      $('.js-parts').find('input, button').prop('disabled', true);
+    }
+
+    $('.js-add-rows').on('click', function (e) { e.preventDefault(); addRow(); });
     preserveFormValues();
+    sendFullHardwareSetHandlers();
+    $('.replacements').on('submit', function (e) {
+      if (typeof $('#replacement_send_full_hardware_set_1:checked, #replacement_send_full_hardware_set_0:checked', '.replacements').val() == "undefined") {
+        e.preventDefault();
+        $('.send_full_hardware_set p.errors').text('Please select an option');
+      }
+    })
   }
 });

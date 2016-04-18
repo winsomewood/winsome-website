@@ -4,17 +4,36 @@
 
   label
     display: inline-block
-    min-width: 60px
-    text-align: right
 
   fieldset
     padding: 10px
     margin-bottom: 15px
 
-  .section
-    margin-bottom: 0px
-    float: left
-    margin-left: 5px
+    &.general
+      padding-right: 100px
+
+      label
+        display: inline-block
+        text-align: right
+        font-size: 1.2em
+        margin-right: 5px
+
+      .section
+        margin-bottom: 0px
+        float: right
+        min-width: 100px
+        margin-right: 20px
+        text-align: right
 
   %hr
     margin: 20px
+
+  .send_full_hardware_set
+    margin: 20px
+    margin-top: 40px
+    input
+      float:left
+
+  input[type="text"]:disabled
+    background-color: #DDDDDD
+    border: 2px solid #CCCCCC

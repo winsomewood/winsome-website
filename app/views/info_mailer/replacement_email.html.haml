@@ -38,7 +38,7 @@
   %h1 Purchase Information
   %dl
     %dt
-      Auth Retailer:
+      Authorized Retailer:
     %dd
       = @replacement.retailer
     %dt
@@ -52,8 +52,8 @@
 
 %div
   %h1 Parts
-  %span
-    Send full hardware set?
+  %span.send_full_hardware_set
+    Send full hardware set only
     = @replacement.send_full_hardware_set ? "Yes" : "No"
   %table
     %tr
@@ -61,13 +61,14 @@
       %th Name
       %th Quantity
       %th Reason
-    - parts = JSON.parse(@replacement.parts)
-    - parts["letter"].each do |k, v|
-      %tr
-        %td= parts["letter"]["" + k]
-        %td= parts["name"]["" + k]
-        %td= parts["quantity"]["" + k]
-        %td= parts["reason"]["" + k]
+    - if @replacement.parts.present?
+      - parts = JSON.parse(@replacement.parts)
+      - parts["letter"].each do |k, v|
+        %tr
+          %td= parts["letter"]["" + k]
+          %td= parts["name"]["" + k]
+          %td= parts["quantity"]["" + k]
+          %td= parts["reason"]["" + k]
 
 %div
   %h1 Item Information

@@ -13,84 +13,86 @@
     %li
       \- Hardware processes and ships via USPS within 1-2 business days. Tracking sent via email upon shipment.
 
-  %fieldset
+  %fieldset.general
     %legend General Information (Required)
-    %div{:style => "width: 60%; float:left;"}
-      .section
-        = f.label :name
-        = f.text_field :name, :size => "40"
-        .errors
-          = @replacement.errors[:name].to_sentence
-      .section
-        = f.label :address1, value: "Address"
-        = f.text_field :address1, :size => "40"
-        .errors
-          = @replacement.errors[:address1].to_sentence
-      .section
-        = f.label :address2, value: "Address 2"
-        = f.text_field :address2, :size => "40"
-        .errors
-          = @replacement.errors[:address2].to_sentence
-      .section
-        = f.label :city
-        = f.text_field :city, :size => "10"
-        .errors
-          = @replacement.errors[:city].to_sentence
-      .section
-        = f.label :state
-        = f.text_field :state, :size => "2"
-        .errors
-          = @replacement.errors[:state].to_sentence
-      .section
-        = f.label :zip
-        = f.text_field :zip, :size => "6"
-        .errors
-          = @replacement.errors[:zip].to_sentence
-    %div{:style => "width: 35%; float:left;"}
-      .section
-        = f.label :phone
-        = f.text_field :phone, :size => "10"
-        .errors
-          = @replacement.errors[:phone].to_sentence
-      .section
-        = f.label :email
-        = f.text_field :email, :size => "10"
-        .errors
-          = @replacement.errors[:email].to_sentence
-  %fieldset
+    .section
+      = f.label :name
+      = f.text_field :name, :size => "50"
+      .errors
+        = @replacement.errors[:name].to_sentence
+    .section
+      = f.label :address1, value: "Address"
+      = f.text_field :address1, :size => "50"
+      .errors
+        = @replacement.errors[:address1].to_sentence
+    .section
+      = f.label :address2, value: "Address 2"
+      = f.text_field :address2, :size => "50"
+      .errors
+        = @replacement.errors[:address2].to_sentence
+    .section
+      = f.label :zip
+      = f.text_field :zip, :size => "6"
+      .errors
+        = @replacement.errors[:zip].to_sentence
+    .section
+      = f.label :state
+      = f.text_field :state, :size => "2"
+      .errors
+        = @replacement.errors[:state].to_sentence
+    .section
+      = f.label :city
+      = f.text_field :city, :size => "20"
+      .errors
+        = @replacement.errors[:city].to_sentence
+    .section
+      = f.label :phone
+      = f.text_field :phone, :size => "15"
+      .errors
+        = @replacement.errors[:phone].to_sentence
+    .section
+      = f.label :email
+      = f.text_field :email, :size => "24"
+      .errors
+        = @replacement.errors[:email].to_sentence
+
+  %fieldset.general
     %legend Purchase Information (Required)
     .section
-      = f.label :retailer, value: "Auth Retailer"
-      = f.text_field :retailer, :size => "15"
-      .errors
-        = @replacement.errors[:retailer].to_sentence
-    .section
       = f.label :itemno, value: "Item #"
-      = f.text_field :itemno, :size => "5"
+      = f.text_field :itemno, :size => "20"
       .errors
         = @replacement.errors[:itemno].to_sentence
     .section
-      = f.label :controlno, value: "Control #"
-      = f.text_field :controlno, :size => "15"
+      = f.label :retailer, value: "Authorized Retailer"
+      = f.text_field :retailer, :size => "20"
       .errors
-        = @replacement.errors[:controlno].to_sentence
+        = @replacement.errors[:retailer].to_sentence
     .section
       = f.label :purchase_date, value: "Purchase Date"
-      = f.text_field :purchase_date, :size => "10"
+      = f.text_field :purchase_date, :size => "20"
       .errors
         = @replacement.errors[:purchase_date].to_sentence
     .section
+      = f.label :controlno, value: "Control #"
+      = f.text_field :controlno, :size => "20"
+      .errors
+        = @replacement.errors[:controlno].to_sentence
+    .section
       = f.label :description
-      = f.text_field :description, :size => "40"
+      = f.text_field :description, :size => "50"
       .errors
         = @replacement.errors[:description].to_sentence
 
-  %fieldset
-    %legend Part/Hardware Information (Required)
+  .send_full_hardware_set
+    %p.errors
+    = f.radio_button :send_full_hardware_set, "1"
+    = f.label :send_full_hardware_set_1, "Request for full hardware set only"
+    = f.radio_button :send_full_hardware_set, "0"
+    = f.label :send_full_hardware_set_0, "Request for full hardware set and missing parts"
 
-    .section
-      = f.label :send_full_hardware_set, value: "Full Hardware Set"
-      = f.check_box :send_full_hardware_set
+  %fieldset.js-parts
+    %legend.js-part-information Part Information
 
     %table.js-part-table{"data-parts": @replacement.parts.to_json}
       %tr
@@ -98,25 +100,25 @@
         %th Part Name
         %th Qty
         %th Reason
-      - 5.times do |n|
+      - 3.times do |n|
         %tr
           %td
-            %input{name: "parts[letter][#{n}]", :size => "4"}
+            %input{type: "text", name: "parts[letter][#{n}]", :size => "4"}
           %td
-            %input{name: "parts[name][#{n}]", :size => "25"}
+            %input{type: "text", name: "parts[name][#{n}]", :size => "25"}
           %td
-            %input{name: "parts[quantity][#{n}]", :size => "2"}
+            %input{type: "text", name: "parts[quantity][#{n}]", :size => "2"}
           %td
-            %input{name: "parts[reason][#{n}]", :size => "36"}
+            %input{type: "text", name: "parts[reason][#{n}]", :size => "36"}
 
     %button.js-add-rows + Rows
 
-  %fieldset
-    %legend Proof of Purchase (required)
-    = f.file_field :proof_of_purchase
+    %p
+      %legend.js-proof-of-purchase Proof of Purchase
+      = f.file_field :proof_of_purchase
 
   %fieldset
     %legend Comments (optional)
-    = f.text_area :comments, :rows => 3, :cols => 50
+    = f.text_area :comments, :rows => 3, :cols => 70
 
   = f.submit :value => "Submit"

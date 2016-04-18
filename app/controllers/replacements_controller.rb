@@ -15,6 +15,10 @@ class ReplacementsController < ApplicationController
   end
 
   def create
+    if !params[:replacement].has_key?(:send_full_hardware_set)
+      render 'new'
+      return
+    end
     if @replacement.save
       redirect_to success_path
     else
@@ -55,7 +59,7 @@ class ReplacementsController < ApplicationController
 
   # Grab all the `parts` params and join them all into a string
   def assemble_parts(parts)
-    return parts.to_json
+    return parts ? parts.to_json : nil
   end
 
 end
