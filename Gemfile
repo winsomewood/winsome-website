@@ -25,6 +25,7 @@ gem 'annotate', ">= 2.6.0"
 gem 'active_type', "0.3.1"
 gem 'rails_admin', "0.6.6"
 gem 'fancybox2-rails', '0.2.8'
+gem 'rollbar', '~> 2.8.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
