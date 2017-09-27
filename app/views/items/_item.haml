@@ -7,8 +7,6 @@
       %strong Item #:
       = item.itemno
     %li
-      - if item.kit?
-        = "#{item.set_components.size}-piece set"
       - if !item.kit?
         %li
           %strong Dimensions (W x D x H):
