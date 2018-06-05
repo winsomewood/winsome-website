@@ -14,10 +14,7 @@ Currently running on Ruby 2.2.0 and Rails 4.2.0. Should eventually upgrade versi
 Server structure and deployment is tricky to improve as-is. For now deployment steps are:
 
 ```bash
-ssh www.winsomewood.com
-sudo su
-
-# as root
+# as root user on prod box
 ps aux | grep rails # Find and kill old rails s process
 kill <pid> # kill old process
 cd /root/html
