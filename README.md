@@ -1,6 +1,11 @@
-# Winsome Website
-
 ![preview](preview.png)
+
+# Features
+- Item listings with basic sort & search functionality
+- Item => kit associations (a kit is a group of items)
+- Contact form and Replacement Item Request form. Both forms send emails on submit
+- Admin site to manage items/kits via RailsAdmin
+- Basic CMS pages also editable via RailsAdmin
 
 Currently running on Ruby 2.2.0 and Rails 4.2.0. Should eventually upgrade versions but something is up with Ruby dependencies
 
