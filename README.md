@@ -9,6 +9,10 @@
 
 Currently running on Ruby 2.2.0 and Rails 4.2.0. Should eventually upgrade versions but something is up with Ruby dependencies
 
+# Development
+
+TODO: make a working development environment by setting up sqlite
+
 # Deployment
 
 Server structure and deployment is tricky to improve as-is. For now deployment steps are:
