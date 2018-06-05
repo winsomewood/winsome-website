@@ -1,4 +1,4 @@
-![preview](preview.png)
+[![preview](preview.png)](http://www.winsomewood.com)
 
 # Features
 - Item listings with basic sort & search functionality
