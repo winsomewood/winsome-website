@@ -26,6 +26,10 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by_itemno(params[:itemno])
+    if !@item
+      render inline: "Item not found"
+      return
+    end
     @page_title = @item.description
     @hide_page_title = true
   end
