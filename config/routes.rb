@@ -24,5 +24,5 @@ Rails.application.routes.draw do
 
   resources :items, :only => [:index, :show], param: 'itemno', path: 'products'
 
-  match '*path' => 'pages#handle_404'
+  match '*path' => 'pages#handle_404', via: [:get, :post]
 end
