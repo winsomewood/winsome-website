@@ -30,11 +30,14 @@ class Replacement < ActiveType::Object
   validates :state, presence: true
   validates :zip, presence: true
   validates :phone, presence: true
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :email, format: {
+    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
+    message: "Please enter a valid email"
+  }
   validates :purchase_date, presence: true
   validates :retailer, presence: true
-  validates :controlno, presence: true
-  validates :itemno, presence: true
+  validates :controlno, format: { with: /\A\d{6}\z/, message: "Control # is a 6 digit number" }
+  validates :itemno, format: { with: /\A\d{5}\z/, message: "Item # is a 5 digit number" }
   validates :description, presence: true
 
 
