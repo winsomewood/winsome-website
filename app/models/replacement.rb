@@ -3,6 +3,7 @@ class Replacement < ActiveType::Object
   attribute :name, :text
   attribute :address1, :text
   attribute :address2, :text
+  attribute :address_type, :text
   attribute :city, :text
   attribute :state, :text
   attribute :zip, :text
@@ -24,6 +25,7 @@ class Replacement < ActiveType::Object
 
   validates :name, presence: true
   validates :address1, presence: true
+  validates :address_type, presence: true
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true

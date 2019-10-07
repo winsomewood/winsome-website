@@ -40,6 +40,7 @@ class ReplacementsController < ApplicationController
     replacement_params.permit(:name,
       :address1,
       :address2,
+      :address_type,
       :city,
       :state,
       :zip,
