@@ -36,8 +36,8 @@ class Replacement < ActiveType::Object
   }
   validates :purchase_date, presence: true
   validates :retailer, presence: true
-  validates :controlno, format: { with: /\A\d{6}\z/, message: "Control # is a 6 digit number" }
-  validates :itemno, format: { with: /\A\d{5}\z/, message: "Item # is a 5 digit number" }
+  validates :controlno, presence: true
+  validates :itemno, presence: true
   validates :description, presence: true
 
 

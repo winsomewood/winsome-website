@@ -2,6 +2,19 @@
 
 .replacements
 
+  .helper
+    background: image-url("helper.png") transparent no-repeat
+    display: none
+    position: absolute
+    height: 510px
+    margin: 0px auto
+    width: 600px
+    left: 0
+    right: 0
+    transition: .05s opacity ease-out
+    border: 1px solid #555555
+    box-shadow: 0 2px 14px rgba(0,0,0,.15), 0 0 0 0.5px rgba(0,0,0,.2)
+
   label
     display: inline-block
     width: 100px
@@ -12,7 +25,8 @@
 
     &.general
 
-      label
+      label, .controlNumberLabel, .itemNumberLabel
+        color: #555555
         display: inline-block
         text-align: right
         font-size: 1.2em

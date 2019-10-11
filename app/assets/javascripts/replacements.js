@@ -1,4 +1,12 @@
 $(function () {
+  $('.controlNumberLabel, .itemNumberLabel').on('mouseover', function(e) {
+    $('.helper').show()
+    $('.helper').css({ opacity: 1, top: e.currentTarget.offsetTop - 510 - 20 });
+  })
+  $('.controlNumberLabel, .itemNumberLabel').on('mouseout', function(e) {
+    $('.helper').css({ opacity: 0 });
+    $('.helper').hide()
+  })
   if ($('.js-add-rows').length) {
 
     function addRow() {

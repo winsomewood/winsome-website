@@ -63,6 +63,8 @@
       .errors
         = @replacement.errors[:email].to_sentence
 
+  .helper
+
   %fieldset.general
     %legend Purchase Information (Required)
     .section
@@ -71,13 +73,13 @@
       .errors
         = @replacement.errors[:retailer].to_sentence
     .section
-      = f.label :itemno, value: "Item #"
-      = f.text_field :itemno, :size => "20"
+      .itemNumberLabel{:style => 'width: 100px'} Item No. [?]
+      = f.text_field :itemno, :size => "20", :maxlength => "5", :placeholder => "5-digit number"
       .errors
         = @replacement.errors[:itemno].to_sentence
     .section
-      = f.label :controlno, value: "Control #", :style => 'width: 120px'
-      = f.text_field :controlno, :size => "20"
+      .controlNumberLabel{:style => 'width: 120px'} Control No. [?]
+      = f.text_field :controlno, :size => "20", :maxlength => "6", :placeholder => "6-digit number"
       .errors
         = @replacement.errors[:controlno].to_sentence
     .section
