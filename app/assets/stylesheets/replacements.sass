@@ -2,14 +2,21 @@
 
 .replacements
 
+  .helper-item
+    background: image-url("helper-item.jpg")
+
+  .helper-control
+    background-image: image-url("helper-control.jpg")
+
   .helper
-    background: image-url("helper.jpg") transparent no-repeat
+    background-color: transparent
+    background-repeat: no-repeat
     background-size: contain
     display: none
     position: absolute
-    height: 510px
+    width: 500px
+    height: 500px
     margin: 0px auto
-    width: 600px
     left: 0
     right: 0
     transition: .05s opacity ease-out
@@ -32,6 +39,7 @@
         text-align: right
         font-size: 1.2em
         margin-right: 5px
+        cursor: default
 
       .section
         margin-bottom: 0px

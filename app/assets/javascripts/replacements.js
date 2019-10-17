@@ -1,11 +1,19 @@
 $(function () {
-  $('.controlNumberLabel, .itemNumberLabel').on('mouseover', function(e) {
-    $('.helper').show()
-    $('.helper').css({ opacity: 1, top: e.currentTarget.offsetTop - 510 - 20 });
+  $('.controlNumberLabel').on('mouseover', function(e) {
+    $('.helper-control')
+      .show()
+      .css({ opacity: 1, top: e.currentTarget.offsetTop - 510 - 20 })
   })
-  $('.controlNumberLabel, .itemNumberLabel').on('mouseout', function(e) {
-    $('.helper').css({ opacity: 0 });
-    $('.helper').hide()
+  $('.itemNumberLabel').on('mouseover', function(e) {
+    $('.helper-item')
+      .show()
+      .css({ opacity: 1, top: e.currentTarget.offsetTop - 510 - 20 })
+  })
+  $('.controlNumberLabel').on('mouseout', function(e) {
+    $('.helper-control').css({ opacity: 0 }).hide()
+  })
+  $('.itemNumberLabel').on('mouseout', function(e) {
+    $('.helper-item').css({ opacity: 0 }).hide()
   })
   if ($('.js-add-rows').length) {
 
