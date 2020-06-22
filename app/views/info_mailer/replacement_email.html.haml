@@ -55,6 +55,18 @@
       = @replacement.description
 
 %div
+  %h1 Item Information
+  %dl
+    %dt
+      Item #:
+    %dd
+      = @replacement.itemno
+    %dt
+      Control #:
+    %dd
+      = @replacement.controlno
+
+%div
   %h1 Parts
   %span.send_full_hardware_set
     Send full hardware set only
@@ -73,18 +85,6 @@
           %td= parts["name"]["" + k]
           %td= parts["quantity"]["" + k]
           %td= parts["reason"]["" + k]
-
-%div
-  %h1 Item Information
-  %dl
-    %dt
-      Item #:
-    %dd
-      = @replacement.itemno
-    %dt
-      Control #:
-    %dd
-      = @replacement.controlno
 
 %div
   %h1 Comments
