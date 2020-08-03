@@ -1,9 +1,16 @@
 @import "variables"
 
+.collections
+  display: flex
+  justify-content: center
+
 .select_category li
   float: left
   width: 135px
-  margin: 10px 5px
+  margin: 10px 16px
+
+  img
+    border: 10px solid white
 
   &:nth-child(7)
     clear: left
@@ -16,6 +23,7 @@
   float: left
   height: 468px
   padding: 10px 0px
+  margin-bottom: 0px
   text-align: center
   overflow-y: scroll
   background-color: $blue
