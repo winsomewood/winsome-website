@@ -19,8 +19,6 @@
           = form_tag(items_path, :method => :get, :id => "search") do
             = text_field_tag :query, params[:query], :placeholder => "Search"
         %li
-          = link_to("Replacements", replacement_path)
-        %li
           = link_to("Contact Us", contact_path)
         %li
           = link_to("Find Us", find_path)
