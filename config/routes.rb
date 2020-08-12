@@ -12,11 +12,13 @@ Rails.application.routes.draw do
     get action: 'new'
   end
 
-  scope "/contact" do
-    resource :replacement, :only => :create do
-      get action: 'new'
-      get :render_email
-    end
+  resource :replacement, :only => :create do
+    get action: 'new'
+    get :render_email
+  end
+
+  scope 'contact' do
+    get '/replacement', to: redirect('/replacement')
   end
 
   get 'select_category' => "select#category"
