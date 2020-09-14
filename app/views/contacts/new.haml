@@ -30,7 +30,7 @@
     .errors
       = @comment.errors[:email].to_sentence
   .section
-    = f.text_area :comments, :rows => 10, :cols => 70, :placeholder => "Item #: [     ], Control #: [      ], Enter your comments here"
+    = f.text_area :comments, :rows => 10, :cols => 70, :value => "Item #: [     ], Control #: [      ], Enter your comments here"
     .errors
       = @comment.errors[:comments].to_sentence
 
