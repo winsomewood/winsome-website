@@ -1,6 +1,6 @@
 class Comment < ActiveType::Object
 
-  SUBJECTS = ["Catalog Request", "Product Inquiry", "Dealer Inquiry", "Other"]
+  SUBJECTS = ["Product Inquiry", "Assembly Instructions", "Dealer Inquiry", "Catalog Request", "Other"]
 
   attribute :subject, :text
   attribute :name, :text
