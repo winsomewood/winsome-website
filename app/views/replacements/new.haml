@@ -82,7 +82,7 @@
         = @replacement.errors[:itemno].to_sentence
     .section
       .controlNumberLabel{:style => 'width: 120px'} Control No. [?]
-      = f.text_field :controlno, :size => "20", :maxlength => "6", :placeholder => "6-digit number"
+      = f.text_field :controlno, :size => "20", :maxlength => "20"
       .errors
         = @replacement.errors[:controlno].to_sentence
     .section
