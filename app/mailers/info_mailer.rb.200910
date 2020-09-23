@@ -1,6 +1,5 @@
 class InfoMailer < ApplicationMailer
-  # default to: "sales@winsomewood.com"
-  default to: "patrins@winsomewood.com"
+  default to: "sales@winsomewood.com"
 
   def comments_email(comment)
     @comment = comment
@@ -12,8 +11,7 @@ class InfoMailer < ApplicationMailer
     if replacement.proof_of_purchase
       attachments[replacement.proof_of_purchase.original_filename] = replacement.proof_of_purchase.read
     end
-    # mail(to: "replacement@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
-    mail(to: "patrins@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
+    mail(to: "replacement@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
   end
 
 end
