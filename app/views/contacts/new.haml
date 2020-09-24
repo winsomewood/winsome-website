@@ -11,6 +11,9 @@
   For other inquiries please fill out the form below. We would love to answer your questions!
 
 = form_for(:comment, :url => contact_path) do |f|
+  .helper.helper-item
+  .helper.helper-control
+
   .section
     = f.label :subject
     = f.select :subject, options_for_select(Comment::SUBJECTS), include_blank: true
@@ -30,7 +33,9 @@
     .errors
       = @comment.errors[:email].to_sentence
   .section
-    = f.text_area :comments, :rows => 10, :cols => 70, :value => "Item #: [     ], Control #: [      ], Enter your comments here"
+    .itemNoLabel{:style => 'width: 100px'}Item No. [?] 
+    .controlNoLabel{:style => 'width: 100px'}Control No. [?]
+    = f.text_area :comments, :rows => 10, :cols => 70, :value => "   Item No.: [      ]" + "\n" + "Control No.: [      ]" + "\n" + "Enter your comments here"
     .errors
       = @comment.errors[:comments].to_sentence
 

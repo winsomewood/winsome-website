@@ -5,12 +5,41 @@ form
   margin: 40px 80px
   padding: 20px
 
+  .helper-item
+    background: image-url("helper-item.jpg")
+
+  .helper-control
+    background-image: image-url("helper-control.jpg")
+
+  .helper
+    background-color: transparent
+    background-repeat: no-repeat
+    background-size: contain
+    display: none
+    position: absolute
+    width: 500px
+    height: 500px
+    margin: 0px auto
+    left: 0
+    right: 0
+    transition: .05s opacity ease-out
+    border: 1px solid #555555
+    box-shadow: 0 2px 14px rgba(0,0,0,.15), 0 0 0 0.5px rgba(0,0,0,.2)
+
   .section
     margin-bottom: 20px
 
   label
     display: block
     color: #555555
+
+  .itemNoLabel, .controlNoLabel
+    color: #555555
+    display: inline-block
+    text-align: left
+    font-size: 1.2em
+    margin-right: 5px
+    cursor: default
 
   .errors
     color: $red
