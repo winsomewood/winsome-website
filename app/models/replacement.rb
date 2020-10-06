@@ -39,6 +39,7 @@ class Replacement < ActiveType::Object
   validates :controlno, presence: true
   validates :itemno, presence: true
   validates :description, presence: true
+  validates :proof_of_purchase, presence: true
 
 
   after_save lambda { InfoMailer.replacement_email(self).deliver_now }
