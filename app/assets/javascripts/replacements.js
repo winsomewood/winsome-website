@@ -59,12 +59,10 @@ $(function () {
       $('#replacement_send_full_hardware_set_1').on('change', function(e) {
         $('.js-parts').find('input, button').prop('disabled', true);
         $('.js-part-information').text('Part Information')
-        $('.js-proof-of-purchase').text('Proof of Purchase')
       });
       $('#replacement_send_full_hardware_set_0').on('change', function(e) {
         $('.js-parts').find('input, button').prop('disabled', false);
         $('.js-part-information').text('Part Information (Required)')
-        $('.js-proof-of-purchase').text('Proof of Purchase (Required)')
       });
       $('.js-parts').find('input, button').prop('disabled', true);
     }

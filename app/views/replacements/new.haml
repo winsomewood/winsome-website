@@ -95,6 +95,11 @@
       = f.text_field :description, :size => "60"
       .errors
         = @replacement.errors[:description].to_sentence
+    .section
+      = f.label :proof_of_purchase, value: "Proof of Purchase", :style => 'width: 120px'
+      = f.file_field :proof_of_purchase
+      .errors
+        = @replacement.errors[:proof_of_purchase].to_sentence      
 
   .send_full_hardware_set
     %p.errors
@@ -125,9 +130,6 @@
 
     %button.js-add-rows + Rows
 
-    %p
-      %legend.js-proof-of-purchase Proof of Purchase
-      = f.file_field :proof_of_purchase
 
   %fieldset
     %legend Comments (optional)
