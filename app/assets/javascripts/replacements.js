@@ -64,7 +64,14 @@ $(function () {
         $('.js-parts').find('input, button').prop('disabled', false);
         $('.js-part-information').text('Part Information (Required)')
       });
-      $('.js-parts').find('input, button').prop('disabled', true);
+
+      if ($('#replacement_send_full_hardware_set_0').is(':checked')) {
+        $('.js-parts').find('input, button').prop('disabled', false);
+        $('.js-part-information').text('Part Information (Required)');
+      }
+      else {
+        $('.js-parts').find('input, button').prop('disabled', true);
+      }
     }
 
     $('.js-add-rows').on('click', function (e) { e.preventDefault(); addRow(); });

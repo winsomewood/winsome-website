@@ -106,8 +106,10 @@
     %p.errors
     = f.radio_button :send_full_hardware_set, "1", :checked => @replacement.send_full_hardware_set == true ? true : false
     = f.label :send_full_hardware_set_1, "Request for full hardware set only"
-    = f.radio_button :send_full_hardware_set, "0", :checked =>@replacement.send_full_hardware_set == false ? true : false
+    = f.radio_button :send_full_hardware_set, "0", :checked => @replacement.send_full_hardware_set == false ? true : false
     = f.label :send_full_hardware_set_0, "Request for missing parts and/or hardware"
+    .requiredMsg
+      (Required)
 
   %fieldset.js-parts
     %legend.js-part-information Part Information
