@@ -36,9 +36,10 @@
         = @replacement.errors[:address2].to_sentence
     .section{"style": "width: 100%; line-height: 30px;"}
       = f.label :address_type, value: "Address Type"
-      = f.select :address_type, options_for_select({"Select one" => nil, "Residential" => :residential, "Commercial" => :commercial})
+      = f.select :address_type, options_for_select({"Select one" => nil, "Residential" => :residential, "Commercial" => :commercial},@replacement.address_type)
       .errors
         = @replacement.errors[:address_type].to_sentence
+      
     .section
       = f.label :city
       = f.text_field :city, :size => "20"
@@ -103,10 +104,12 @@
 
   .send_full_hardware_set
     %p.errors
-    = f.radio_button :send_full_hardware_set, "1"
+    = f.radio_button :send_full_hardware_set, "1", :checked => @replacement.send_full_hardware_set == true ? true : false
     = f.label :send_full_hardware_set_1, "Request for full hardware set only"
-    = f.radio_button :send_full_hardware_set, "0"
+    = f.radio_button :send_full_hardware_set, "0", :checked => @replacement.send_full_hardware_set == false ? true : false
     = f.label :send_full_hardware_set_0, "Request for missing parts and/or hardware"
+    .requiredMsg
+      (Required)
 
   %fieldset.js-parts
     %legend.js-part-information Part Information
