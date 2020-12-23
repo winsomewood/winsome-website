@@ -13,7 +13,7 @@ class InfoMailer < ApplicationMailer
       attachments[replacement.proof_of_purchase.original_filename] = replacement.proof_of_purchase.read
     end
     # mail(to: "replacement@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
-    mail(to: "patrins@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
+    # mail(to: "patrins@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
   end
 
 end

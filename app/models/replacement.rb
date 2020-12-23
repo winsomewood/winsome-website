@@ -43,4 +43,30 @@ class Replacement < ActiveType::Object
 
   after_save lambda { InfoMailer.replacement_email(self).deliver_now }
 
+  # creates a json in the format provided
+  def to_json
+    {
+      name: name,
+      address1: address1,
+      address2: address2,
+      address_type: address_type,
+      city: city,
+      state: state,
+      zip: zip,
+      phone: phone,
+      email: email,
+
+      retailer: retailer,
+      purchase_date: purchase_date,
+      description: description,
+      
+      itemno: itemno,
+      controlno: controlno,
+
+      send_full_hardware_set: send_full_hardware_set,
+      parts: parts,
+      comments: comments,
+    }
+  end
+
 end
