@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  before_filter :render_template
+  before_action :render_template
 
   def handle_404
   end
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   protected
 
   def render_template
-    @page = Page.find_by_slug(params[:action])
+    @page = Page.find_by(slug: params[:action])
     template_binding = binding
     eval("url_helpers = Rails.application.routes.url_helpers", template_binding)
     render :inline => Haml::Engine.new(@page.content).render(template_binding), :layout => true

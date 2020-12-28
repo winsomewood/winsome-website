@@ -1,50 +1,16 @@
-RailsAdmin.config do |config|
+# These 2 requires are needed for this to run on staging and production
+# https://github.com/sferik/rails_admin/issues/887#issuecomment-636622362
+require "nested_form/engine"
+require "nested_form/builder_mixin"
 
-  ### Popular gems integration
+RailsAdmin.config do |c|
+  c.excluded_models = ["Comment", "Replacement"]
 
-  ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
-
-  ## == Cancan ==
-  # config.authorize_with :cancan
-
-  ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
-
-  ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-
-  config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
-    new
-    export
-    bulk_delete
-    show
-    edit
-    delete
-    show_in_app
-
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
-  end
-
-  config.model Page do
-    field :title
-    field :slug
-    field :content do
-      html_attributes rows: 20, cols: 150
-    end
-  end
-
-  config.excluded_models = ["Comment", "Replacement"]
-
-  config.authorize_with do
-    authenticate_or_request_with_http_basic('Site Password is Required') do |username, password|
-      username == 'root' && password == ENV["ADMIN_PASSWORD"]
+  if Rails.env == 'production'
+    c.authorize_with do
+      authenticate_or_request_with_http_basic('Site Password is Required') do |username, password|
+        username == 'root' && password == ENV["WINSOME_WEBSITE_RAILS_ADMIN_PASSWORD"]
+      end
     end
   end
 end

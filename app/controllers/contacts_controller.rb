@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
-  before_filter :set_page_title
-  before_filter :set_comment
+  before_action :set_page_title
+  before_action :set_comment
 
   def set_page_title
     @page_title = "Contact Us"
@@ -11,14 +11,15 @@ class ContactsController < ApplicationController
     @comment = Comment.new(comment_params)
   end
 
-  def new
+  def show
   end
 
   def create
-    if @comment.save
+    if @comment.valid?
+      InfoMailer.comments_email(@comment).deliver_now
       redirect_to success_path
     else
-      render 'new'
+      render 'show'
     end
   end
 
