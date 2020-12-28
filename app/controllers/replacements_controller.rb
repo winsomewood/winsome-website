@@ -1,7 +1,7 @@
 class ReplacementsController < ApplicationController
 
-  before_filter :set_page_title
-  before_filter :set_replacement
+  before_action :set_page_title
+  before_action :set_replacement
 
   def set_page_title
     @page_title = "Replacement Request"
@@ -11,18 +11,15 @@ class ReplacementsController < ApplicationController
     @replacement = Replacement.new(replacement_params)
   end
 
-  def new
+  def show
   end
 
   def create
-    if !params[:replacement].has_key?(:send_full_hardware_set)
-      render 'new'
-      return
-    end
-    if @replacement.save
+    if @replacement.valid?
+      InfoMailer.replacement_email(@replacement).deliver_now
       redirect_to success_path
     else
-      render 'new'
+      render 'show'
     end
   end
 

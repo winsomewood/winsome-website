@@ -3,11 +3,11 @@
     .help
       Click image for a closer look
     %div
-      = link_to(image_tag("/images/584/#{@item.images_584_px.first}", :class => "large"), image_path("/images/584/#{@item.images_584_px.first}"), :class => "large_link")
+      = link_to(image_tag("/images/584/#{@item.images_584_px.first}", :class => "large"), image_path("/images/584/#{@item.images_584_px.first}"), "data-fancybox-trigger": "gallery", "data-turbolinks": "false", href: "javascript:;")
     .thumbnails
       - if @item.images_200_px.size > 1
         - @item.images_200_px.each do |image|
-          = link_to(image_tag("/images/200/#{image}", :class => "small"), image_path("/images/584/#{image}"), rel: "fancybox-thumb", :class => 'fancybox-thumb', :title => @item.description)
+          = link_to(image_tag("/images/200/#{image}", :class => "small"), image_path("/images/584/#{image}"), "data-fancybox": "gallery", "data-turbolinks": "false", :title => @item.description)
     .color_disclaimer
       The color you see may not exactly match the product color, and may depend, in part, upon the monitor you are using.
 
@@ -24,7 +24,7 @@
           %li.dimensions
             %strong Dimensions (W x D x H):
             %ul.dimensions
-              %li= display_dimensions_english(@item)
+              %li= display_dimensions_imperial(@item)
               %li= display_dimensions_metric(@item)
               %li Product dimensions are approximate
         %li

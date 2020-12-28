@@ -5,6 +5,6 @@
       %li.collection{:"data-image-src" => image_path("/images/collections/#{name}.jpg"), :"data-a-href" => collection_href}= name
 
   .collection_image_div
-    %a.collection_link
-      %h3.collection_caption
-      %img.collection_image
+    %a.collection_link{href: items_path(collection: @collection_names.first.downcase)}
+      %h3.collection_caption= @collection_names.first
+      %img.collection_image{src: image_path("/images/collections/#{@collection_names.first}.jpg")}

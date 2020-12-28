@@ -1,5 +1,5 @@
 module ItemsHelper
-  def display_dimensions_english(item)
+  def display_dimensions_imperial(item)
     "#{item.length} in x #{item.width} in x #{item.height} in"
   end
 

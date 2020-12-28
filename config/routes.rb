@@ -8,14 +8,12 @@ Rails.application.routes.draw do
     get 'success'
   end
 
-  resource :contact, :only => :create do
-    get action: 'new'
-  end
+  resource :contact, :only => [:show, :create]
+  resolve('Contact') { [:contact] }
 
-  resource :replacement, :only => :create do
-    get action: 'new'
-    get :render_email
-  end
+  resource :replacement, :only => [:show, :create]
+  resolve('Replacement') { [:replacement] }
+  # todo: add a route to support rendering email for testing?
 
   scope 'contact' do
     get '/replacement', to: redirect('/replacement')

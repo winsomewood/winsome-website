@@ -1,27 +1,39 @@
-class Replacement < ActiveType::Object
+class Replacement
+  # Replacement does not extend ActiveRecord::Base.
+  # It is an Active Model instead of an ActiveRecord Model.
+  # That means it has some features like attributes &
+  # validations, but is not backed by a table in the database.
+  # https://guides.rubyonrails.org/active_model_basics.html
+  #
+  # We do this to be able to define a large set of validations
+  # using Active Model syntax, then call `valid?` to check if
+  # those validations pass
+  include ActiveModel::Model
+  include ActiveModel::AttributeMethods
+  include ActiveModel::Validations
 
-  attribute :name, :text
-  attribute :address1, :text
-  attribute :address2, :text
-  attribute :address_type, :text
-  attribute :city, :text
-  attribute :state, :text
-  attribute :zip, :text
-  attribute :phone, :text
-  attribute :email, :text
+  attr_accessor :name
+  attr_accessor :address1
+  attr_accessor :address2
+  attr_accessor :address_type
+  attr_accessor :city
+  attr_accessor :state
+  attr_accessor :zip
+  attr_accessor :phone
+  attr_accessor :email
 
-  attribute :purchase_date, :text
-  attribute :retailer, :text
-  attribute :controlno, :text
-  attribute :itemno, :text
-  attribute :r, :text
-  attribute :description, :text
+  attr_accessor :purchase_date
+  attr_accessor :retailer
+  attr_accessor :controlno
+  attr_accessor :itemno
+  attr_accessor :r
+  attr_accessor :description
 
-  attribute :send_full_hardware_set, :boolean
-  attribute :parts, :text
+  attr_accessor :send_full_hardware_set
+  attr_accessor :parts
 
-  attribute :proof_of_purchase
-  attribute :comments, :text
+  attr_accessor :proof_of_purchase
+  attr_accessor :comments
 
   validates :name, presence: true
   validates :address1, presence: true
@@ -39,8 +51,5 @@ class Replacement < ActiveType::Object
   validates :controlno, presence: true
   validates :itemno, presence: true
   validates :description, presence: true
-
-
-  after_save lambda { InfoMailer.replacement_email(self).deliver_now }
-
+  validates :send_full_hardware_set, presence: true
 end
