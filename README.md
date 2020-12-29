@@ -135,26 +135,27 @@ RailsAdmin is a UI at https://<website>/admin that allows management of the data
 
 # Deployment
 
-Currently the website is run under the root user (we should change this eventually). For now deployment steps are:
+Currently the website is run under the root user (we should change this eventually). Deployment steps are:
 
 ```bash
 sudo su root # become root user on prod box
 
-# run these commands as root
-kill `cat /root/html/tmp/pids/server.pid` # kill old process. if it complains, old process does not exist and that's fine
-cd /root/html
-git pull
-RAILS_ENV=production rails assets:precompile # precompile JS assets. This automatically happens on page load in dev but must be triggered manually in prod
-rails s -b <ip_address> -p 80 -e production -d # start new server as a daemon
-```
-Or in a shorter form:
-```bash
 # first do all necessary git things like git pull or changing branches
-# note that this will affect the running website
+# note that this will affect the running website!
 
 # then replace <ip_address> with the server's IP address and run this to restart and precompile assets
 kill `cat /root/html/tmp/pids/server.pid`; cd /root/html && RAILS_ENV=production rails assets:precompile && rails s -b <ip_address> -p 80 -e production -d
 ```
+
+Lets look at each part of this command to see what it does
+```bash
+kill `cat /root/html/tmp/pids/server.pid` # kill old process. if it emits warnings, it means the old process does not exist and that's fine. nothing will get killed
+cd /root/html # make sure we are in the repo root directory
+RAILS_ENV=production rails assets:precompile # precompile JS assets. This automatically happens on page load in dev but must be triggered manually in prod
+rails s -b <ip_address> -p 80 -e production -d # start new server as a daemon
+
+```
+See [What does `;` and `&&` mean in bash](https://unix.stackexchange.com/a/187148)
 
 # Runbook
 
