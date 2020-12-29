@@ -16,6 +16,15 @@ class ReplacementsController < ApplicationController
 
   def create
     if @replacement.valid?
+      if Rails.env == 'production'
+        # write email contents to file as json
+        replacement_json = @replacement.to_json
+        filename = "replacement_order_#{Time.now.to_i}"
+
+
+        File.write("/home/patrins/replacements/#{filename}.json", JSON.generate(replacement_json))
+      end
+      
       InfoMailer.replacement_email(@replacement).deliver_now
       redirect_to success_path
     else
