@@ -3,17 +3,17 @@
     .help
       Click image for a closer look
     %div
-      = link_to(image_tag("/images/584/#{@item.images_584_px.first}", :class => "large"), image_path("/images/584/#{@item.images_584_px.first}"), "data-fancybox-trigger": "gallery", "data-turbolinks": "false", href: "javascript:;")
+      = link_to(image_tag("/images/584/#{@item.images_584_px.first}", alt: "#{@item.images_584_px.first} - #{@item.description}", :class => "large"), image_path("/images/584/#{@item.images_584_px.first}"), "data-fancybox-trigger": "gallery", "data-turbolinks": "false", href: "javascript:;")
     .thumbnails
       - if @item.images_200_px.size > 1
         - @item.images_200_px.each do |image|
-          = link_to(image_tag("/images/200/#{image}", :class => "small"), image_path("/images/584/#{image}"), "data-fancybox": "gallery", "data-turbolinks": "false", :title => @item.description)
+          = link_to(image_tag("/images/200/#{image}", alt: "#{image} - #{@item.description}", :class => "small"), image_path("/images/584/#{image}"), "data-fancybox": "gallery", "data-turbolinks": "false", :title => @item.description)
     .color_disclaimer
       The color you see may not exactly match the product color, and may depend, in part, upon the monitor you are using.
 
   %div
     .item
-      %h2
+      %h1
         = @item.description
 
       %ul.main-meta
@@ -48,7 +48,7 @@
     %hr.spacer
 
     - if @item.kit?
-      %h3 Set components
+      %h2 Set components
       %ul.components
         - @item.set_components.each do |child|
           = render :partial => "item", :locals => {:item => child}
@@ -56,7 +56,7 @@
       %hr
 
     - if @item.parent_kits.present?
-      %h3 Parent Sets
+      %h2 Parent Sets
       %ul.parent_sets
         - @item.parent_kits.each do |parent|
           = render :partial => "item", :locals => {:item => parent}

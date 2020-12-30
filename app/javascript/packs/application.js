@@ -46,6 +46,7 @@ $(function () {
 $(function () {
   $('.select_collection .collection').on('click', function () {
     $(".collection_image").attr('src', $(this).data('imageSrc'));
+    $(".collection_image").attr('alt', $(this).text() + ' collection');
     $(".collection_caption").text($(this).text());
     $(".collection_link").attr('href', $(this).data('aHref'));
   })

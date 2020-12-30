@@ -1,5 +1,5 @@
 %li.item
-  = link_to(image_tag("/images/200/#{item.images_200_px.first}"), item_path(item.itemno))
+  = link_to(image_tag("/images/200/#{item.images_200_px.first}", alt: item.description), item_path(item.itemno))
   %h3
     = link_to(item.description, item_path(item.itemno))
   %ul.meta
