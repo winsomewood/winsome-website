@@ -18,8 +18,8 @@ class ReplacementsController < ApplicationController
   def create
     if @replacement.valid?
       replacements_main_directory = "/home/replacements/"
-      replacements_json_directory = File.join("#{replacements_main_directory}","replacements")
-      replacements_image_directory = File.join("#{replacements_json_directory}","images")
+      replacements_json_directory = File.join("#{replacements_main_directory}","json")
+      replacements_image_directory = File.join("#{replacements_main_directory}","json_attach")
       logFile = File.join("#{replacements_main_directory}","replacements.log")
       sendEmail = true  #false
 
@@ -34,8 +34,10 @@ class ReplacementsController < ApplicationController
         InfoMailer.replacement_email(@replacement).deliver_now
       end      
 
-      timeExt = Time.now.to_i
-      json_filename = "replacement_order_#{timeExt}"
+      # timeExt = Time.now.to_i
+      t = Time.now
+      dateTimeExt = t.strftime("%Y-%m-%d_%H%M_%S%L")
+      json_filename = "request_#{dateTimeExt}"
 
       # save attachment to file on server, with same prefix as json file (written below)
       repl = @replacement
