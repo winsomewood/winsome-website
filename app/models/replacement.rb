@@ -33,6 +33,7 @@ class Replacement
   attr_accessor :parts
 
   attr_accessor :proof_of_purchase
+  attr_accessor :proof_of_purchase_filename
   attr_accessor :comments
 
   validates :name, presence: true
@@ -65,17 +66,15 @@ class Replacement
       zip: zip,
       phone: phone,
       email: email,
-
       retailer: retailer,
       purchase_date: purchase_date,
       description: description,
-
       itemno: itemno,
       controlno: controlno,
-
       send_full_hardware_set: send_full_hardware_set,
       parts: parts,
       comments: comments,
+      proof_of_purchase_filename: proof_of_purchase_filename
     }
   end
 end

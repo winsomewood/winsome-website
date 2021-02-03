@@ -1,3 +1,4 @@
+require 'logger'
 class ReplacementsController < ApplicationController
 
   before_action :set_page_title
@@ -16,16 +17,53 @@ class ReplacementsController < ApplicationController
 
   def create
     if @replacement.valid?
-      if Rails.env == 'production'
-        # write email contents to file as json
-        replacement_json = @replacement.to_json
-        filename = "replacement_order_#{Time.now.to_i}"
+      replacements_main_directory = "/home/replacements/"
+      replacements_json_directory = File.join("#{replacements_main_directory}","json")
+      replacements_image_directory = File.join("#{replacements_main_directory}","json_attach")
+      logFile = File.join("#{replacements_main_directory}","replacements.log")
+      sendEmail = true  #false
 
+      logger = Logger.new(logFile)
 
-        File.write("/home/patrins/replacements/#{filename}.json", JSON.generate(replacement_json))
+      # set to true if want email in development mode
+      if Rails.env == 'development'
+        sendEmail = false
       end
-      
-      InfoMailer.replacement_email(@replacement).deliver_now
+
+      if sendEmail
+        InfoMailer.replacement_email(@replacement).deliver_now
+      end      
+
+      # timeExt = Time.now.to_i
+      t = Time.now
+      dateTimeExt = t.strftime("%Y-%m-%d_%H%M_%S%L")
+      json_filename = "request_#{dateTimeExt}"
+
+      # save attachment to file on server, with same prefix as json file (written below)
+      repl = @replacement
+      if repl.proof_of_purchase
+        uplImage = File.basename(repl.proof_of_purchase.original_filename)
+        uplImage.gsub!(/\s/,'_')
+        newImageFile = "#{json_filename}_#{uplImage}"
+        path = File.join("#{replacements_image_directory}","#{newImageFile}")
+        begin
+          File.open(path,"wb") { |f| f.write(repl.proof_of_purchase.read) }
+          @replacement.proof_of_purchase_filename = "#{newImageFile}"
+        rescue => e
+          logger.error "error saving proof of purchase image #{newImageFile}"
+          logger.error "#{e}"  
+        end          
+      end
+
+      # write email contents to file as json
+      begin
+        replacement_json = @replacement.to_json
+        jsonFile = File.join("#{replacements_json_directory}","#{json_filename}.json")
+        File.write("#{jsonFile}", JSON.generate(replacement_json))
+      rescue => e
+        logger.error "error writing #{json_filename}.json"
+        logger.error "#{e}"
+      end
       redirect_to success_path
     else
       render 'show'
@@ -59,6 +97,7 @@ class ReplacementsController < ApplicationController
       :r,
       :description,
       :proof_of_purchase,
+      :proof_of_purchase_filename,
       :comments,
       :send_full_hardware_set
     ).merge(parts: assemble_parts(params[:parts])) if replacement_params
