@@ -9,7 +9,7 @@ class InfoMailer < ApplicationMailer
   def replacement_email(replacement)
     @replacement = replacement
     if replacement.proof_of_purchase
-      attachments[replacement.proof_of_purchase.original_filename] = replacement.proof_of_purchase.read
+      attachments[replacement.proof_of_purchase.original_filename] = File.open(replacement.proof_of_purchase, 'rb') {|f| f.read}
     end
     mail(to: "replacement@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
   end
