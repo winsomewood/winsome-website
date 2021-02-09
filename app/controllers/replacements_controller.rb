@@ -32,9 +32,8 @@ class ReplacementsController < ApplicationController
 
       if sendEmail
         InfoMailer.replacement_email(@replacement).deliver_now
-      end      
+      end
 
-      # timeExt = Time.now.to_i
       t = Time.now
       dateTimeExt = t.strftime("%Y-%m-%d_%H%M_%S%L")
       json_filename = "request_#{dateTimeExt}"
@@ -51,7 +50,7 @@ class ReplacementsController < ApplicationController
           @replacement.proof_of_purchase_filename = "#{newImageFile}"
         rescue => e
           logger.error "error saving proof of purchase image #{newImageFile}"
-          logger.error "#{e}"  
+          logger.error "#{e}" 
         end          
       end
 
