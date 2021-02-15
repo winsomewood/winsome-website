@@ -89,7 +89,7 @@
         = @replacement.errors[:controlno].to_sentence
     .section
       = f.label :purchase_date, value: "Purchase Date"
-      = f.text_field :purchase_date, :size => "20"
+      = f.date_field :purchase_date, :value => @replacement.purchase_date
       .errors
         = @replacement.errors[:purchase_date].to_sentence
     .section
