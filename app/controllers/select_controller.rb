@@ -5,7 +5,9 @@ class SelectController < ApplicationController
   end
 
   def collection
-    @collection_names = Item.group(:collection).having("count(*) >= 2").select("collection").size.keys.sort.reject(&:blank?)
+    # @collection_names = Item.group(:collection).having("count(*) >= 2").select("collection").size.keys.sort.reject(&:blank?)
+    # this will work w/no error collection_names
+    @collection_names = Item.group(:collection).having("collection is not null and count(*) >= 2").select("collection").size.keys.sort.reject(&:blank?)
     @page_title = "Select a Collection"
   end
 end
