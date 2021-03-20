@@ -117,7 +117,8 @@ scp -r <my_login>@www.winsomewood.com:/root/html/public/images/584/1* public/ima
 
 To run a Rails interactive Shell for debugging, from the root of the repo run
 ```
-rails c
+rails console
+rails console -e production # on production and staging machines
 ```
 You now have access to the runtime environment with all standard Gems ready to use. Try running commands like:
 ```bash
@@ -126,9 +127,12 @@ Item.where(collection: "Halifax") # select items where collection is "Halifax"
 Kit.where(itemno: 94209) # select kits where itemno is 94209
 ```
 
-[Rails Guide to ActiveRecord Querying](https://guides.rubyonrails.org/active_record_querying.html)
+Type `quit` to exit
 
-Note: `rails c` looks kind of weird visually when used from the Windows program "Git Shell". Try running this from Windows' default command line, or a program called Windows Terminal downloadable for free from Microsoft Store
+- [Rails Guide to Command Line](https://guides.rubyonrails.org/command_line.html)
+- [Rails Guide to ActiveRecord Querying](https://guides.rubyonrails.org/active_record_querying.html)
+
+Note: `rails console` looks kind of weird visually when used from the Windows program "Git Shell". Try running this from Windows' default command line, or a program called Windows Terminal downloadable for free from Microsoft Store
 
 # RailsAdmin
 RailsAdmin is a UI at https://<website>/admin that allows management of the database. In development mode no login is required. On prod the user is `root` and the password is defined by `ENV['WINSOME_WEBSITE_RAILS_ADMIN_PASSWORD']`
