@@ -114,7 +114,8 @@
 
   %fieldset.js-parts
     %legend.js-part-information Part Information
-
+    .errors
+      = @replacement.errors[:parts].to_sentence
     %table.js-part-table{"data-parts": @replacement.parts.to_json}
       %tr
         %th Part Letter

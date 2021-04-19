@@ -1,3 +1,4 @@
+require 'logger'
 class Replacement
   # Replacement does not extend ActiveRecord::Base.
   # It is an Active Model instead of an ActiveRecord Model.
@@ -53,6 +54,28 @@ class Replacement
   validates :itemno, presence: true
   validates :description, presence: true
   validates :send_full_hardware_set, presence: true
+
+  #validates :parts, presence: true, if: :parts_or_hardware?
+  #def parts_or_hardware?
+  #  (use block below but return true or false, but it didn't work)
+  # end
+
+  validate :parts_or_hardware
+  def parts_or_hardware
+    if send_full_hardware_set == "0"
+      tmpParts = JSON.parse(parts)
+      gotOne=false
+      tmpParts["letter"].each do |i,v|
+        if (tmpParts["letter"]["#{i}"].length > 0 || tmpParts["name"]["#{i}"].length > 0 || tmpParts["quantity"]["#{i}"].length > 0 || tmpParts["reason"]["#{i}"].length > 0) 
+          gotOne=true
+          break
+        end
+      end
+      if !gotOne
+        errors.add(:parts, "Please enter Part(s) Information")
+      end
+    end
+   end
 
   # creates a json in the format provided
   def to_json
