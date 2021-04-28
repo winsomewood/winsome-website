@@ -1,4 +1,7 @@
 = form_for(:replacement, :url => replacement_path, :html => {:class => "replacements"}) do |f|
+  - if @replacement.errors.any?
+    %p.errors Please fix the errors below
+
   %p.bold **Due to COVID-19 our replacement parts have a current lead time of 7-10 business days to ship out. Please note there may be a delay in processing your request. We do apologize for this inconvenience.
 
   %p Contact your retailer for refunds or entire unit replacements.
