@@ -131,21 +131,12 @@ $(function () {
       }
     }
 
-    function requireToggleIsSelected(e) {
-      if (typeof $('#replacement_send_full_hardware_set_1:checked, #replacement_send_full_hardware_set_0:checked', '.replacements').val() == "undefined") {
-        e.stopPropagation();
-        e.preventDefault();
-        $('.send_full_hardware_set p.errors').text('Please select an option');
-      }
-    }
-
     $('.js-add-rows').on('click', function(e) {
       e.preventDefault();
       addRow();
     });
     prepopulatePartInformationFormValues();
     sendFullHardwareSetToggleHandlers();
-    $('.replacements').on('submit', requireToggleIsSelected)
   }
 });
 

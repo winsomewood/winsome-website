@@ -52,7 +52,7 @@ class Replacement
   validates :controlno, presence: true
   validates :itemno, presence: true
   validates :description, presence: true
-  validates :send_full_hardware_set, presence: true
+  validates :send_full_hardware_set, presence: { message: "Please select an option"}
 
   validate :parts_or_hardware
 

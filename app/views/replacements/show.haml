@@ -107,7 +107,8 @@
         = @replacement.errors[:proof_of_purchase].to_sentence
 
   .send_full_hardware_set
-    %p.errors
+    .errors
+      = @replacement.errors[:send_full_hardware_set].to_sentence
     = f.radio_button :send_full_hardware_set, "1", :checked => @replacement.send_full_hardware_set == "1"
     = f.label :send_full_hardware_set_1, "Request for full hardware set only"
     = f.radio_button :send_full_hardware_set, "0", :checked => @replacement.send_full_hardware_set == "0"
