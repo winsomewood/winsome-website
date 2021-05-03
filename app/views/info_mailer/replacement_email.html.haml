@@ -69,8 +69,8 @@
 %div
   %h1 Parts
   %span.send_full_hardware_set
-    Send full hardware set only
-    = @replacement.send_full_hardware_set ? "Yes" : "No"
+    Send full hardware set only:
+    = @replacement.send_full_hardware_set == "1" ? "Yes" : "No"
   %table
     %tr
       %th Letter

@@ -1,4 +1,7 @@
 = form_for(:replacement, :url => replacement_path, :html => {:class => "replacements"}) do |f|
+  - if @replacement.errors.any?
+    %p.errors Please fix the errors below
+
   %p.bold **Due to COVID-19 our replacement parts have a current lead time of 7-10 business days to ship out. Please note there may be a delay in processing your request. We do apologize for this inconvenience.
 
   %p Contact your retailer for refunds or entire unit replacements.
@@ -104,7 +107,8 @@
         = @replacement.errors[:proof_of_purchase].to_sentence
 
   .send_full_hardware_set
-    %p.errors
+    .errors
+      = @replacement.errors[:send_full_hardware_set].to_sentence
     = f.radio_button :send_full_hardware_set, "1", :checked => @replacement.send_full_hardware_set == "1"
     = f.label :send_full_hardware_set_1, "Request for full hardware set only"
     = f.radio_button :send_full_hardware_set, "0", :checked => @replacement.send_full_hardware_set == "0"
@@ -114,7 +118,8 @@
 
   %fieldset.js-parts
     %legend.js-part-information Part Information
-
+    .errors
+      = @replacement.errors[:parts].to_sentence
     %table.js-part-table{"data-parts": @replacement.parts.to_json}
       %tr
         %th Part Letter

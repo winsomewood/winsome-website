@@ -52,7 +52,24 @@ class Replacement
   validates :controlno, presence: true
   validates :itemno, presence: true
   validates :description, presence: true
-  validates :send_full_hardware_set, presence: true
+  validates :send_full_hardware_set, presence: { message: "Please select an option"}
+
+  validate :parts_or_hardware
+
+  def parts_or_hardware
+    if send_full_hardware_set == "0"
+      tmpParts = JSON.parse(parts)
+      tmpParts["letter"].each do |i,v|
+        if !tmpParts["letter"]["#{i}"].empty? ||
+           !tmpParts["name"]["#{i}"].empty? ||
+           !tmpParts["quantity"]["#{i}"].empty? ||
+           !tmpParts["reason"]["#{i}"].empty?
+          return
+        end
+      end
+      errors.add(:parts, "Please enter Part(s) Information")
+    end
+   end
 
   # creates a json in the format provided
   def to_json
