@@ -11,7 +11,7 @@ class InfoMailer < ApplicationMailer
     if replacement.proof_of_purchase
       attachments[replacement.proof_of_purchase.original_filename] = File.open(replacement.proof_of_purchase, 'rb') {|f| f.read}
     end
-    mail(to: "replacement@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
+    mail(to: "Replacements.Pending@winsomewood.com", subject: "[www.winsomewood.com] Request from #{replacement.name}")
   end
 
 end
