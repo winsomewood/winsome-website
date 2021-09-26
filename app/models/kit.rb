@@ -12,4 +12,8 @@
 
 class Kit < ActiveRecord::Base
   validates_uniqueness_of :itemno, :scope => :kitno
+
+  def item
+    Item.find_by(itemno: self.itemno)
+  end
 end

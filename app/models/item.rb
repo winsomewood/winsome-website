@@ -21,7 +21,7 @@
 
 class Item < ActiveRecord::Base
 
-  has_many :kits, :foreign_key => "kitno"
+  has_many :kits, :foreign_key => "kitno", :primary_key => "itemno"
   validates_presence_of :itemno, :upc, :description, :category, :length, :width, :height
 
   def set_components
