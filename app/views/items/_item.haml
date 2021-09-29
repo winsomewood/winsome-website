@@ -7,16 +7,29 @@
       %strong Item #:
       = item.itemno
     %li
-      - if !item.kit?
-        %li
-          %strong Dimensions (W x D x H):
-          %ul.dimensions
+      %strong Dimensions (W x D x H):
+      %ul.dimensions         
+        - if !item.kit?
+          %li
             %li= display_dimensions_imperial(item)
             %li= display_dimensions_metric(item)
+        - if item.kit?
+          %li
+            %ul.dimensions
+              - Item.find_by(itemno: item.itemno).kits.order(:name).each do |child|
+                %li
+                %strong= child.name
+                = display_dimensions_imperial(child.item)
   %ul.meta.extended
-    %li
-      %strong Category:
-      = item.category
     %li
       %strong Collection:
       = display_collection(item)
+    %li
+      %strong Finish:
+      = item.finish
+    %li
+      %strong Material:
+      = item.material
+    %li
+      %strong Assembly Required:
+      = item.assembly? ? "Yes" : "No"
