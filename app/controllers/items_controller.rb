@@ -4,10 +4,10 @@ class ItemsController < ApplicationController
     @items = nil
     if params[:category]
       @items = Item.where('lower(category) = ?', params[:category].downcase).order("description")
-      @page_title = params[:category].capitalize
+      @page_title = @items.present? ? @items.first.category : params[:category]
     elsif params[:collection]
       @items = Item.where('lower(collection) = ?', params[:collection].downcase).order("description")
-      @page_title = params[:collection].capitalize
+      @page_title = @items.present? ? @items.first.collection : params[:collection]
     elsif params[:query]
       query = params[:query].strip.downcase
       @items = Item.where(
