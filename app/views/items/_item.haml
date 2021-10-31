@@ -8,17 +8,18 @@
       = item.itemno
     %li
       %strong Dimensions (W x D x H):
-      %ul.dimensions         
-        - if !item.kit?
+      %ul.dimensions
+        - if item.sorted_valid_kits.length == 0
           %li
             %li= display_dimensions_imperial(item)
             %li= display_dimensions_metric(item)
-        - if item.kit?
+        - if item.sorted_valid_kits.length > 0
           %li
             %ul.dimensions
-              - Item.find_by(itemno: item.itemno).kits.order(:name).each do |child|
+              - item.sorted_valid_kits.each do |child|
                 %li
                 %strong= child.name
+                %strong= child.id
                 = display_dimensions_imperial(child.item)
   %ul.meta.extended
     %li

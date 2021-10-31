@@ -24,6 +24,14 @@ class Item < ActiveRecord::Base
   has_many :kits, :foreign_key => "kitno", :primary_key => "itemno"
   validates_presence_of :itemno, :upc, :description, :category, :length, :width, :height
 
+  def sorted_valid_kits
+    # There can be kits with invalid items in the DB (due to DB values changing over time)
+    # Lets filter them out at query time for now
+    # Maybe one day we can add a foreign key constraint at the DB level but that would also
+    # make it more annoying to maintain
+    kits.order(:name).filter { |child| child.item.present? }
+  end
+
   def set_components
     Item.joins("join kits on kits.itemno = items.itemno").where("kits.kitno = ?", itemno)
   end
