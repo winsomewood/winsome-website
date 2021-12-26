@@ -1,75 +1,77 @@
 @import "variables"
 
-form
-  background-color: $green
-  margin: 40px 80px
-  padding: 20px
-
-  .helper-item
-    background: image-url("helper-item.jpg")
-
-  .helper-control
-    background-image: image-url("helper-control.jpg")
-
-  .helper
-    background-color: transparent
-    background-repeat: no-repeat
-    background-size: contain
-    display: none
-    position: absolute
-    width: 500px
-    height: 500px
+#contacts-show
+  & .top
+    width: 1000px
     margin: 0px auto
-    left: 0
-    right: 0
-    transition: .05s opacity ease-out
-    border: 1px solid #555555
-    box-shadow: 0 2px 14px rgba(0,0,0,.15), 0 0 0 0.5px rgba(0,0,0,.2)
 
-  .section
-    margin-bottom: 20px
+  & form
+    background-color: $background-blue
 
-  label
-    display: block
-    color: #555555
+#contacts-show, #replacements-show
+  & form
+    width: 1000px
+    margin: 0px auto
+    padding: 20px
 
-  .itemNumberLabel, .controlNumberLabel
-    color: #555555
-    display: inline-block
-    text-align: left
-    font-size: 1.2em
-    margin-right: 5px
-    cursor: default
+    .helper-item
+      background: image-url("helper-item.jpg")
 
-  .errors
-    color: $red
+    .helper-control
+      background-image: image-url("helper-control.jpg")
 
-  input[type="text"], textarea
-    font-size: 1.2em
-    padding: 5px
-    margin-top: 4px
-    margin-bottom: 4px
-    border: 2px solid #FFFFFF
+    .helper
+      background-color: transparent
+      background-repeat: no-repeat
+      background-size: contain
+      display: none
+      position: absolute
+      width: 500px
+      height: 500px
+      margin: 0px auto
+      left: 0
+      right: 0
+      transition: .05s opacity ease-out
+      border: 1px solid #555555
+      box-shadow: 0 2px 14px rgba(0,0,0,.15), 0 0 0 0.5px rgba(0,0,0,.2)
 
-  input[type="submit"]
-    background-color: $blue
-    color: white
-    border: none
-    padding: 10px 20px
-    cursor: pointer
+    .section
+      margin-bottom: 20px
 
-  .field_with_errors
-    display: inline
+    label
+      display: block
+      color: #555555
 
-    input, textarea, select
-      border: 2px solid $red
+    .itemNumberLabel, .controlNumberLabel
+      color: #555555
+      display: inline-block
+      text-align: left
+      font-size: 1.2em
+      margin-right: 5px
+      cursor: default
 
-.addresses
-  text-align: center
+    .errors
+      color: $red
 
-address
-  display: inline-block
-  text-align: left
+    input[type="text"], textarea
+      font-size: 1.2em
+      padding: 5px
+      margin-top: 4px
+      margin-bottom: 4px
+      border: 1px solid $winsome-blue
 
-.send_full_hardware_set
-  font-weight: bold
+    input[type="submit"]
+      background-color: $winsome-blue
+      color: white
+      border: none
+      padding: 10px 20px
+      cursor: pointer
+
+    .field_with_errors
+      display: inline
+
+      input, textarea, select
+        border: 2px solid $red
+
+  .send_full_hardware_set
+    font-weight: bold

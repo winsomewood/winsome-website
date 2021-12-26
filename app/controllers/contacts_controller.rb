@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   before_action :set_comment
 
   def set_page_title
-    @page_title = "Contact Us"
+    @page_title = "Contact us"
   end
 
   def set_comment

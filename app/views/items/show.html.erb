@@ -1,0 +1,83 @@
+<main class="show">
+  <div class="images">
+    <%= image_tag("#{ENV['DIGITALOCEAN_SPACES_URL']}/images/584/#{@item.itemno}.jpg", alt: @item.description, class: "large") %>
+    <div class="help">
+      Click to enlarge image
+    </div>
+    <div class="thumbnails">
+      <% if @scan_filesystem_images.size > 1 %>
+        <% @scan_filesystem_images.each do |image| %>
+          <%= image_tag("#{ENV['DIGITALOCEAN_SPACES_URL']}/images/584/#{image}", class: "small", "data-large-src": "#{ENV['DIGITALOCEAN_SPACES_URL']}/images/584/#{image}") %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <div class="item">
+      <h1>
+        <%= @item.description %>
+      </h1>
+      <ul class="main-meta">
+        <div class="item-number">Item # <%= @item.itemno %></div>
+        <li>
+          <strong>Assembly Required:</strong>
+          <%= @item.assembly? ? "Yes" : "No" %>
+        </li>
+        <li>
+          <strong>Finish:</strong>
+          <%= @item.finish %>
+        </li>
+        <li>
+          <strong>Material:</strong>
+          <%= @item.material %>
+        </li>
+        <li>
+          <strong>Category:</strong>
+          <%= @item.category %>
+        </li>
+        <li>
+          <strong>Collection:</strong>
+          <%= @item.collection %>
+          <%= link_to "View collection", items_path(:collection => @item.collection), class: "view-collection" if @show_collection_link%>
+        </li>
+        <li class="dimensions">
+          <strong>Dimensions (W x D x H):</strong>
+          <% if !@item.kit? %>
+            <%= display_dimensions(@item) %>
+          <% else %>
+            <% @item.sorted_valid_kits.each do |kit| %>
+              <div><%= kit.name %> - <%= display_dimensions(kit.item) %></div>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <% if @item.kit? %>
+      <strong>Items in this set</strong>
+      <div class="related">
+        <% @item.set_components.each do |child| %>
+          <%= render :partial => "item", locals: {:item => child} %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @item.parent_kits.present? %>
+      <strong>Included in <%= @item.parent_kits.size == 1 ? "this set" : "these sets" %></strong>
+      <div class="related">
+        <% @item.parent_kits.each do |parent| %>
+          <%= render :partial => "item", locals: {:item => parent} %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</main>
+<div class="items-section">
+  <div class="flex-section-header">
+    <h3>Other related products</h3>
+    <%= link_to "View all #{@item.category} products", items_path(:category => @item.category) %>
+  </div>
+  <div class="items-grid">
+    <% Item.where('lower(category) = ?', @item.category.downcase).order("description").first(4).each do |item| %>
+      <%= render :partial => "item", locals: {:item => item} %>
+    <% end %>
+  </div>
+</div>

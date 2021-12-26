@@ -1,0 +1,47 @@
+@import "variables"
+
+#pages-front_page
+  & .top
+    display: flex
+    justify-content: center
+    background-color: $background-blue
+
+    & .left
+      border-top: 4px solid #A1D01A
+      width: 440px
+      margin: 88px
+      box-sizing: border-box
+
+      & h1
+        margin-top: 30px
+
+      & p
+        font-size: 18px
+        line-height: 22.63px
+
+      & .ctas
+        display: flex
+        justify-content: space-between
+        margin-top: 40px
+
+    & .carousel
+      margin: 40px 0px
+      height: 432px
+      width: 600px
+      position: relative
+
+      img
+        position: absolute
+        left: 0
+        transition: opacity 1s ease-in-out
+
+
+  & .bottom
+    margin: 80px 32px
+    display: flex
+    justify-content: space-evenly
+
+    & h3
+      font-size: 24px
+      font-weight: normal
+      margin-bottom: 8px
