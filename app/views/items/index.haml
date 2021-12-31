@@ -1,9 +1,0 @@
-%p
-  = page_entries_info @items
-= paginate @items
-
-%ul.index
-  - @items.each do |item|
-    = render :partial => "item", :locals => {:item => item}
-
-= paginate @items

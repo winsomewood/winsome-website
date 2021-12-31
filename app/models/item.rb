@@ -21,7 +21,7 @@
 
 class Item < ActiveRecord::Base
 
-  has_many :kits, :foreign_key => "kitno", :primary_key => "itemno"
+  has_many :kits, foreign_key: "kitno", primary_key: "itemno"
   validates_presence_of :itemno, :upc, :description, :category, :length, :width, :height
 
   def sorted_valid_kits
@@ -40,54 +40,22 @@ class Item < ActiveRecord::Base
     Item.joins("join kits on kits.kitno = items.itemno").where("kits.itemno = ?", itemno)
   end
 
-  def images_200_px
+  def scan_filesystem_images
     children_itemnos = set_components.pluck(:itemno)
 
-    (::ItemImages.size_200[self.itemno] || []) +
-    ::ItemImages.size_200.select { |k| children_itemnos.include?(k) }.values.flatten
-  end
-
-  def images_584_px
-    ::ItemImages.size_584[self.itemno] || []
-  end
-
-end
-
-module ItemImages
-  def self.size_200
-    image_names = self.get_file_names_from_directory(
-      "#{Rails.root}/public/images/200",
-      "size_200"
+    client = Aws::S3::Client.new(
+      access_key_id: '7V6DFQW7EWTWGIG5OMP7',
+      secret_access_key: ENV['DIGITALOCEAN_SPACES_SECRET_KEY'],
+      endpoint: 'https://sfo3.digitaloceanspaces.com',
+      region: 'us-east-1'
     )
-    self.key_by_item_number(image_names)
-  end
 
-  def self.size_584
-    image_names = self.get_file_names_from_directory(
-      "#{Rails.root}/public/images/584",
-      "size_584"
-    )
-    self.key_by_item_number(image_names)
-  end
-
-  protected
-
-  def self.get_file_names_from_directory(directory, cache_key)
-    Rails.cache.fetch(cache_key, expires_in: 1.second) do
-      base_pathname = Pathname.new(directory)
-      Dir["#{directory}/*"].map do |file|
-        Pathname.new(file).relative_path_from(base_pathname).to_s
-      end.sort
+    [self.itemno, *children_itemnos].map do |n|
+      client.list_objects(bucket: "winsome-images", prefix: "images/584/#{n}").contents.map(&:key)
+    end.flatten.map do |file_path|
+      # truncate path e.g. "images/584/12345_test.jpg" => "12345_test.jpg"
+      file_path[file_path.rindex("/")+1..]
     end
   end
 
-  def self.key_by_item_number(image_names)
-    result_map = {}
-    image_names.each do |image_name|
-      item_number = image_name[0, image_name.index(/[-_.]/)].to_i
-      result_map[item_number] ||= []
-      result_map[item_number] << image_name
-    end
-    result_map
-  end
 end

@@ -91,7 +91,7 @@ RAILS_ENV=production rails assets:precompile # precompile JS assets. This automa
 rails s -b <ip_address> -p 80 -e production # start new server
 ```
 - Logs get outputted to `/root/html/log/production.log`
-- We send emails when Contact Us and Replacement Request forms are filled out. Real emails send on production and staging boxes. Notice `config.action_mailer.perform_deliveries` and `config.action_mailer.smtp_settings` are only defined in config/environments/production.rb.
+- We send emails when Contact us and Replacement request forms are filled out. Real emails send on production and staging boxes. Notice `config.action_mailer.perform_deliveries` and `config.action_mailer.smtp_settings` are only defined in config/environments/production.rb.
 
 **Sidenote**: Looks like emails are only sending to @winsomewood.com email addresses, so you will need one to test
 
@@ -100,17 +100,13 @@ After setting up your local workstation you will not yet have any images of item
 ```bash
 # From the repo root
 # Replace <my_login> with your login
-scp -r <my_login>@www.winsomewood.com:/root/html/public/images/collections/ public/images/collections/
-scp -r <my_login>@www.winsomewood.com:/root/html/public/images/categories/ public/images/categories/
-scp -r <my_login>@www.winsomewood.com:/root/html/public/images/companies/ public/images/companies/
+scp -r <my_login>@www.winsomewood.com:/root/html/public/images/collections/ public/images/collections
+scp -r <my_login>@www.winsomewood.com:/root/html/public/images/categories/ public/images/categories
+scp -r <my_login>@www.winsomewood.com:/root/html/public/images/companies/ public/images/companies
 
-# For these next 2, there are a looooot of images. Instead of fetching the whole folder like
-scp -r <my_login>@www.winsomewood.com:/root/html/public/images/200/ public/images/200/
-scp -r <my_login>@www.winsomewood.com:/root/html/public/images/584/ public/images/584/
+# Item images. This will take a long time
+scp -r <my_login>@www.winsomewood.com:/root/html/public/images/584/ public/images/584
 
-# It might be better to specify a subset of items like
-scp -r <my_login>@www.winsomewood.com:/root/html/public/images/200/1* public/images/200/
-scp -r <my_login>@www.winsomewood.com:/root/html/public/images/584/1* public/images/584/
 ```
 
 # Rails Interactive shell

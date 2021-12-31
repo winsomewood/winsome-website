@@ -1,0 +1,188 @@
+<%= form_for(:replacement, :url => replacement_path, :html => {:class => "replacements"}) do |f| %>
+  <% if @replacement.errors.any? %>
+    <p class="errors">Please fix the errors below</p>
+  <% end %>
+  <p class="bold">**Due to the supply chain issue, our replacement parts have a fulfillment lead time of 7-14 business days to ship out. We apologize for this inconvenience. Thank you for your patience.</p>
+  <p>Contact your retailer for refunds or entire unit replacements.</p>
+  <ul>
+    <li>
+      Free replacement parts provided within 60 days of purchase date.
+    </li>
+    <li>
+      Proof of purchase required from an authorized retailer.
+    </li>
+    <li>
+      Replacement parts ship within the U.S.A. and Canada only.
+    </li>
+    <li>
+      Replacement parts process and ship via UPS/FedEx/Post within 5-7 business days.
+    </li>
+    <li>
+      Hardware ships via Post within 1-2 business days.
+    </li>
+    <li>
+      Tracking# will be sent via email upon shipment.
+    </li>
+  </ul>
+  <fieldset class="general">
+    <legend>General Information (Required)</legend>
+    <div class="section">
+      <%= f.label :name %>
+      <%= f.text_field :name, :size => "65" %>
+      <div class="errors">
+        <%= @replacement.errors[:name].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :address1, value: "Address" %>
+      <%= f.text_field :address1, :size => "65" %>
+      <div class="errors">
+        <%= @replacement.errors[:address1].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :address2, value: "Address 2" %>
+      <%= f.text_field :address2, :size => "65" %>
+      <div class="errors">
+        <%= @replacement.errors[:address2].to_sentence %>
+      </div>
+    </div>
+    <div class="section" style="line-height: 30px;">
+      <%= f.label :address_type, value: "Address Type" %>
+      <%= f.select :address_type, options_for_select({"Select one" => nil, "Residential" => :residential, "Commercial" => :commercial},@replacement.address_type) %>
+      <div class="errors">
+        <%= @replacement.errors[:address_type].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :city %>
+      <%= f.text_field :city, :size => "20" %>
+      <div class="errors">
+        <%= @replacement.errors[:city].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :state, :style => 'width: 40px' %>
+      <%= f.text_field :state, :size => "2" %>
+      <div class="errors">
+        <%= @replacement.errors[:state].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :zip, :style => 'width: 20px' %>
+      <%= f.text_field :zip, :size => "6" %>
+      <div class="errors">
+        <%= @replacement.errors[:zip].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :phone %>
+      <%= f.text_field :phone, :size => "15" %>
+      <div class="errors">
+        <%= @replacement.errors[:phone].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :email, :style => 'width: 40px' %>
+      <%= f.text_field :email, :size => "24" %>
+      <div class="errors">
+        <%= @replacement.errors[:email].to_sentence %>
+      </div>
+    </div>
+  </fieldset>
+  <div class="helper helper-item"></div>
+  <div class="helper helper-control"></div>
+  <fieldset class="general">
+    <legend>Purchase Information (Required)</legend>
+    <div class="section">
+      <%= f.label :retailer, value: "Authorized Retailer", :style => 'width: 120px' %>
+      <%= f.text_field :retailer, :size => "20" %>
+      <div class="errors">
+        <%= @replacement.errors[:retailer].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <div class="itemNumberLabel" style="width: 100px">Item No. [?]</div>
+      <%= f.text_field :itemno, :size => "20", :maxlength => "5", :placeholder => "5-digit number" %>
+      <div class="errors">
+        <%= @replacement.errors[:itemno].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <div class="controlNumberLabel" style="width: 120px">Control No. [?]</div>
+      <%= f.text_field :controlno, :size => "20", :maxlength => "20" %>
+      <div class="errors">
+        <%= @replacement.errors[:controlno].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :purchase_date, value: "Purchase Date" %>
+      <%= f.date_field :purchase_date, :value => @replacement.purchase_date %>
+      <div class="errors">
+        <%= @replacement.errors[:purchase_date].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :description, :style => 'width: 120px' %>
+      <%= f.text_field :description, :size => "60" %>
+      <div class="errors">
+        <%= @replacement.errors[:description].to_sentence %>
+      </div>
+    </div>
+    <div class="section">
+      <%= f.label :proof_of_purchase, value: "Proof of Purchase", :style => 'width: 120px' %>
+      <%= f.file_field :proof_of_purchase %>
+      <div class="errors">
+        <%= @replacement.errors[:proof_of_purchase].to_sentence %>
+      </div>
+    </div>
+  </fieldset>
+  <div class="send_full_hardware_set">
+    <div class="errors">
+      <%= @replacement.errors[:send_full_hardware_set].to_sentence %>
+    </div>
+    <%= f.radio_button :send_full_hardware_set, "1", :checked => @replacement.send_full_hardware_set == "1" %>
+    <%= f.label :send_full_hardware_set_1, "Request for full hardware set only" %>
+    <%= f.radio_button :send_full_hardware_set, "0", :checked => @replacement.send_full_hardware_set == "0" %>
+    <%= f.label :send_full_hardware_set_0, "Request for missing parts and/or hardware" %>
+    <div class="requiredMsg">
+      (Required)
+    </div>
+  </div>
+  <fieldset class="js-parts">
+    <legend class="js-part-information">Part Information</legend>
+    <div class="errors">
+      <%= @replacement.errors[:parts].to_sentence %>
+    </div>
+    <table class="js-part-table" data-parts="<%= @replacement.parts.to_json %>">
+      <tr>
+        <th>Part Letter</th>
+        <th>Part Name</th>
+        <th>Qty</th>
+        <th>Reason</th>
+      </tr>
+      <% 3.times do |n| %>
+        <tr>
+          <td>
+            <input name="parts[letter][<%= n %>]" size="4" type="text"></input>
+          </td>
+          <td>
+            <input name="parts[name][<%= n %>]" size="25" type="text"></input>
+          </td>
+          <td>
+            <input name="parts[quantity][<%= n %>]" size="2" type="text"></input>
+          </td>
+          <td>
+            <input name="parts[reason][<%= n %>]" size="36" type="text"></input>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <button class="js-add-rows">+ Rows</button>
+  </fieldset>
+  <fieldset>
+    <legend>Comments (optional)</legend>
+    <%= f.text_area :comments, :rows => 3, :cols => 70 %>
+  </fieldset>
+  <%= f.submit :value => "Submit", data: { disable_with: "Sending" } %>
+<% end %>

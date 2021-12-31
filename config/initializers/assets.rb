@@ -1,5 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
+# Hack to make digitalocean deploy work
 Rails.application.config.assets.configure do |env|
   env.export_concurrent = false
 end

@@ -1,0 +1,17 @@
+<nav class="main-nav">
+  <div class="nav-flex">
+    <a href="<%= root_path %>" id="logo">
+      <%= image_tag("winsome-logo.svg", alt: "Winsome Wood Logo") %>
+    </a>
+    <div class="product-nav">
+      <span class="product-nav-link">Products</span>
+      <%= render :partial => "shared/nav_category_menu" %>
+    </div>
+    <%= link_to("Retailers", retailers_path) %>
+    <%= link_to("Contact us", contact_path) %>
+    <%= link_to("About us", "/about") %>
+    <%= form_tag(items_path, :method => :get, id: "search") do %>
+      <%= text_field_tag :query, params[:query], :placeholder => "Search for products..." %>
+    <% end %>
+  </div>
+</nav>
