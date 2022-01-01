@@ -61,7 +61,7 @@
       </div>
     <% end %>
     <% if @item.parent_kits.present? %>
-      <strong>Included in <%= @item.parent_kits.size == 1 ? "this set" : "these sets" %></strong>
+      <strong>Sets related to this product</strong>
       <div class="related">
         <% @item.parent_kits.each do |parent| %>
           <%= render :partial => "item", locals: {:item => parent} %>

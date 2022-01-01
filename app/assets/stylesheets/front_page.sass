@@ -1,47 +1,69 @@
 @import "variables"
 
 #pages-front_page
+  min-width: 1000px
+
   & .top
+    background-color: $background-blue
     display: flex
     justify-content: center
-    background-color: $background-blue
+
+  & .top-grid
+    display: grid
+    grid-template-columns: 42% 58%
+    max-width: 1440px
 
     & .left
-      border-top: 4px solid #A1D01A
-      width: 440px
-      margin: 88px
       box-sizing: border-box
+      display: flex
+      flex-direction: column
+      margin: 88px
+      justify-content: center
 
       & h1
-        margin-top: 30px
+        border-top: 4px solid #A1D01A
+        padding-top: 30px
 
       & p
         font-size: 18px
         line-height: 22.63px
 
-      & .ctas
-        display: flex
-        justify-content: space-between
-        margin-top: 40px
-
     & .carousel
-      margin: 40px 0px
-      height: 432px
-      width: 600px
       position: relative
+      display: flex
+      align-items: center
+      margin: 88px 0
+      height: 432px
 
       img
+        object-fit: contain
         position: absolute
         left: 0
         transition: opacity 1s ease-in-out
 
 
   & .bottom
-    margin: 80px 32px
     display: flex
-    justify-content: space-evenly
+    padding: 32px 88px 120px
+    flex-direction: column
 
     & h3
       font-size: 24px
-      font-weight: normal
-      margin-bottom: 8px
+      font-weight: 600
+      margin-bottom: 24px
+
+    & .categories-grid
+      display: grid
+      width: 100%
+      max-width: 1230px
+      gap: 20px
+      grid-template-columns: repeat(5, calc(20% - 20px))
+
+      & img
+        width: 100%
+        object-fit: contain
+        object-position: top left
+
+      & a
+        color: $winsome-blue
+        font-weight: 400

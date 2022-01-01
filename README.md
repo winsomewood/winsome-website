@@ -157,7 +157,42 @@ rails s -b <ip_address> -p 80 -e production -d # start new server as a daemon
 ```
 See [What does `;` and `&&` mean in bash](https://unix.stackexchange.com/a/187148)
 
-# Runbook
+# DigitalOcean runbook
+
+To mark Space as public to all, in ruby shell:
+```rb
+require 'aws-sdk-s3'
+
+client = Aws::S3::Client.new(
+  access_key_id: '7V6DFQW7EWTWGIG5OMP7',
+  secret_access_key: ENV['DIGITALOCEAN_SPACES_SECRET_KEY'],
+  endpoint: 'https://sfo3.digitaloceanspaces.com',
+  region: 'us-east-1'
+)
+
+
+client.put_bucket_policy(bucket: "winsome-images", policy: '{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Sid":"PublicRead",
+      "Effect":"Allow",
+      "Principal": "*",
+      "Action":["s3:GetObject","s3:GetObjectVersion"],
+      "Resource":["arn:aws:s3:::winsome-images/*"]
+    }
+  ]
+}')
+```
+
+Connect to DB and import data from CSV
+```
+psql -d winsome -U winsome -p 25060 -h <pg_db_host> -W
+
+\copy items from 'items.csv' delimiter ',' csv;
+\copy kits from 'kits.csv' delimiter ',' csv;
+```
+# Old runbook
 
 - Some helpful commands to be run on prod or staging
 ```bash

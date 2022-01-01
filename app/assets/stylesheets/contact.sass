@@ -1,6 +1,6 @@
 @import "variables"
 
-#contacts-show
+#contacts-show, #contacts-create
   & .top
     width: 1000px
     margin: 0px auto
@@ -8,7 +8,10 @@
   & form
     background-color: $background-blue
 
-#contacts-show, #replacements-show
+    & .section
+      margin-bottom: 20px
+
+#contacts-show, #replacements-show, #contacts-create, #replacements-create
   & form
     width: 1000px
     margin: 0px auto
@@ -34,9 +37,6 @@
       transition: .05s opacity ease-out
       border: 1px solid #555555
       box-shadow: 0 2px 14px rgba(0,0,0,.15), 0 0 0 0.5px rgba(0,0,0,.2)
-
-    .section
-      margin-bottom: 20px
 
     label
       display: block

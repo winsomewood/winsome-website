@@ -1,9 +1,5 @@
 <h1><%= @page_title %></h1>
 
-<% if @hero_image_src %>
-  <img class="hero" src="<%= @hero_image_src %>" />
-<% end %>
-
 <div class="flex-section-header pagination-top">
   <span class="page-entries-info"><%= page_entries_info @items %></span>
   <%= paginate @items %>
