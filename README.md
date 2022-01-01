@@ -164,7 +164,7 @@ To mark Space as public to all, in ruby shell:
 require 'aws-sdk-s3'
 
 client = Aws::S3::Client.new(
-  access_key_id: '7V6DFQW7EWTWGIG5OMP7',
+  access_key_id: 'UOQFX6JP4UGYEIIPPB7U',
   secret_access_key: ENV['DIGITALOCEAN_SPACES_SECRET_KEY'],
   endpoint: 'https://sfo3.digitaloceanspaces.com',
   region: 'us-east-1'

@@ -16,7 +16,19 @@ class ContactsController < ApplicationController
 
   def create
     if @comment.valid?
-      InfoMailer.comments_email(@comment).deliver_now
+      client = Aws::S3::Client.new(
+        access_key_id: 'UOQFX6JP4UGYEIIPPB7U',
+        secret_access_key: ENV['DIGITALOCEAN_SPACES_SECRET_KEY'],
+        endpoint: 'https://sfo3.digitaloceanspaces.com',
+        region: 'us-east-1'
+      )
+
+      client.put_object(
+        bucket: "form-submissions",
+        key: "#{Rails.env}/comments/#{Time.now.strftime("%Y-%m-%d_%H%M_%S%L")}-#{@comment.name[0..2]}.txt",
+        body: ActionController::Base.new().render_to_string(template: 'contacts/form_submission', locals: {comment: @comment})
+      )
+
       redirect_to success_path
     else
       render 'show'

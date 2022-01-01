@@ -5,55 +5,55 @@
       Name:
     </dt>
     <dd>
-      <%= @replacement.name %>
+      <%= replacement.name %>
     </dd>
     <dt>
       Address:
     </dt>
     <dd>
-      <%= @replacement.address1 %>
+      <%= replacement.address1 %>
     </dd>
     <dt>
       Address 2:
     </dt>
     <dd>
-      <%= @replacement.address2 %>
+      <%= replacement.address2 %>
     </dd>
     <dt>
       Address type:
     </dt>
     <dd>
-      <%= @replacement.address_type %>
+      <%= replacement.address_type %>
     </dd>
     <dt>
       City:
     </dt>
     <dd>
-      <%= @replacement.city %>
+      <%= replacement.city %>
     </dd>
     <dt>
       State:
     </dt>
     <dd>
-      <%= @replacement.state %>
+      <%= replacement.state %>
     </dd>
     <dt>
       Zip:
     </dt>
     <dd>
-      <%= @replacement.zip %>
+      <%= replacement.zip %>
     </dd>
     <dt>
       Phone:
     </dt>
     <dd>
-      <%= @replacement.phone %>
+      <%= replacement.phone %>
     </dd>
     <dt>
       Email:
     </dt>
     <dd>
-      <%= @replacement.email %>
+      <%= replacement.email %>
     </dd>
   </dl>
 </div>
@@ -64,19 +64,19 @@
       Authorized Retailer:
     </dt>
     <dd>
-      <%= @replacement.retailer %>
+      <%= replacement.retailer %>
     </dd>
     <dt>
       Purchase Date:
     </dt>
     <dd>
-      <%= @replacement.purchase_date %>
+      <%= replacement.purchase_date %>
     </dd>
     <dt>
       Description:
     </dt>
     <dd>
-      <%= @replacement.description %>
+      <%= replacement.description %>
     </dd>
   </dl>
 </div>
@@ -87,13 +87,13 @@
       Item #:
     </dt>
     <dd>
-      <%= @replacement.itemno %>
+      <%= replacement.itemno %>
     </dd>
     <dt>
       Control #:
     </dt>
     <dd>
-      <%= @replacement.controlno %>
+      <%= replacement.controlno %>
     </dd>
   </dl>
 </div>
@@ -101,7 +101,7 @@
   <h1>Parts</h1>
   <span class="send_full_hardware_set">
     Send full hardware set only:
-    <%= @replacement.send_full_hardware_set == "1" ? "Yes" : "No" %>
+    <%= replacement.send_full_hardware_set == "1" ? "Yes" : "No" %>
   </span>
   <table>
     <tr>
@@ -110,8 +110,8 @@
       <th>Quantity</th>
       <th>Reason</th>
     </tr>
-    <% if @replacement.parts.present? %>
-      <% parts = JSON.parse(@replacement.parts) %>
+    <% if replacement.parts.present? %>
+      <% parts = JSON.parse(replacement.parts) %>
       <% parts["letter"].each do |k, v| %>
         <tr>
           <td>
@@ -134,6 +134,6 @@
 <div>
   <h1>Comments</h1>
   <span>
-    <%= @replacement.comments %>
+    <%= replacement.comments %>
   </span>
 </div>
