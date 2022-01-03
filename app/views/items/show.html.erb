@@ -1,9 +1,6 @@
 <main class="show">
   <div class="images">
     <%= image_tag("#{ENV['DIGITALOCEAN_SPACES_URL']}/images/584/#{@item.itemno}.jpg", alt: @item.description, class: "large") %>
-    <div class="help">
-      Click to enlarge image
-    </div>
     <div class="thumbnails">
       <% if @scan_filesystem_images.size > 1 %>
         <% @scan_filesystem_images.each do |image| %>

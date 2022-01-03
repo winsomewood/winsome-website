@@ -1,6 +1,11 @@
 @import "variables"
 
 #replacements-show .replacements, #replacements-create .replacements
+  & form
+    width: 900px
+
+  & input[type="text"], & select, & textarea
+    font-size: 16px
 
   .helper-item
     background: image-url("helper-item.jpg")
@@ -44,12 +49,18 @@
         cursor: default
 
       .section
-        margin-bottom: 0px
+        margin-bottom: 8px
         margin-right: 20px
         float: left
 
       .errors
         text-align: right
+
+  .please-fix
+    background-color: #fff0f0
+    font-weight: bold
+    border: 1px solid $red
+    padding: 0 16px
 
   %hr
     margin: 20px
@@ -69,7 +80,10 @@
 
   input[type="text"]:disabled
     background-color: #DDDDDD
-    border: 2px solid #CCCCCC
+    border: 1px solid #CCCCCC
 
   input[type="file"]
     padding: 4px
+
+  & .spacer
+    clear: both

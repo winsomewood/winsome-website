@@ -43,12 +43,17 @@ $(function () {
   $('.controlNumberLabel').on('mouseover', function(e) {
     $('.helper-control')
       .show()
-      .css({ opacity: 1, top: e.currentTarget.offsetTop - 510 - 20 })
+      .css({ opacity: 1, top: e.currentTarget.offsetTop - 110 - 20 })
   })
-  $('.itemNumberLabel').on('mouseover', function(e) {
+  $('#contacts-show .itemNumberLabel, #contacts-create .itemNumberLabel').on('mouseover', function(e) {
     $('.helper-item')
       .show()
-      .css({ opacity: 1, top: e.currentTarget.offsetTop - 510 - 20 })
+      .css({ opacity: 1, top: e.currentTarget.offsetTop - 110 - 20 })
+  })
+  $('#replacements-show .itemNumberLabel, #replacements-create .itemNumberLabel').on('mouseover', function(e) {
+    $('.helper-item')
+      .show()
+      .css({ opacity: 1, top: e.currentTarget.offsetTop + 40 })
   })
   $('.controlNumberLabel').on('mouseout', function(e) {
     $('.helper-control').css({ opacity: 0 }).hide()

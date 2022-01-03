@@ -69,8 +69,9 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :port => 587,
-    :enable_starttls_auto => false
+    address: "www.winsomewood.com",
+    port: 587,
+    enable_starttls_auto: false
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
