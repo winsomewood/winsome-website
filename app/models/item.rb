@@ -40,32 +40,19 @@ class Item < ActiveRecord::Base
     Item.joins("join kits on kits.kitno = items.itemno").where("kits.itemno = ?", itemno)
   end
 
-  def images_200_px
+  def scan_filesystem_images
     children_itemnos = set_components.pluck(:itemno)
 
     (::ItemImages.size_200[self.itemno] || []) +
     ::ItemImages.size_200.select { |k| children_itemnos.include?(k) }.values.flatten
   end
-
-  def images_584_px
-    ::ItemImages.size_584[self.itemno] || []
-  end
-
 end
 
 module ItemImages
   def self.size_200
     image_names = self.get_file_names_from_directory(
-      "#{Rails.root}/public/images/200",
-      "size_200"
-    )
-    self.key_by_item_number(image_names)
-  end
-
-  def self.size_584
-    image_names = self.get_file_names_from_directory(
       "#{Rails.root}/public/images/584",
-      "size_584"
+      "size_200"
     )
     self.key_by_item_number(image_names)
   end

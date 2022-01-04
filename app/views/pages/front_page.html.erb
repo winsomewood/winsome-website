@@ -1,0 +1,29 @@
+<div class="top">
+  <div class="top-grid">
+    <div class="left">
+      <h1>Quality lifestyle furniture</h1>
+      <p>
+        Winsome began manufacturing and distributing solid wood housewares in 1977, and today it is one of the leading brands of lifestyle furniture. Offering innovative designs with unbeatable balance between craftsmanship and affordability.
+      </p>
+    </div>
+    <div class="carousel">
+      <% ["Kenner", "Burke", "Delta", "Richmond", "Taylor"].each do |image| %>
+        <%= image_tag("/images/collections/#{image}.jpg", alt: "furniture") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="bottom">
+  <h3>Browse our most popular categories</h3>
+  <div class="categories-grid">
+    <%= link_to "Stools", items_path(category: "stools") %>
+    <%= link_to "Nightstands", items_path(category: "nightstands") %>
+    <%= link_to "Breakfast Trays", items_path(category: "breakfast trays") %>
+    <%= link_to "Home Office", items_path(category: "home office") %>
+    <%= link_to "Snack Tables", items_path(category: "snack tables") %>
+    <% ["stools", "nightstands", "breakfast trays", "home office", "snack tables"].each do |image| %>
+      <%= link_to(image_tag("/images/categories/#{image}.jpg", class: "category-image", height: 200, width: 200, alt: image), items_path(category: image)) %>
+    <% end %>
+  </div>
+</div>

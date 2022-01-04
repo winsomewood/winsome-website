@@ -1,86 +1,185 @@
 @import "variables"
 
-li.item
-  clear: left
-  overflow: auto
-  background-color: $green
-  margin-bottom: 5px
-  line-height: 1.6em
+#items-index
+  & h1
+    margin: 0px auto
+    padding: 40px
+    box-sizing: border-box
+    width: calc(min(1440px, 100%))
 
-  img
-    float: left
-    margin: 5px
-    margin-right: 20px
-    height: 160px
-    width: 160px
+  .items-section
+    padding-bottom: 0px
+
+.items-section
+  background-color: $background-blue
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 32px 40px
+  padding-bottom: 80px
+  box-sizing: border-box
+
+.items-grid
+  display: grid
+  grid-template-columns: repeat(4, calc(25% - 12px))
+  gap: 16px
+  box-sizing: border-box
+  width: 100%
+  max-width: calc(1440px - 80px)
+
+.flex-section-header
+  display: flex
+  justify-content: space-between
+  align-items: baseline
+  margin-bottom: 32px
+  box-sizing: border-box
+  width: calc(min(1440px - 80px, 100%))
+
+.pagination-top
+  margin: 0px auto
+  padding: 40px
+  box-sizing: border-box
+  width: calc(min(1440px, 100%))
+
+.pagination-bottom
+  display: flex
+  justify-content: center
+  margin: 48px 0px
+
+.page-entries-info
+  color: #4F4F4F
+  font-size: 16px
+
+.hero
+  width: 100%
+  height: 360px
+  object-position: top
+  object-fit: cover
+
+a.item
+  display: flex
+  flex-direction: column
+  border: 1px solid #E0E0E0
+  background-color: white
+  box-shadow: 0px 2px 2px 0px #00000026;
+  border-radius: 4px
+  box-sizing: border-box
+  padding: 16px
+  gap: 14px
+  color: inherit
+
+  & h3
+    font-size: 20px
+    font-weight: 600
+
+    /* ellipsis after 3 lines */
+    overflow: hidden
+    display: -webkit-box
+    line-clamp: 3
+    -webkit-line-clamp: 3
+    -webkit-box-orient: vertical
+
+  &:hover
+    text-decoration: none
+
+  &:hover h3
+    text-decoration: underline
+
+  & img
+    align-self: center
+    height: 200px
+    width: 200px
 
   .meta
-    float: left
     margin-left: 20px
     margin-right: 40px
 
 .show
-
-  > div
-    float: left
-
-  .images
-    margin-right: 40px
-
-    .color_disclaimer
-      clear: left
-      text-align: center
-
-    .help
-      text-align: center
-      margin-bottom: 10px
+  display: grid
+  grid-template-columns: repeat(2, calc(50% - 24px))
+  gap: 48px
 
 
-  .images > div
-    width: 350px
+  .large
+    display: block
+    width: 100%
+    max-width: 584px
+    margin: 20px auto
 
   .thumbnails
-    a img
-      margin: 8px 1px
-      border: 1px solid #777777
+    padding: 0px 48px
 
-  img.large
-    width: 350px
-    height: 350px
+    .small
+      margin: 0px 8px
+      border: 0.5px solid #828282
 
-  img.small
-    width: 50px
-    height: 50px
+      cursor: pointer
+
+      &.selected
+        outline: 2px solid $winsome-blue
+        outline-offset: -2px
+
+  & .slick-dots
+    position: inherit
+    margin-top: -8px
+
+  & .slick-dots li button:before
+    font-size: 10px
+
+  & .slick-dots li.slick-active button:before
+    color: #1F99DE
+
+  & .slick-prev, .slick-next
+    width: 14px
+    height: 80px
+    padding: 32px
+    top: calc(50% - 8px)
+
+  h2
+    font-size: 24px
+    font-weight: normal
 
   .item
     .main-meta
+      list-style-type: none
+      padding-left: 0px
       margin-right: 60px
       margin-bottom: 30px
-      float: left
       line-height: 2em
 
     .meta.extended
       display: none
 
-    width: 530px
-
     h1
-      font-size: 2em
+      font-size: 32px
+      font-weight: normal
       margin: 20px 0px
 
-  .components
-    .small
-      float: left
+  .related
+    display: grid
+    grid-template-columns: repeat(2, calc(50% - 12px))
+    gap: 16px
+    box-sizing: border-box
+    margin-top: 24px
 
     img
-      height: 160px
-      width: 160px
+      height: 200px
+      width: 200px
 
   hr
     margin: 40px 0px
     border: 1px solid #555555
 
 
-.dimensions
-  li
-    margin-left: 10px
+ul.dimensions
+  padding-inline-start: 0
+  list-style-type: none
+
+.item-number
+  color: #4F4F4F
+  font-size: 16px
+  text-transform: uppercase
+  font-weight: 600
+
+.view-collection
+  margin-left: 4px

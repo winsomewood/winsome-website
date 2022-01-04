@@ -1,0 +1,62 @@
+<main>
+  <div class="top">
+    <h1><%= @page_title %></h1>
+    <p>Need some help? Fill out the form below and we'd be happy to help answer your questions.</p>
+    <p>
+      For replacement requests <%= link_to "click here", replacement_path %>.
+    </p>
+  </div>
+  <%= form_for(:comment, :url => contact_path) do |f| %>
+    <fieldset>
+      <div class="helper helper-item"></div>
+      <div class="helper helper-control"></div>
+      <div class="section">
+        <%= f.label :subject %>
+        <%= f.select :subject, options_for_select(Comment::SUBJECTS, @comment.subject), include_blank: true %>
+        <div class="errors">
+          <%= @comment.errors[:subject].to_sentence %>
+        </div>
+      </div>
+      <div class="section">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <div class="errors">
+          <%= @comment.errors[:name].to_sentence %>
+        </div>
+      </div>
+      <div class="section">
+        <%= f.label :company, value: "Company (Optional)" %>
+        <%= f.text_field :company %>
+      </div>
+      <div class="section">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <div class="errors">
+          <%= @comment.errors[:email].to_sentence %>
+        </div>
+      </div>
+      <div class="section">
+      <div class="with-meta"><%= f.label :item_number %><%= image_tag("help.svg", alt: "?", class: "itemNumberLabel") %></div>
+        <%= f.text_field :item_number %>
+        <div class="errors">
+          <%= @comment.errors[:item_number].to_sentence %>
+        </div>
+      </div>
+      <div class="section">
+        <div class="with-meta"><%= f.label :control_number %><%= image_tag("help.svg", alt: "?", class: "controlNumberLabel") %></div>
+        <%= f.text_field :control_number %>
+        <div class="errors">
+          <%= @comment.errors[:control_number].to_sentence %>
+        </div>
+      </div>
+      <div class="section">
+        <%= f.label "Notes and comments" %>
+        <%= f.text_area :comments, rows: 6, cols: 30 %>
+        <div class="errors">
+          <%= @comment.errors[:comments].to_sentence %>
+        </div>
+      </div>
+    </fieldset>
+    <%= f.submit :value => "Submit", data: { disable_with: "Sending" } %>
+  <% end %>
+</main>

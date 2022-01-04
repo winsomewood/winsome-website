@@ -3,10 +3,6 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-// Require this so that fancybox works in html
-// http://fancyapps.com/fancybox/3/docs
-require("@fancyapps/fancybox");
-
 require('jquery')
 
 import Rails from "@rails/ujs"
@@ -42,33 +38,54 @@ $(function () {
   }
 });
 
-// Collection page
-$(function () {
-  $('.select_collection .collection').on('click', function () {
-    $(".collection_image").attr('src', $(this).data('imageSrc'));
-    $(".collection_image").attr('alt', $(this).text() + ' collection');
-    $(".collection_caption").text($(this).text());
-    $(".collection_link").attr('href', $(this).data('aHref'));
-  })
-})
-
 // Contact & Replacement form popup on mouseover handlers
 $(function () {
   $('.controlNumberLabel').on('mouseover', function(e) {
     $('.helper-control')
       .show()
-      .css({ opacity: 1, top: e.currentTarget.offsetTop - 510 - 20 })
+      .css({ opacity: 1, top: e.currentTarget.offsetTop - 110 - 20 })
   })
-  $('.itemNumberLabel').on('mouseover', function(e) {
+  $('#contacts-show .itemNumberLabel, #contacts-create .itemNumberLabel').on('mouseover', function(e) {
     $('.helper-item')
       .show()
-      .css({ opacity: 1, top: e.currentTarget.offsetTop - 510 - 20 })
+      .css({ opacity: 1, top: e.currentTarget.offsetTop - 110 - 20 })
+  })
+  $('#replacements-show .itemNumberLabel, #replacements-create .itemNumberLabel').on('mouseover', function(e) {
+    $('.helper-item')
+      .show()
+      .css({ opacity: 1, top: e.currentTarget.offsetTop + 40 })
   })
   $('.controlNumberLabel').on('mouseout', function(e) {
     $('.helper-control').css({ opacity: 0 }).hide()
   })
   $('.itemNumberLabel').on('mouseout', function(e) {
     $('.helper-item').css({ opacity: 0 }).hide()
+  })
+});
+
+const prevArrow = '<svg class="slick-prev" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9849 0.311695C12.3151 0.310772 12.6382 0.407963 12.9131 0.590931C13.188 0.773899 13.4023 1.0344 13.5289 1.33938C13.6555 1.64436 13.6886 1.98007 13.6241 2.30392C13.5596 2.62777 13.4004 2.92516 13.1666 3.15836L4.33326 11.9667L13.1349 20.8C13.2896 20.955 13.4122 21.1389 13.4957 21.3412C13.5793 21.5436 13.6222 21.7604 13.6219 21.9793C13.6217 22.1982 13.5784 22.4149 13.4944 22.6171C13.4104 22.8193 13.2874 23.0029 13.1324 23.1575C12.9775 23.3122 12.7936 23.4348 12.5912 23.5183C12.3889 23.6019 12.1721 23.6448 11.9532 23.6445C11.7342 23.6443 11.5175 23.6009 11.3154 23.517C11.1132 23.433 10.9296 23.31 10.7749 23.155L0.78993 13.14C0.477479 12.8275 0.30195 12.4036 0.301951 11.9617C0.301951 11.5198 0.477479 11.0959 0.789931 10.7834L10.8083 0.798361C10.9626 0.643642 11.146 0.520988 11.348 0.437465C11.5499 0.353941 11.7664 0.311195 11.9849 0.311695Z" fill="#6B6C72"/></svg>'
+
+
+const nextArrow = '<svg class="slick-next" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.01507 23.6883C1.68486 23.6892 1.36182 23.592 1.08693 23.4091C0.812043 23.2261 0.597703 22.9656 0.471104 22.6606C0.344506 22.3556 0.311354 22.0199 0.375858 21.6961C0.440361 21.3722 0.599612 21.0748 0.833404 20.8416L9.66674 12.0333L0.865071 3.19997C0.710439 3.04501 0.587843 2.86111 0.504283 2.65878C0.420722 2.45644 0.377833 2.23962 0.378066 2.02071C0.378298 1.80179 0.421646 1.58507 0.505635 1.38291C0.589625 1.18074 0.712611 0.997105 0.867571 0.842474C1.02253 0.687842 1.20643 0.565246 1.40877 0.481686C1.61111 0.398126 1.82792 0.355238 2.04684 0.35547C2.26575 0.355702 2.48248 0.39905 2.68464 0.483039C2.8868 0.567029 3.07044 0.690014 3.22507 0.844974L13.2101 10.86C13.5225 11.1725 13.6981 11.5964 13.6981 12.0383C13.6981 12.4802 13.5225 12.9041 13.2101 13.2166L3.19174 23.2016C3.0374 23.3564 2.85397 23.479 2.65203 23.5625C2.45008 23.6461 2.23361 23.6888 2.01507 23.6883Z" fill="#6B6C72"/></svg>'
+
+// Show
+$(function() {
+  $('.thumbnails').slick({
+    dots: $(".thumbnails .small").length > 4,
+    dotsClass: 'slick-dots',
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    draggable: false,
+    prevArrow,
+    nextArrow
+  });
+
+  $(".thumbnails .small.slick-active").first().addClass("selected")
+  $(".thumbnails .small").on("mouseover", function() {
+    $(".large").attr("src", $(this).data("large-src") )
+    $(".small.selected").removeClass("selected")
+    $(this).addClass("selected")
   })
 });
 

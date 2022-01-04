@@ -1,0 +1,16 @@
+<h1><%= @page_title %></h1>
+
+<div class="flex-section-header pagination-top">
+  <span class="page-entries-info"><%= page_entries_info @items %></span>
+  <%= paginate @items %>
+</div>
+<div class="items-section">
+  <div class="items-grid">
+    <% @items.each do |item| %>
+      <%= render :partial => "item", locals: {:item => item} %>
+    <% end %>
+  </div>
+    <div class="pagination-bottom">
+      <%= paginate @items %>
+    </div>
+</div>

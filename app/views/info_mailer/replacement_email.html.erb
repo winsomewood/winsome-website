@@ -1,0 +1,139 @@
+<div>
+  <h1>General Information</h1>
+  <dl>
+    <dt>
+      Name:
+    </dt>
+    <dd>
+      <%= @replacement.name %>
+    </dd>
+    <dt>
+      Address:
+    </dt>
+    <dd>
+      <%= @replacement.address1 %>
+    </dd>
+    <dt>
+      Address 2:
+    </dt>
+    <dd>
+      <%= @replacement.address2 %>
+    </dd>
+    <dt>
+      Address type:
+    </dt>
+    <dd>
+      <%= @replacement.address_type %>
+    </dd>
+    <dt>
+      City:
+    </dt>
+    <dd>
+      <%= @replacement.city %>
+    </dd>
+    <dt>
+      State:
+    </dt>
+    <dd>
+      <%= @replacement.state %>
+    </dd>
+    <dt>
+      Zip:
+    </dt>
+    <dd>
+      <%= @replacement.zip %>
+    </dd>
+    <dt>
+      Phone:
+    </dt>
+    <dd>
+      <%= @replacement.phone %>
+    </dd>
+    <dt>
+      Email:
+    </dt>
+    <dd>
+      <%= @replacement.email %>
+    </dd>
+  </dl>
+</div>
+<div>
+  <h1>Purchase Information</h1>
+  <dl>
+    <dt>
+      Authorized Retailer:
+    </dt>
+    <dd>
+      <%= @replacement.retailer %>
+    </dd>
+    <dt>
+      Purchase Date:
+    </dt>
+    <dd>
+      <%= @replacement.purchase_date %>
+    </dd>
+    <dt>
+      Description:
+    </dt>
+    <dd>
+      <%= @replacement.description %>
+    </dd>
+  </dl>
+</div>
+<div>
+  <h1>Item Information</h1>
+  <dl>
+    <dt>
+      Item #:
+    </dt>
+    <dd>
+      <%= @replacement.itemno %>
+    </dd>
+    <dt>
+      Control #:
+    </dt>
+    <dd>
+      <%= @replacement.controlno %>
+    </dd>
+  </dl>
+</div>
+<div>
+  <h1>Parts</h1>
+  <span class="send_full_hardware_set">
+    Send full hardware set only:
+    <%= @replacement.send_full_hardware_set == "1" ? "Yes" : "No" %>
+  </span>
+  <table>
+    <tr>
+      <th>Letter</th>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Reason</th>
+    </tr>
+    <% if @replacement.parts.present? %>
+      <% parts = JSON.parse(@replacement.parts) %>
+      <% parts["letter"].each do |k, v| %>
+        <tr>
+          <td>
+            <%= parts["letter"]["" + k] %>
+          </td>
+          <td>
+            <%= parts["name"]["" + k] %>
+          </td>
+          <td>
+            <%= parts["quantity"]["" + k] %>
+          </td>
+          <td>
+            <%= parts["reason"]["" + k] %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+<div>
+  <h1>Comments</h1>
+  <span>
+    <%= @replacement.comments %>
+  </span>
+</div>

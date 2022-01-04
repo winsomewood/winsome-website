@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
     if params[:category]
       @items = Item.where('lower(category) = ?', params[:category].downcase).order("description")
       @page_title = @items.present? ? @items.first.category : params[:category]
+      @hero_image_src = "/images/categories/#{params[:category].downcase}.jpg#"
     elsif params[:collection]
       @items = Item.where('lower(collection) = ?', params[:collection].downcase).order("description")
       @page_title = @items.present? ? @items.first.collection : params[:collection]
@@ -19,7 +20,7 @@ class ItemsController < ApplicationController
       @page_title = "Products matching '#{params[:query]}'"
     else
       @items = Item.order("itemno")
-      @page_title = "Products by Item Number"
+      @page_title = "Products by item number"
     end
     @items = @items.page(params[:page] || 1)
   end
@@ -31,7 +32,8 @@ class ItemsController < ApplicationController
       return
     end
     @page_title = @item.description
-    @hide_page_title = true
+    @show_collection_link = Item.where('lower(collection) = ?', @item.collection.downcase).size > 1
+    @scan_filesystem_images = @item.scan_filesystem_images
   end
 
 end
