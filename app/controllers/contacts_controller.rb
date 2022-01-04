@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   before_action :set_comment
 
   def set_page_title
-    @page_title = "Contact Us"
+    @page_title = "Contact us"
   end
 
   def set_comment
@@ -27,6 +27,6 @@ class ContactsController < ApplicationController
 
   def comment_params
     comment_params = params[:comment]
-    comment_params.permit(:subject, :name, :company, :email, :comments) if comment_params
+    comment_params.permit(:subject, :name, :company, :email, :item_number, :control_number, :comments) if comment_params
   end
 end

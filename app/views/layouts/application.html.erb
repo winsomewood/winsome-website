@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>
+      <%= "#{@page_title ? @page_title + " - " : ""}Winsome Wood" %>
+    </title>
+
+    <meta name="viewport" content="width=1000" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="/slick/slick.min.js"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+
+    <%# https://fonts.google.com/share?selection.family=Source%20Sans%20Pro:wght@400;600;700 %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap' %>
+
+  </head>
+  <body id="<%= controller_name %>-<%= action_name %>">
+    <%= render :partial => "shared/nav" %>
+    <%= yield %>
+    <%= render :partial => "shared/footer" %>
+    <%= render :partial => "shared/ga" if Rails.env == "production" %>
+  </body>
+</html>

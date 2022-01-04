@@ -4,14 +4,16 @@ Rails.application.routes.draw do
 
   scope controller: :pages do
     root action: 'front_page'
-    get 'find'
+    get 'find', to: redirect('/retailers')
+    get 'retailers'
+    get 'about'
     get 'success'
   end
 
-  resource :contact, :only => [:show, :create]
+  resource :contact, only: [:show, :create]
   resolve('Contact') { [:contact] }
 
-  resource :replacement, :only => [:show, :create]
+  resource :replacement, only: [:show, :create]
   resolve('Replacement') { [:replacement] }
   # todo: add a route to support rendering email for testing?
 
@@ -19,10 +21,10 @@ Rails.application.routes.draw do
     get '/replacement', to: redirect('/replacement')
   end
 
-  get 'select_category' => "select#category"
-  get 'select_collection' => "select#collection"
+  get 'select_category' => redirect('/')
+  get 'select_collection' => redirect('/')
 
-  resources :items, :only => [:index, :show], param: 'itemno', path: 'products'
+  resources :items, only: [:index, :show], param: 'itemno', path: 'products'
 
   match '*path' => 'pages#handle_404', via: [:get, :post]
 end

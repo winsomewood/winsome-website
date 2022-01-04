@@ -16,6 +16,8 @@ class Comment
   attr_accessor :name
   attr_accessor :company
   attr_accessor :email
+  attr_accessor :item_number
+  attr_accessor :control_number
   attr_accessor :comments
 
   SUBJECTS = ["Product Inquiry", "Assembly Instructions", "Dealer Inquiry", "Catalog Request", "Other"]

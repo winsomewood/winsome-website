@@ -1,75 +1,97 @@
 @import "variables"
 
-form
-  background-color: $green
-  margin: 40px 80px
-  padding: 20px
-
-  .helper-item
-    background: image-url("helper-item.jpg")
-
-  .helper-control
-    background-image: image-url("helper-control.jpg")
-
-  .helper
-    background-color: transparent
-    background-repeat: no-repeat
-    background-size: contain
-    display: none
-    position: absolute
-    width: 500px
-    height: 500px
+#contacts-show, #contacts-create
+  & .top
+    width: 800px
     margin: 0px auto
-    left: 0
-    right: 0
-    transition: .05s opacity ease-out
-    border: 1px solid #555555
-    box-shadow: 0 2px 14px rgba(0,0,0,.15), 0 0 0 0.5px rgba(0,0,0,.2)
 
-  .section
-    margin-bottom: 20px
+  & form
+    padding: 0px
 
-  label
-    display: block
-    color: #555555
-
-  .itemNumberLabel, .controlNumberLabel
-    color: #555555
-    display: inline-block
-    text-align: left
-    font-size: 1.2em
-    margin-right: 5px
-    cursor: default
-
-  .errors
-    color: $red
-
-  input[type="text"], textarea
-    font-size: 1.2em
-    padding: 5px
-    margin-top: 4px
-    margin-bottom: 4px
-    border: 2px solid #FFFFFF
-
-  input[type="submit"]
-    background-color: $blue
-    color: white
+  & fieldset
+    background-color: white
     border: none
-    padding: 10px 20px
-    cursor: pointer
+    padding: 0px
+    margin: 0px auto
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+    height: 420px
+    gap: 24px 80px
 
-  .field_with_errors
-    display: inline
+    & .section
 
-    input, textarea, select
-      border: 2px solid $red
+    & input[type="text"], & select, & textarea
+      width: 100%
+      box-sizing: border-box
 
-.addresses
-  text-align: center
+    & .with-meta
+      display: flex
+      justify-content: space-between
 
-address
-  display: inline-block
-  text-align: left
+  & input[type="submit"]
+    margin-top: 48px
 
-.send_full_hardware_set
-  font-weight: bold
+#contacts-show, #replacements-show, #contacts-create, #replacements-create
+  & form
+    width: 800px
+    margin: 0px auto
+    padding: 20px
+
+    .helper-item
+      background: image-url("helper-item.jpg")
+
+    .helper-control
+      background-image: image-url("helper-control.jpg")
+
+    .helper
+      background-color: transparent
+      background-repeat: no-repeat
+      background-size: contain
+      display: none
+      position: absolute
+      width: 500px
+      height: 500px
+      margin: 0px auto
+      left: 0
+      right: 0
+      transition: .05s opacity ease-out
+      border: 1px solid #F2F2F2
+      box-shadow: 0px 2px 10px 0px #00000040
+      border-radius: 4px
+
+
+    label
+      display: block
+      margin-bottom: 4px
+
+    .itemNumberLabel, .controlNumberLabel
+      display: inline-block
+      text-align: left
+      font-size: 18px
+      margin-right: 5px
+      cursor: default
+
+    .errors
+      font-size: 14px
+      color: $red
+
+    input[type="text"], textarea
+      font-size: 18px
+      border: 1px solid $winsome-blue
+
+    input[type="submit"]
+      background-color: $winsome-blue
+      color: white
+      border: none
+      padding: 10px 20px
+      cursor: pointer
+
+    .field_with_errors
+      display: inline
+
+      input, textarea, select
+        border: 2px solid $red
+
+  .send_full_hardware_set
+    font-weight: bold
