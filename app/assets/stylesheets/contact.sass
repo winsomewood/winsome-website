@@ -2,7 +2,7 @@
 
 #contacts-show, #contacts-create
   & .top
-    width: 800px
+    max-width: 800px
     margin: 0px auto
 
   & form
@@ -16,7 +16,6 @@
     display: flex
     flex-direction: column
     flex-wrap: wrap
-    height: 420px
     gap: 24px 80px
 
     & .section
@@ -32,11 +31,34 @@
   & input[type="submit"]
     margin-top: 48px
 
+
+@media (min-width: 0px)
+  #contacts-show, #contacts-create
+    & .top
+      margin-bottom: 0px
+
+    & .need-help
+      white-space: initial
+
+    & fieldset
+      height: initial
+
+@media (min-width: 740px)
+  #contacts-show, #contacts-create
+    & .top
+      margin-bottom: 64px
+
+    & .need-help
+      white-space: nowrap
+
+    & fieldset
+      height: 420px
+
 #contacts-show, #replacements-show, #contacts-create, #replacements-create
   & form
-    width: 800px
+    max-width: 800px
     margin: 0px auto
-    padding: 20px
+    margin-bottom: 24px
 
     .helper-item
       background: image-url("helper-item.jpg")

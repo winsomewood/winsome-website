@@ -1,7 +1,7 @@
 <main>
   <div class="top">
     <h1><%= @page_title %></h1>
-    <p>Need some help? Fill out the form below and we'd be happy to help answer your questions.</p>
+    <p class="need-help">Need some help? Fill out the form below and we'd be happy to help answer your questions.</p>
     <p>
       For replacement requests <%= link_to "click here", replacement_path %>.
     </p>
@@ -51,7 +51,7 @@
       </div>
       <div class="section">
         <%= f.label "Notes and comments" %>
-        <%= f.text_area :comments, rows: 6, cols: 30 %>
+        <%= f.text_area :comments, rows: 6, cols: 26 %>
         <div class="errors">
           <%= @comment.errors[:comments].to_sentence %>
         </div>

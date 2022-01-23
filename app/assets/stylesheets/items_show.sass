@@ -1,0 +1,134 @@
+@import "variables"
+
+#items-show
+  .show
+    display: flex
+    gap: 48px
+
+
+    .large
+      display: block
+      width: 100%
+      max-width: 584px
+      margin: 20px auto
+
+    .thumbnails
+      padding: 0px 48px
+      margin: 0px auto
+      width: 300px
+
+      .small
+        margin: 0px 8px
+        border: 0.5px solid #828282
+
+        cursor: pointer
+
+        &.selected
+          outline: 2px solid $winsome-blue
+          outline-offset: -2px
+
+    & .slick-dots
+      position: inherit
+      margin-top: -8px
+
+    & .slick-dots li button:before
+      font-size: 10px
+
+    & .slick-dots li.slick-active button:before
+      color: #1F99DE
+
+    & .slick-prev, .slick-next
+      width: 14px
+      height: 80px
+      padding: 32px
+      top: calc(50% - 8px)
+
+    h1
+      font-size: 32px
+      font-weight: 600
+      margin: 20px 0px
+
+    h2
+      font-size: 24px
+      font-weight: normal
+
+    .item
+      .main-meta
+        list-style-type: none
+        padding-left: 0px
+        margin-right: 60px
+        margin-bottom: 30px
+        line-height: 2em
+
+      .meta.extended
+        display: none
+
+    hr
+      margin: 40px 0px
+      border: 1px solid #555555
+
+
+  ul.dimensions
+    padding-inline-start: 0
+    list-style-type: none
+
+  .item-number
+    color: #4F4F4F
+    font-size: 16px
+    text-transform: uppercase
+    font-weight: 600
+
+  .view-collection
+    margin-left: 4px
+
+  .related
+    display: grid
+    grid-template-columns: repeat(2, calc(50% - 12px))
+    gap: 16px
+    box-sizing: border-box
+    margin-top: 24px
+
+    img
+      height: 200px
+      width: 200px
+
+  .desktop-off.related-items
+    margin: 40px
+
+    & .related
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+
+  .other-items-section
+    padding-top: 0px
+
+    & .items-grid
+      grid-auto-rows: 0
+      grid-template-rows: 1fr
+      overflow-y: hidden
+      gap: 0px 16px
+
+@media (min-width: 0)
+  .show
+    flex-direction: column
+  .mobile-on
+    display: block
+  .mobile-off
+    display: none
+  .desktop-only
+    display: none
+  .desktop-off
+    display: block
+
+@media (min-width: 740px)
+  .show
+    flex-direction: row
+  .mobile-on
+    display: none
+  .mobile-off
+    display: block
+
+@media (min-width: 1040px)
+  .desktop-only
+    display: block
+  .desktop-off
+    display: none

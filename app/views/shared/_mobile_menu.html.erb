@@ -1,0 +1,14 @@
+<div class="mobile-menu main-mobile-menu">
+  <div class="fixed-header"></div>
+  <div tabindex="0" class="mobile-product-nav">
+    Products
+    <div class="mobile-menu sub-mobile-menu">
+      <%= render :partial => "shared/nav_category_menu" %>
+    </div>
+  </div>
+  <%= link_to("Retailers", retailers_path, class: "main-mobile-link") %>
+  <%= link_to("Contact us", contact_path, class: "main-mobile-link") %>
+  <%= link_to("About us", "/about", class: "main-mobile-link") %>
+
+  <%= image_tag("back.svg", class: "mobile-back-button") %>
+</div>

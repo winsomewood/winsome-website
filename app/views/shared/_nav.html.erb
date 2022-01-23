@@ -1,17 +1,29 @@
 <nav class="main-nav">
   <div class="nav-flex">
-    <a href="<%= root_path %>" id="logo">
-      <%= image_tag("winsome-logo.svg", alt: "Winsome Wood Logo") %>
-    </a>
+    <div id="logo-container">
+      <a href="<%= root_path %>" id="logo">
+        <picture>
+          <source srcset="/winsome-logo.svg" media="(min-width: 1040px)">
+          <img src="/winsome-logo-tablet.png" alt="Winsome logo" />
+        </picture>
+      </a>
+    </div>
+    <%= form_tag(items_path, :method => :get, id: "search") do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search for products...", size: 14 %>
+    <% end %>
+    <button class="hamburger-menu">
+      <%= render :partial => "shared/mobile_menu" %>
+    </button>
+    <div class="modal-background"></div>
+    <%= image_tag("x.svg", class: "mobile-close-button") %>
     <div class="product-nav">
-      <span class="product-nav-link">Products</span>
-      <%= render :partial => "shared/nav_category_menu" %>
+      Products
+      <div class="nav-category-menu-container">
+        <%= render :partial => "shared/nav_category_menu" %>
+      </div>
     </div>
     <%= link_to("Retailers", retailers_path) %>
     <%= link_to("Contact us", contact_path) %>
     <%= link_to("About us", "/about") %>
-    <%= form_tag(items_path, :method => :get, id: "search") do %>
-      <%= text_field_tag :query, params[:query], :placeholder => "Search for products..." %>
-    <% end %>
   </div>
 </nav>

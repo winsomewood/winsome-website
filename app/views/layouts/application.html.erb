@@ -5,7 +5,11 @@
       <%= "#{@page_title ? @page_title + " - " : ""}Winsome Wood" %>
     </title>
 
-    <meta name="viewport" content="width=1000" />
+    <% if @page_title == "Replacement request" %>
+      <meta name="viewport" content="width=1000" />
+    <% else %>
+      <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2">
+    <% end %>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>

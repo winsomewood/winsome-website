@@ -4,13 +4,10 @@
 
 body
   margin: 0px
-  min-width: 1000px
-  display: flex
-  flex-direction: column
 
 main
-  min-width: 1000px
-  max-width: calc(min(1440px, 100% - 64px))
+  max-width: 1440px
+  width: calc(100% - 64px)
   margin: 48px auto
 
 ::placeholder
@@ -45,7 +42,7 @@ a.button, input[type="submit"]
     background-color: white
     border: 2px solid $winsome-blue
 
-/* Text typescale*/
+/* Text typescale */
 html
   font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif
   font-size: 18px
@@ -91,3 +88,6 @@ fieldset
 
 section
   background-color: $background-blue
+
+button, textarea
+  font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif

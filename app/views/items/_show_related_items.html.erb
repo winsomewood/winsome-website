@@ -1,0 +1,16 @@
+<% if @item.kit? %>
+  <strong>Items in this set</strong>
+  <div class="related">
+    <% @item.set_components.each do |child| %>
+      <%= render :partial => "item", locals: {:item => child} %>
+    <% end %>
+  </div>
+  <% end %>
+  <% if @item.parent_kits.present? %>
+  <strong>Sets related to this product</strong>
+  <div class="related">
+    <% @item.parent_kits.each do |parent| %>
+      <%= render :partial => "item", locals: {:item => parent} %>
+    <% end %>
+  </div>
+<% end %>

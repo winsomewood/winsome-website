@@ -4,18 +4,17 @@
   </div>
 
   <div class="footer-links">
-    <%= link_to("About us", "/about") %>
-    <%= link_to("Replacement parts", replacement_path) %>
+    <%= link_to("About us", "/about", class: "about-us") %>
     <%= link_to("Contact us", contact_path) %>
+    <%= link_to("Replacement parts", replacement_path, class: "replacement-parts") %>
   </div>
 
   <hr />
 
   <div class="addresses">
-    <address>
-      <a href="http://maps.google.com/maps?q=16111+Woodinville-Redmond+Road+N.E.+Woodinville,+WA+98072-9046,+USA&oe=utf-8&client=firefox-a&hnear=16111+Woodinville+Redmond+Rd+NE,+Woodinville,+Washington+98072&gl=us&t=m&z=16&vpsrc=0" target="_blank">
-        USA OFFICE
-        <br/>
+    <div class="address">
+      <h3>USA OFFICE</h3>
+      <a class="office-address" href="http://maps.google.com/maps?q=16111+Woodinville-Redmond+Road+N.E.+Woodinville,+WA+98072-9046,+USA&oe=utf-8&client=firefox-a&hnear=16111+Woodinville+Redmond+Rd+NE,+Woodinville,+Washington+98072&gl=us&t=m&z=16&vpsrc=0" target="_blank">
         16111 Woodinville-Redmond Road N.E.
         <br/>
         Woodinville, WA 98072-9046, USA
@@ -24,11 +23,10 @@
       Phone: 425-483-8888
       <br/>
       Fax: 425-483-4141
-    </address>
-    <address>
-      <a href="http://maps.google.com/maps?q=108-8116+Alexander+Road+Delta,+British+Columbia+V4G+1G7,+Canada&oe=utf-8&client=firefox-a&hnear=8116+Alexander+Rd,+Delta,+Greater+Vancouver+Regional+District,+British+Columbia+V4G+1G7,+Canada&gl=us&t=m&z=16&vpsrc=0" target="_blank">
-        CANADA OFFICE
-        <br/>
+    </div>
+    <div class="address">
+      <h3>CANADA OFFICE</h3>
+      <a class="office-address" href="http://maps.google.com/maps?q=108-8116+Alexander+Road+Delta,+British+Columbia+V4G+1G7,+Canada&oe=utf-8&client=firefox-a&hnear=8116+Alexander+Rd,+Delta,+Greater+Vancouver+Regional+District,+British+Columbia+V4G+1G7,+Canada&gl=us&t=m&z=16&vpsrc=0" target="_blank">
         108-8116 Alexander Road
         <br/>
         Delta, British Columbia V4G 1G7, Canada
@@ -37,6 +35,6 @@
       Phone: 604-946-5888
       <br/>
       Fax: 604-946-5899
-    </address>
+    </div>
   </div>
 </footer>
