@@ -16,7 +16,7 @@
     display: flex
     flex-direction: column
     flex-wrap: wrap
-    gap: 24px 80px
+    gap: 16px 80px
 
     & .section
 
@@ -95,6 +95,7 @@
       cursor: default
 
     .errors
+      height: 18px
       font-size: 14px
       color: $red
 
@@ -113,7 +114,8 @@
       display: inline
 
       input, textarea, select
-        border: 2px solid $red
+        border: 1px solid $red
+        outline: 2px solid $red
 
   .send_full_hardware_set
     font-weight: bold
