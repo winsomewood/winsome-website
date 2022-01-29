@@ -41,7 +41,10 @@ footer
     max-width: 1000px
     row-gap: 32px
 
-  & .address
+  & address
+    display: flex /* fix weird bug where address font-size is just huge on mobile */
+    flex-direction: column
+
     text-align: center
     font-style: normal /* override browser default italic */
 
