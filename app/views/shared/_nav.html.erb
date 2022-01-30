@@ -11,9 +11,10 @@
     <%= form_tag(items_path, :method => :get, id: "search") do %>
       <%= text_field_tag :query, params[:query], placeholder: "Search for products...", size: 14 %>
     <% end %>
-    <button class="hamburger-menu">
+    <!-- Use div tabindex="0" instead of button because Safari does not set focus on button clicks -->
+    <div tabindex="0" role="button" class="hamburger-menu">
       <%= render :partial => "shared/mobile_menu" %>
-    </button>
+    </div>
     <div class="modal-background"></div>
     <%= image_tag("x.svg", class: "mobile-close-button") %>
     <div class="product-nav">
