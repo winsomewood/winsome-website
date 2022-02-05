@@ -4,6 +4,22 @@
     <title>
       <%= "#{@page_title ? @page_title + " - " : ""}Winsome Wood" %>
     </title>
+    <meta name="description" content="<%= @og_description %>">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<%= "#{@page_title ? @page_title + " - " : ""}Winsome Wood" %>">
+    <meta property="og:description" content="<%= @og_description %>">
+    <meta property="og:image" content="<%= @og_image %>">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="">
+    <meta property="twitter:url" content="<%= request.original_url %>">
+    <meta name="twitter:title" content="<%= "#{@page_title ? @page_title + " - " : ""}Winsome Wood" %>">
+    <meta name="twitter:description" content="<%= @og_description %>">
+    <meta name="twitter:image" content="<%= @og_image %>">
 
     <% if @page_title == "Replacement request" %>
       <meta name="viewport" content="width=1000" />

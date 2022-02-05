@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
       return
     end
     @page_title = @item.description
+    @og_description = "" # could winsome get more metadata to fill this out at some point?
     @show_collection_link = Item.where('lower(collection) = ?', @item.collection.downcase).size > 1
     @scan_filesystem_images = @item.scan_filesystem_images
   end
