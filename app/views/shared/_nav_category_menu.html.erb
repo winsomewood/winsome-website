@@ -1,10 +1,16 @@
 <div class="nav-category-menu">
-  <div class="header">
-    <span>Select a category</span>
-  </div>
   <div class="list">
-    <% Item.select(:category).distinct.order(:category).pluck(:category).each do |category| %>
-      <%= link_to(category, items_path(category: category.downcase)) %>
+    <% supercategories_array.each do |supercategory| %>
+      <div class="supercategory">
+        <span class="supercategory-title">
+          <%= supercategory[:name] %>
+          &nbsp;
+          <%= image_tag("right.svg") %>
+        </span>
+        <% supercategory[:categories].each do |category| %>
+          <%= link_to(category, items_path(category: category.downcase)) %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
