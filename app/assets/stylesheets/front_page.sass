@@ -2,6 +2,23 @@
 
 #pages-front_page
 
+  & .fraud-warning
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    background-color: rgba(31, 153, 222, .15)
+    column-gap: 12px
+
+    & svg
+      fill: #1F99DE
+      flex-shrink: 0
+
+
+    & .header
+      font-weight: 600
+
+
   & .top-background
     background-color: $background-blue
     display: flex
@@ -72,6 +89,11 @@
         margin-bottom: 12px
 
 @media (min-width: 0)
+  .fraud-warning
+    padding: 16px
+    & .header
+      display: flex
+
   .top-grid
     flex-direction: column-reverse
     align-items: stretch
@@ -93,6 +115,9 @@
       padding: 24px 16px
 
 @media (min-width: 740px)
+  .fraud-warning
+    padding: 16px 32px
+
   .top-grid
     flex-direction: row
     padding: 60px 36px
@@ -120,6 +145,9 @@
       padding: 24px 88px
 
 @media (min-width: 1040px)
+  .fraud-warning .header
+    display: inline
+
   .top-grid
     padding: 60px 88px
     gap: 48px
