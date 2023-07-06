@@ -183,6 +183,14 @@
   <fieldset>
     <legend>Comments (optional)</legend>
     <%= f.text_area :comments, :rows => 3, :cols => 70 %>
+
+    <div class="section">
+      <%= f.label :additional_images, value: "Upload images of replacements needed", :style => 'width: 300px' %>
+      <%= f.file_field :additional_images, multiple: true %>
+      <div class="errors">
+        <%= @replacement.errors[:additional_images].to_sentence %>
+      </div>
+    </div>
   </fieldset>
   <%= f.submit :value => "Submit", data: { disable_with: "Sending" } %>
 <% end %>

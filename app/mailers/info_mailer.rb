@@ -11,6 +11,11 @@ class InfoMailer < ApplicationMailer
     if replacement.proof_of_purchase
       attachments[replacement.proof_of_purchase.original_filename] = File.open(replacement.proof_of_purchase, 'rb') {|f| f.read}
     end
+    if !replacement.additional_images.empty?
+      replacement.additional_images.each do |image|
+        attachments[image.original_filename] = File.open(image, 'rb') {|f| f.read}
+      end
+    end
     mail(
       to: "Replacements.Pending@winsomewood.com",
       bcc: "golfs@winsomewood.com",

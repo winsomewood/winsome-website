@@ -35,6 +35,8 @@ class Replacement
   attr_accessor :proof_of_purchase
   attr_accessor :proof_of_purchase_filename
   attr_accessor :comments
+  attr_accessor :additional_images
+  attr_accessor :additional_images_filenames
 
   validates :name, presence: true
   validates :address1, presence: true
@@ -91,7 +93,8 @@ class Replacement
       send_full_hardware_set: send_full_hardware_set,
       parts: parts,
       comments: comments,
-      proof_of_purchase_filename: proof_of_purchase_filename
+      proof_of_purchase_filename: proof_of_purchase_filename,
+      additional_images_filenames: additional_images_filenames
     }
   end
 end

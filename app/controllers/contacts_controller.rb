@@ -16,6 +16,7 @@ class ContactsController < ApplicationController
 
   def create
     if @comment.valid?
+      # Only sends in prod, see README.md's "Environments and their differences"
       InfoMailer.comments_email(@comment).deliver_now
       redirect_to success_path
     else
