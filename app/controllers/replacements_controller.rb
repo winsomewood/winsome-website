@@ -17,7 +17,7 @@ class ReplacementsController < ApplicationController
 
   def create
     if @replacement.valid?
-      replacements_main_directory = "/home/replacements/"
+      replacements_main_directory = "/home/web/"
       replacements_json_directory = File.join("#{replacements_main_directory}","json")
       replacements_image_directory = File.join("#{replacements_main_directory}","json_attach")
       logFile = File.join("#{replacements_main_directory}","replacements.log")
