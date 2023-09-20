@@ -1,25 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.7.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0'
 
-group :development do
-  gem 'sqlite3', '~> 1.4'
-end
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
-group :production do
-  gem 'pg', '1.2.3'
-end
+gem 'pg', '1.2.3'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -27,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'jquery-rails', '~> 4.3'
 gem 'haml', '5.2.1'
-gem 'rails_admin', "2.0.2"
+#gem 'rails_admin', "2.0.2"
 gem 'rollbar', '3.1.1'
 
 # Use Redis adapter to run Action Cable in production
@@ -64,3 +58,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'kaminari'
