@@ -1,8 +1,8 @@
 <main>
   <div class="show">
-    <h1 class="mobile-on"><%= @item.description %></h1>
+    <h1 class="mobile-on"><%= @item.name %></h1>
     <div class="images">
-      <%= image_tag("/images/584/#{@item.itemno}.jpg", alt: @item.description, class: "large") %>
+      <%= image_tag("/images/584/#{@item.itemno}.jpg", alt: @item.name, class: "large") %>
       <div class="thumbnails">
         <% if @scan_filesystem_images.size > 1 %>
           <% @scan_filesystem_images.each do |image| %>
@@ -13,7 +13,7 @@
     </div>
     <div>
       <div class="item">
-        <h1 class="mobile-off"><%= @item.description %></h1>
+        <h1 class="mobile-off"><%= @item.name %></h1>
         <ul class="main-meta">
           <div class="item-number">Item # <%= @item.itemno %></div>
           <li>
@@ -47,6 +47,9 @@
               <% end %>
             <% end %>
           </li>
+          <li class="description">
+            <%= @item.description %>
+          </li>
         </ul>
       </div>
       <div class="desktop-only">
@@ -64,7 +67,7 @@
     <%= link_to "View all #{@item.category} products", items_path(:category => @item.category), class: "mobile-off" %>
   </div>
   <div class="items-grid">
-    <% Item.where('lower(category) = ?', @item.category.downcase).order("description").first(4).each do |item| %>
+    <% Item.where('lower(category) = ?', @item.category.downcase).order("name").first(4).each do |item| %>
       <%= render :partial => "item", locals: {:item => item} %>
     <% end %>
   </div>

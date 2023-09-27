@@ -66,6 +66,28 @@ $(function () {
   }
 });
 
+// Show page see more
+$(function() {
+  const ELLIPSIS_LENGTH = 200
+  $('.show .description').each(function() {
+    var description = $(this);
+    var content = description.text();
+
+    if (content.length > ELLIPSIS_LENGTH) {
+      var shortContent = content.substr(0, ELLIPSIS_LENGTH) + '... ';
+      var readMoreLink = $('<a href="#">See more</a>');
+
+      description.text(shortContent);
+      description.append(readMoreLink);
+
+      readMoreLink.on('click', function(e) {
+        e.preventDefault();
+        description.text(content);
+      });
+    }
+  });
+})
+
 // Contact & Replacement form popup on mouseover handlers
 $(function () {
   $(".controlNumberLabel").on("mouseover", function (e) {

@@ -1,5 +1,5 @@
 <a href="<%= item_path(item.itemno) %>" class="item">
-  <%= image_tag("/images/584/#{item.itemno}.jpg", alt: item.description) %>
-  <h3><%= item.description %></h3>
+  <%= image_tag("/images/584/#{item.itemno}.jpg", alt: item.name) %>
+  <h3><%= item.name %></h3>
   <div class="item-number">Item # <%= item.itemno %></div>
 </a>

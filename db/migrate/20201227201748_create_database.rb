@@ -5,6 +5,7 @@ class CreateDatabase < ActiveRecord::Migration[6.1]
       t.boolean :kit
       t.string :upc
       t.string :collection
+      t.string :name
       t.string :description
       t.string :category
       t.string :finish
@@ -18,11 +19,11 @@ class CreateDatabase < ActiveRecord::Migration[6.1]
     end
 
     30.times do
-      Item.create(itemno: 94504, kit: true, upc: "021713945044", collection: "Pauline", description: "Pauline 5-PC Set Table With Chairs", category: "Dining", finish: "Walnut", material: "Solid Wood", assembly: true, length: "0", width: "0", height: "0")
+      Item.create(itemno: 94504, kit: true, upc: "021713945044", collection: "Pauline", name: "Pauline 5-PC Set Table With Chairs", description: "", category: "Dining", finish: "Walnut", material: "Solid Wood", assembly: true, length: "0", width: "0", height: "0")
     end
-    Item.create(itemno: 10633, kit: false, upc: "021713106339", collection: "Halifax", description: "Halifax Cabinet", category: "Storage and Organization", finish: "White", material: "Composite Wood", assembly: true, length: "30.71", width: "15.98", height: "26.30")
-    Item.create(itemno: 40643, kit: false, upc: "021713406439", collection: "Xola", description: "Xola TV Stand", category: "Media and Entertainment", finish: "Cappuccino", material: "Solid / Composite Wood", assembly: true, length: "44.02", width: "15.94", height: "24.02")
-    Item.create(itemno: 40538, kit: false, upc: "021713405388", collection: "Xola", description: "Xola Coffee Table with 2 Drawers", category: "Occasional Table", finish: "Cappuccino", material: "Solid / Composite Wood", assembly: true, length: "37", width: "21", height: "18")
+    Item.create(itemno: 10633, kit: false, upc: "021713106339", collection: "Halifax", name: "Halifax Cabinet", description: "", category: "Storage and Organization", finish: "White", material: "Composite Wood", assembly: true, length: "30.71", width: "15.98", height: "26.30")
+    Item.create(itemno: 40643, kit: false, upc: "021713406439", collection: "Xola", name: "Xola TV Stand", description: "", category: "Media and Entertainment", finish: "Cappuccino", material: "Solid / Composite Wood", assembly: true, length: "44.02", width: "15.94", height: "24.02")
+    Item.create(itemno: 40538, kit: false, upc: "021713405388", collection: "Xola", name: "Xola Coffee Table with 2 Drawers", description: "", category: "Occasional Table", finish: "Cappuccino", material: "Solid / Composite Wood", assembly: true, length: "37", width: "21", height: "18")
 
     create_table :kits do |t|
       t.integer :kitno

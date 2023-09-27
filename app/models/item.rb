@@ -7,6 +7,7 @@
 #  kit         :boolean
 #  upc         :string
 #  collection  :string
+#  name :string
 #  description :string
 #  category    :string
 #  finish      :string
@@ -22,7 +23,7 @@
 class Item < ActiveRecord::Base
 
   has_many :kits, :foreign_key => "kitno", :primary_key => "itemno"
-  validates_presence_of :itemno, :upc, :description, :category, :length, :width, :height
+  validates_presence_of :itemno, :upc, :name, :description, :category, :length, :width, :height
 
   def sorted_valid_kits
     # There can be kits with invalid items in the DB (due to DB values changing over time)
