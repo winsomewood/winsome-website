@@ -214,3 +214,19 @@ source ~/.bashrc
 
 Server-side error logging is done in Rollbar. View errors at
 https://rollbar.com/minigolf2000/winsome-website/ (ask Golf for an invite if you cannot access)
+
+# SSL Certbot setup
+
+We use certbot for SSL. There are instructions at
+https://certbot.eff.org/instructions?ws=nginx&os=centosrhel8&tab=wildcard
+that suggest installing w/ snap, but I found it difficult. Instead I installed certbot w/ RHEL default
+
+```
+sudo dnf install certbot
+```
+
+Then simply run certbot command
+
+```
+sudo certbot --nginx
+```
