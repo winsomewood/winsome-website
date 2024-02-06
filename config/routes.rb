@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   scope controller: :pages do
     root action: 'front_page'

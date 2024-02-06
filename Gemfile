@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'jquery-rails', '~> 4.3'
 gem 'haml', '5.2.1'
-#gem 'rails_admin', "2.0.2"
+gem 'rails_admin', "3.1.2"
 gem 'rollbar', '3.1.1'
 
 # Use Redis adapter to run Action Cable in production

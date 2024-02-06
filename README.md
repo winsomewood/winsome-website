@@ -206,6 +206,9 @@ bundle exec rails webpacker:install # run webpacker right before starting the se
 # add this to ~/.bashrc
 export RAILS_SERVE_STATIC_FILES="t"
 
+# add this to /etc/systemd/system/web.service
+Environment="WINSOME_WEBSITE_RAILS_ADMIN_PASSWORD=<password>"
+
 # then run
 source ~/.bashrc
 ```
