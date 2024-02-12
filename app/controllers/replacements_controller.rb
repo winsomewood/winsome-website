@@ -87,6 +87,7 @@ class ReplacementsController < ApplicationController
       :city,
       :state,
       :zip,
+      :country,
       :phone,
       :email,
       :purchase_date,

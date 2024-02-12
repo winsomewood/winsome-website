@@ -26,7 +26,7 @@
   <fieldset class="general">
     <legend>General Information (Required)</legend>
     <div class="section">
-      <%= f.label :name %>
+      <%= f.label :name, "Full name" %>
       <%= f.text_field :name, size: "40" %>
       <div class="errors">
         <%= @replacement.errors[:name].to_sentence %>
@@ -56,25 +56,33 @@
     <div class="spacer"></div>
     <div class="section">
       <%= f.label :city %>
-      <%= f.text_field :city, :size => "20" %>
+      <%= f.text_field :city, :size => "12" %>
       <div class="errors">
         <%= @replacement.errors[:city].to_sentence %>
       </div>
     </div>
     <div class="section">
-      <%= f.label :state, :style => 'width: 40px' %>
+      <%= f.label :state, "State/Province", :style => 'width: 100px' %>
       <%= f.text_field :state, :size => "4" %>
       <div class="errors">
         <%= @replacement.errors[:state].to_sentence %>
       </div>
     </div>
     <div class="section">
-      <%= f.label :zip, :style => 'width: 20px' %>
-      <%= f.text_field :zip, :size => "4" %>
+      <%= f.label :zip, "Zip/Postal", :style => 'width: 60px' %>
+      <%= f.text_field :zip, :size => "7", :maxlength => "10" %>
       <div class="errors">
         <%= @replacement.errors[:zip].to_sentence %>
       </div>
     </div>
+    <div class="section">
+      <%= f.label :country %>
+      <%= f.text_field :country, :size => "15", :maxlength => "20" %>
+      <div class="errors">
+        <%= @replacement.errors[:country].to_sentence %>
+      </div>
+    </div>
+    <div class="spacer"></div>
     <div class="section">
       <%= f.label :phone %>
       <%= f.text_field :phone, :size => "15" %>

@@ -18,14 +18,14 @@
         </div>
       </div>
       <div class="section">
-        <%= f.label :name %>
+        <%= f.label :name, "Full name" %>
         <%= f.text_field :name %>
         <div class="errors">
           <%= @comment.errors[:name].to_sentence %>
         </div>
       </div>
       <div class="section">
-        <%= f.label :company, value: "Company (Optional)" %>
+        <%= f.label :company, "Company (Optional)" %>
         <%= f.text_field :company %>
       </div>
       <div class="section">

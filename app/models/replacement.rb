@@ -19,6 +19,7 @@ class Replacement
   attr_accessor :city
   attr_accessor :state
   attr_accessor :zip
+  attr_accessor :country
   attr_accessor :phone
   attr_accessor :email
 
@@ -42,6 +43,7 @@ class Replacement
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
+  validates :country, presence: true
   validates :phone, presence: true
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
@@ -81,6 +83,7 @@ class Replacement
       city: city,
       state: state,
       zip: zip,
+      country: country,
       phone: phone,
       email: email,
       retailer: retailer,
