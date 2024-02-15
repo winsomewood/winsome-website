@@ -72,7 +72,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: '10.101.101.21',
+    address: 'mail.winsomewood.com',
     port: 25,
     domain: 'winsomewood.com', # Use your domain here
     authentication: 'plain',
