@@ -3,9 +3,12 @@
 #items-show
   .show
     display: flex
-    gap: 48px
-    max-width: 1000px
+    gap: 24px
+    max-width: 1200px
     margin: 0 auto
+
+    .images
+      flex-shrink: .6;
 
     .large
       display: block
@@ -57,13 +60,13 @@
       .main-meta
         list-style-type: none
         padding-left: 0px
-        margin-right: 60px
         margin-bottom: 30px
         line-height: 2em
 
         .description
           margin-top: 16px
           line-height: 24px
+          max-width: 600px
 
       .meta.extended
         display: none
