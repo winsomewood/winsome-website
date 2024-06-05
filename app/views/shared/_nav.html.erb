@@ -13,6 +13,7 @@
     <% end %>
     <!-- Use div tabindex="0" instead of button because Safari does not set focus on button clicks -->
     <div tabindex="0" role="button" class="hamburger-menu">
+      <%= image_tag("hamburger.svg", class: "hamburger-svg") %>
       <%= render :partial => "shared/mobile_menu" %>
     </div>
     <div class="modal-background"></div>

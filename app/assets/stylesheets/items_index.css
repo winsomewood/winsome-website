@@ -1,0 +1,33 @@
+#items-index {
+  & h1 {
+    margin: 0px auto;
+    padding: 40px;
+    box-sizing: border-box;
+    width: calc(min(1440px, 100%));
+  }
+
+  .pagination-top {
+    margin: 0px auto;
+    padding: 40px;
+    box-sizing: border-box;
+    width: calc(min(1440px, 100%));
+  }
+
+  .pagination-bottom {
+    display: flex;
+    justify-content: center;
+    margin: 48px 0px;
+  }
+
+  .page-entries-info {
+    color: #4f4f4f;
+    font-size: 16px;
+  }
+
+  .hero {
+    width: 100%;
+    height: 360px;
+    object-position: top;
+    object-fit: cover;
+  }
+}

@@ -1,0 +1,189 @@
+nav.main-nav {
+  box-sizing: border-box;
+  border-bottom: 0.5px solid #bdbdbd;
+  display: flex;
+  justify-content: center;
+
+  & .nav-flex {
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    row-gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+    user-select: none;
+    height: 100px;
+
+    & a {
+      color: inherit;
+      text-underline-offset: 7px;
+    }
+
+    & > a:not(#logo),
+    & > .product-nav {
+      padding: 32px 8px;
+    }
+
+    & .product-nav-text-link {
+      cursor: pointer;
+    }
+
+    & .hamburger-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      margin-right: 8px;
+      border: none;
+
+      box-sizing: border-box;
+
+      & .hamburger-svg {
+        width: 29px;
+        height: 29px;
+      }
+      &:hover {
+        background-color: #eeeeee;
+      }
+
+      &:focus,
+      &:focus-within {
+        & .main-mobile-menu,
+        & + .modal-background,
+        & ~ .mobile-close-button {
+          display: flex;
+        }
+      }
+    }
+
+    & .product-nav {
+      display: flex;
+      flex-direction: column;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 7px;
+
+        & .nav-category-menu-container {
+          display: block;
+        }
+      }
+    }
+
+    #search {
+      /* Place this at the end so that css sibling selector works */
+      /* There is CSS way to do sibling selectors for previous siblings */
+      order: 1;
+
+      margin: 0px;
+
+      input[type="text"] {
+        padding-left: 30px;
+        border: 1px solid var(--color-winsome-blue);
+        background: url("/search.svg") transparent 6px center no-repeat;
+
+        box-sizing: border-box;
+        &::placeholder {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  .nav-category-menu-container {
+    top: 10px;
+    left: -60px;
+    position: relative;
+    display: none;
+
+    & .nav-category-menu {
+      border-radius: 4px;
+      position: fixed;
+    }
+  }
+}
+
+@media (max-width: 1039px) {
+  nav.main-nav .nav-flex {
+    & #search {
+      max-width: 400px;
+      width: 100%;
+
+      & input[type="text"] {
+        width: 100%;
+
+        &:focus {
+          width: calc(100% - 16px);
+          margin-left: 16px;
+        }
+      }
+    }
+
+    & #search:not(:focus-within) {
+      width: 32px;
+      padding: 4px;
+
+      &:hover {
+        background-color: #eeeeee;
+      }
+
+      & input[type="text"] {
+        padding-left: 0px;
+        border: none;
+        cursor: default;
+        color: transparent;
+
+        &::placeholder {
+          visibility: hidden;
+        }
+      }
+    }
+
+    & #search:focus-within ~ * {
+      display: none !important;
+    }
+  }
+}
+
+@media (min-width: 0px) {
+  nav.main-nav .nav-flex {
+    margin: 0px 16px;
+    & > a:not(#logo),
+    & .product-nav {
+      display: none;
+    }
+    & .hamburger-menu {
+      display: flex;
+    }
+    & #logo-container {
+      flex-grow: 1;
+    }
+  }
+}
+
+@media (min-width: 740px) {
+  nav.main-nav .nav-flex {
+    margin: 0px 40px;
+
+    & .product-nav {
+      display: flex;
+    }
+    & .hamburger-menu {
+      display: none;
+    }
+    & #logo-container {
+      flex-grow: 0;
+    }
+  }
+}
+
+@media (min-width: 740px) {
+  nav.main-nav .nav-flex {
+    & > a:not(#logo) {
+      display: initial;
+    }
+  }
+}

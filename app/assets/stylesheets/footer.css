@@ -1,0 +1,116 @@
+/* Footer */
+footer {
+  padding-top: 32px;
+  padding-bottom: 64px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-winsome-blue);
+  gap: 32px;
+
+  & hr {
+    border: none;
+    border-top: 1px solid white;
+    margin: 0px;
+    width: calc(100% - 64px);
+  }
+
+  & a {
+    color: white;
+  }
+
+  & #copyright {
+    font-weight: bold;
+
+    & #copyright-symbol {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+
+  & .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 32px;
+  }
+
+  .addresses {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0px 32px;
+    width: 100%;
+    max-width: 1000px;
+    row-gap: 32px;
+  }
+
+  & address {
+    display: flex
+      /* fix weird bug where address font-size is just huge on mobile */;
+    flex-direction: column;
+
+    text-align: center;
+    font-style: normal /* override browser default italic */;
+  }
+}
+
+.office-address {
+  font-weight: inherit;
+}
+
+@media (min-width: 0px) {
+  footer,
+  footer address,
+  footer h3 {
+    font-size: 16px;
+  }
+
+  .addresses {
+    flex-direction: column;
+  }
+
+  .footer-links {
+    max-width: unset;
+    width: unset;
+
+    & a {
+      font-weight: 400;
+    }
+  }
+
+  .replacement-parts {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 740px) {
+  footer,
+  footer address,
+  footer h3 {
+    font-size: 18px;
+  }
+
+  .addresses {
+    flex-direction: row;
+  }
+
+  .footer-links {
+    max-width: 720px;
+    width: 720px;
+
+    & a {
+      font-weight: 600;
+    }
+  }
+
+  .replacement-parts {
+    width: initial;
+    text-align: center;
+  }
+
+  .about-us {
+    margin-left: 65px;
+  }
+}
