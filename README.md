@@ -94,7 +94,7 @@ On your local workstation, Rails is run by default in `development` mode. On pro
 - Webpack (which compile CSS and JS files) is not run on each page load. Editing CSS and JS live on the server will not cause updates due to caching. To rebuild assets and restart server, [run these steps without git pull](#deployment)
 
 ```bash
-RAILS_ENV=production rails assets:precompile # precompile JS assets. This automatically happens on page load in dev but must be triggered manually in prod
+SECRET_KEY_BASE=<secret> RAILS_ENV=production bundle exec rails assets:precompile # precompile JS assets. This automatically happens on page load in dev but must be triggered manually in prod
 rails s -b <ip_address> -p 80 -e production # start new server
 ```
 

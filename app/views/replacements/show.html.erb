@@ -77,7 +77,7 @@
     </div>
     <div class="section">
       <%= f.label :country %>
-      <%= f.select :country, options_for_select({"Select one" => nil, "United States" => :usa, "Canada" => :canada}, @replacement.country) %>
+      <%= f.select :country, options_for_select({"Select one" => nil, "United States" => "USA", "Canada" => "Canada"}, @replacement.country) %>
       <div class="errors">
         <%= @replacement.errors[:country].to_sentence %>
       </div>
